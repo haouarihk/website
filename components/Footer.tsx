@@ -19,7 +19,6 @@ export function Footer() {
 					<nav className="mt-10 text-sm" aria-label="quick links">
 						<div className="-my-1 flex justify-center gap-6 flex-wrap">
 							<NavLink href="/#features">Features</NavLink>
-							{/* <NavLink href="/#testimonials">Testimonials</NavLink> */}
 							<NavLink href="/#faqs">Faqs</NavLink>
 							<NavLink
 								href="https://docs.dokploy.com/introduction"

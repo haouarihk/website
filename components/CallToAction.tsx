@@ -33,7 +33,7 @@ export function CallToAction() {
 						Unlock Your Deployment Potential
 					</h2>
 					<p className="mt-4 text-lg tracking-tight text-muted-foreground">
-						Streamline your deployments with our PAAS. Effortlessly manage
+						Streamline your deployments with our PaaS. Effortlessly manage
 						Docker containers and traffic with Traefik. Boost your
 						infrastructure's efficiency and security today
 					</p>
