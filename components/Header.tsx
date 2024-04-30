@@ -134,18 +134,6 @@ export function Header() {
 						</div>
 					</div>
 					<div className="flex items-center gap-x-5 md:gap-x-8">
-						{/* <Button className="rounded-full" asChild>
-							<Link
-								href="https://docs.dokploy.com/installation"
-								target="_blank"
-								aria-label="Dokploy on GitHub"
-								className="flex flex-row gap-2 items-center"
-							>
-								<span>
-									Get started <span className="hidden lg:inline">today</span>
-								</span>
-							</Link>
-						</Button> */}
 						<Button
 							className="rounded-full bg-[#5965F2] hover:bg-[#4A55E0]"
 							asChild
