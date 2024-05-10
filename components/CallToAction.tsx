@@ -40,7 +40,7 @@ export function CallToAction() {
 
 					<Button className="rounded-full mt-10" asChild>
 						<Link
-							href="https://docs.dokploy.com/installation"
+							href="https://docs.dokploy.com/get-started/installation"
 							aria-label="Dokploy on GitHub"
 							target="_blank"
 							className="flex flex-row gap-2 items-center"

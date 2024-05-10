@@ -21,7 +21,7 @@ export function Footer() {
 							<NavLink href="/#features">Features</NavLink>
 							<NavLink href="/#faqs">Faqs</NavLink>
 							<NavLink
-								href="https://docs.dokploy.com/introduction"
+								href="https://docs.dokploy.com/get-started/introduction"
 								target="_blank"
 							>
 								Docs

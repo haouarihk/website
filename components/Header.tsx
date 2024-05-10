@@ -100,7 +100,7 @@ function MobileNavigation() {
 						<MobileNavLink href="/#testimonials">Testimonials</MobileNavLink>
 						<MobileNavLink href="/#faqs">Faqs</MobileNavLink>
 						<MobileNavLink
-							href="https://docs.dokploy.com/introduction"
+							href="https://docs.dokploy.com/get-started/introduction"
 							target="_blank"
 						>
 							Docs
@@ -126,7 +126,7 @@ export function Header() {
 							{/* <NavLink href="/#testimonials">Testimonials</NavLink> */}
 							<NavLink href="/#faqs">Faqs</NavLink>
 							<NavLink
-								href="https://docs.dokploy.com/introduction"
+								href="https://docs.dokploy.com/get-started/introduction"
 								target="_blank"
 							>
 								Docs
