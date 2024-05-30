@@ -46,7 +46,9 @@ else
 fi
 
 docker swarm leave --force 2>/dev/null
-docker swarm init ;
+advertise_addr=$(curl -s ifconfig.me)
+
+docker swarm init --advertise-addr $advertise_addr
 
 echo "Swarm initialized"
 
