@@ -77,7 +77,6 @@ docker service create \
   dokploy/dokploy:latest
 
 
-public_ip=$(hostname -I | awk '{print $1}')
 
 GREEN="\033[0;32m"
 YELLOW="\033[1;33m"
@@ -88,5 +87,5 @@ NC="\033[0m" # No Color
 echo ""
 printf "${GREEN}Congratulations, Dokploy is installed!${NC}\n"
 printf "${BLUE}Wait 15 seconds for the server to start${NC}\n"
-printf "${YELLOW}Please go to http://${public_ip}:3000${NC}\n\n"
+printf "${YELLOW}Please go to http://${advertise_addr}:3000${NC}\n\n"
 echo ""
