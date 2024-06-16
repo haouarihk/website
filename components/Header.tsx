@@ -6,9 +6,10 @@ import { Popover, Transition } from "@headlessui/react";
 import { Container } from "./Container";
 import { Logo } from "./shared/Logo";
 import { NavLink } from "./NavLink";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { trackGAEvent } from "./analitycs";
+import { HeartIcon } from "lucide-react";
 
 function MobileNavLink({
 	href,
@@ -133,7 +134,18 @@ export function Header() {
 							</NavLink>
 						</div>
 					</div>
-					<div className="flex items-center gap-x-5 md:gap-x-8">
+					<div className="flex items-center gap-x-2 md:gap-x-5">
+						<Link
+							className={buttonVariants({
+								variant: "outline",
+								className: " flex items-center gap-2 !rounded-full",
+							})}
+							href="https://opencollective.com/dokploy"
+							target="_blank"
+						>
+							<span className="text-sm font-semibold">Support </span>
+							<HeartIcon className="size-4 text-red-500 fill-red-600 animate-heartbeat " />
+						</Link>
 						<Button
 							className="rounded-full bg-[#5965F2] hover:bg-[#4A55E0]"
 							asChild

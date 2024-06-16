@@ -3,7 +3,7 @@
 import { Tab } from "@headlessui/react";
 import { Container } from "./Container";
 import { motion } from "framer-motion";
-import { Terminal, Users } from "lucide-react";
+import { Layers, Terminal, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 interface Feature {
 	name: React.ReactNode;
@@ -14,6 +14,20 @@ interface Feature {
 }
 
 const features: Array<Feature> = [
+	{
+		name: "Open Source Templates",
+		summary: "One click to deploy open source templates.",
+		description:
+			"Deploy open source templates with one click, powered by Docker Compose, (Plausible, Calcom, Pocketbase, etc.)",
+		image: "/secondary/templates.png",
+		icon: function ReportingIcon() {
+			return (
+				<>
+					<Layers className="size-5 text-primary" />
+				</>
+			);
+		},
+	},
 	{
 		name: "Real-Time Traefik Configuration",
 		summary:
@@ -317,7 +331,7 @@ function FeaturesDesktop() {
 		<Tab.Group as="div" className="hidden lg:mt-20 lg:block">
 			{({ selectedIndex }) => (
 				<>
-					<Tab.List className="grid grid-cols-3 gap-x-8">
+					<Tab.List className="grid grid-cols-4 gap-x-8">
 						{features.map((feature, featureIndex) => (
 							<Feature
 								key={feature.summary}
@@ -374,7 +388,7 @@ export function SecondaryFeatures() {
 			aria-label="Features for simplifying everyday business tasks"
 			className="pb-14 pt-20 sm:pb-20 sm:pt-32 lg:pb-32 bg-black"
 		>
-			<Container>
+			<Container className="max-w-[95rem]">
 				<div className="mx-auto max-w-2xl md:text-center">
 					<h2 className="font-display text-3xl tracking-tight text-primary sm:text-4xl">
 						Advanced Management Tools

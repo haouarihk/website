@@ -21,6 +21,18 @@ const features = [
 		image: "/primary/applications.png",
 	},
 	{
+		title: "Docker Compose",
+		description:
+			"Native Docker Compose support for manage complex applications and services with ease.",
+		image: "/primary/compose.png",
+	},
+	{
+		title: "Multi Node",
+		description:
+			"Scale applications to multiples nodes using docker swarm to manage the cluster.",
+		image: "/primary/multinode.png",
+	},
+	{
 		title: "Monitoring",
 		description:
 			"Monitor your systems' performance and health in real time, ensuring continuous and uninterrupted operation.",
