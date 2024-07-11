@@ -73,6 +73,7 @@ docker service create \
   --publish published=3000,target=3000,mode=host \
   --update-parallelism 1 \
   --update-order stop-first \
+  --constraint 'node.role == manager' \
   -e RELEASE_TAG=feature \
   dokploy/dokploy:feature
 
