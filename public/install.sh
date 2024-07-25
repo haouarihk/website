@@ -47,7 +47,21 @@ fi
 
 docker swarm leave --force 2>/dev/null
 
-advertise_addr=$(curl -s ifconfig.me)
+get_ip() {
+    # Try to get IPv4
+    local ipv4=$(curl -4s https://ifconfig.io 2>/dev/null)
+
+    if [ -n "$ipv4" ]; then
+        echo "$ipv4"
+    else
+        # Try to get IPv6
+        local ipv6=$(curl -6s https://ifconfig.io 2>/dev/null)
+        if [ -n "$ipv6" ]; then
+            echo "$ipv6"
+    fi
+}
+
+advertise_addr=$(get_ip)
 
 docker swarm init --advertise-addr $advertise_addr
 
@@ -84,9 +98,20 @@ YELLOW="\033[1;33m"
 BLUE="\033[0;34m"
 NC="\033[0m" # No Color
 
+format_ip_for_url() {
+    local ip="$1"
+    if [[ $ip =~ : ]]; then
+        # IPv6
+        echo "[${ip}]"
+    else
+        # IPv4
+        echo "${ip}"
+    fi
+}
 
+formatted_addr=$(format_ip_for_url "$advertise_addr")
 echo ""
 printf "${GREEN}Congratulations, Dokploy is installed!${NC}\n"
 printf "${BLUE}Wait 15 seconds for the server to start${NC}\n"
-printf "${YELLOW}Please go to http://${advertise_addr}:3000${NC}\n\n"
+printf "${YELLOW}Please go to http://${formatted_addr}:3000${NC}\n\n"
 echo ""
