@@ -101,7 +101,7 @@ NC="\033[0m" # No Color
 
 format_ip_for_url() {
     local ip="$1"
-    if [[ $ip =~ : ]]; then
+    if echo "$ip" | grep -q ':'; then
         # IPv6
         echo "[${ip}]"
     else
