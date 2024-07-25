@@ -58,6 +58,7 @@ get_ip() {
         local ipv6=$(curl -6s https://ifconfig.io 2>/dev/null)
         if [ -n "$ipv6" ]; then
             echo "$ipv6"
+        fi
     fi
 }
 
