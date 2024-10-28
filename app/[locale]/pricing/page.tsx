@@ -1,4 +1,4 @@
-import { Pricing } from "@/components/pricing";
+import { Pricing } from "../../../components/pricing";
 
 export default function Home() {
 	return (
