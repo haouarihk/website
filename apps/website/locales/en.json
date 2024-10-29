@@ -143,7 +143,7 @@
 					"title": "Dokploy Plan",
 					"description": " to manage Dokploy UI infrastructure, we take care of it for you."
 				},
-				"servers": "{serverQuantity}Servers (You bring the servers)",
+				"servers": "{serverQuantity} Servers (You bring the servers)",
 				"features": {
 					"f1": "Managed Hosting: No need to manage your own servers",
 					"f2": "Priority Support",
