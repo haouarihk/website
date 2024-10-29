@@ -160,8 +160,8 @@ function Plan({
 export function Pricing() {
 	const router = useRouter();
 	const t = useTranslations("Pricing");
-	const [isAnnual, setIsAnnual] = useState(true);
-	const [serverQuantity, setServerQuantity] = useState(3);
+	const [isAnnual, setIsAnnual] = useState(false);
+	const [serverQuantity, setServerQuantity] = useState(1);
 	const featured = true;
 	return (
 		<section
