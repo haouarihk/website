@@ -26,7 +26,7 @@ const config = {
 			"9xl": ["8rem", { lineHeight: "1" }],
 		},
 		container: {
-			center: true,
+			center: "true",
 			padding: "2rem",
 			screens: {
 				"2xl": "1400px",
@@ -79,6 +79,22 @@ const config = {
 				display: "var(--font-lexend)",
 			},
 			keyframes: {
+				marquee: {
+					from: {
+						transform: "translateX(0)",
+					},
+					to: {
+						transform: "translateX(calc(-100% - var(--gap)))",
+					},
+				},
+				"marquee-vertical": {
+					from: {
+						transform: "translateY(0)",
+					},
+					to: {
+						transform: "translateY(calc(-100% - var(--gap)))",
+					},
+				},
 				"accordion-down": {
 					from: {
 						height: "0",
@@ -103,11 +119,19 @@ const config = {
 						"background-position": "calc(100% + var(--shiny-width)) 0",
 					},
 				},
+				gradient: {
+					to: {
+						backgroundPosition: "var(--bg-size) 0",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				"shiny-text": "shiny-text 8s infinite",
+				marquee: "marquee var(--duration) linear infinite",
+				"marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+				gradient: "gradient 8s linear infinite",
 			},
 		},
 	},

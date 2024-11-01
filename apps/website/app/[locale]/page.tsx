@@ -2,18 +2,19 @@ import { CallToAction } from "@/components/CallToAction";
 import { Faqs } from "@/components/Faqs";
 import { Hero } from "@/components/Hero";
 import { PrimaryFeatures } from "@/components/PrimaryFeatures";
-import { SecondaryFeatures } from "@/components/SecondaryFeatures";
+import { Testimonials } from "@/components/Testimonials";
+import { FeaturesSectionDemo } from "@/components/features";
 
 export default function Home() {
 	return (
 		<div>
 			<main>
 				<Hero />
+				<FeaturesSectionDemo />
 				<PrimaryFeatures />
-				<SecondaryFeatures />
-				<CallToAction />
-				{/* <Testimonials /> */}
+				<Testimonials />
 				<Faqs />
+				<CallToAction />
 			</main>
 		</div>
 	);

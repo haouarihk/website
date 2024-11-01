@@ -165,12 +165,11 @@ export function Header() {
 							</span>
 							<HeartIcon className="animate-heartbeat size-4 fill-red-600 text-red-500 " />
 						</Link>
-						<Button className="rounded-xl" asChild>
+						<Button className="rounded-full" asChild>
 							<Link
 								href="https://app.dokploy.com"
 								aria-label="Dokploy on GitHub"
 								target="_blank"
-								// className="flex flex-row items-center gap-2 text-white"
 							>
 								{t("navigation.dashboard")}
 							</Link>

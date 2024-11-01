@@ -39,14 +39,16 @@
 			"projectsDes": "Manage and organize all your projects in one place, keeping detailed track of progress and resource allocation.",
 			"applications": "Applications & Databases",
 			"applicationsDes": "Centralize control over your applications and databases for enhanced security and efficiency, simplifying access and management across your infrastructure.",
-			"compose": "Compose",
+			"compose": "Docker Compose",
 			"composeDes": "Native Docker Compose support for manage complex applications and services with ease.",
-			"multinode": "Multinode",
-			"multinodeDes": "Scale applications to multiples nodes using docker swarm to manage the cluster.",
+			"multiserver": "Multiserver",
+			"multiserverDes": "Deploy applications to multiple servers without effort.",
 			"monitoring": "Monitoring",
 			"monitoringDes": "Monitor your systems' performance and health in real time, ensuring continuous and uninterrupted operation.",
 			"backups": "Backups",
-			"backupsDes": "Implement automatic and secure backup solutions to protect your critical data and restore it quickly when necessary."
+			"backupsDes": "Implement automatic and secure backup solutions to protect your critical data and restore it quickly when necessary.",
+			"traefik": "Traefik",
+			"traefikDes": "Manage traefik via File Editor to configure your own domain names, certificates, and more."
 		},
 		"secondaryFeatures": {
 			"title": "Advanced Management Tools",
@@ -65,8 +67,8 @@
 			"terminalDes": "Provides an interface to access the command line of any active container, allowing developers to execute commands, manage services, and troubleshoot directly from the dashboard"
 		},
 		"callToAction": {
-			"title": "Unlock Your Deployment Potential",
-			"des": "Streamline your deployments with our PaaS. Effortlessly manage Docker containers and traffic with Traefik. Boost your infrastructure's efficiency and security today",
+			"title": "Unlock Your Deployment Potential with Dokploy Cloud",
+			"des": "Say goodbye to infrastructure hassles—Dokploy Cloud handles it all. Effortlessly deploy, manage Docker containers, and secure your traffic with Traefik. Focus on building, we’ll handle the rest.",
 			"button": "Get Started Now"
 		},
 		"faq": {
@@ -76,22 +78,20 @@
 			"a1": "Dokploy is a stable, easy-to-use deployment solution designed to simplify the application management process. Think of Dokploy as a free alternative self-hostable solution to platforms like Heroku, Vercel, and Netlify.",
 			"q2": "Why Choose Dokploy?",
 			"a2": "Dokploy offers simplicity, flexibility, and speed in application deployment and management.",
-			"q3": "Is Dokploy free?",
-			"a3": "Yes, Dokploy is totally free. You can use it for personal projects, small teams, or even for large-scale applications.",
 			"q4": "Is it open source?",
 			"a4": "Yes, Dokploy is open source and free to use.",
 			"q5": "What types of languages can I deploy with Dokploy?",
 			"a5": "Dokploy does not restrict programming languages. You are free to choose your preferred language and framework.",
 			"q6": "How do I request a feature or report a bug?",
-			"a6": "To request a feature or report a bug, please create an issue on our GitHub repository or ask in our Discord channel. We are currently focused on addressing existing bugs and plan to release new features soon.",
+			"a6": "To request a feature or report a bug, please create an issue on our GitHub repository or ask in our Discord channel.",
 			"q7": "Do you track the usage of Dokploy?",
 			"a7": "No, we don't track any usage data.",
 			"q8": "Are there any user forums or communities where I can interact with other users?",
-			"a8": "Yes, we have active GitHub discussions where you can share ideas, ask for help, and connect with other users.",
+			"a8": "Yes, we have active GitHub discussions and Discord where you can share ideas, ask for help, and connect with other users.",
 			"q9": "What types of applications can I deploy with Dokploy?",
-			"a9": "Dokploy supports a variety of applications, including those built with Docker, as well as applications from any Git repository, offering custom builds with Nixpacks, Dockerfiles, or Buildpacks like Heroku and Paketo.",
+			"a9": "You can deploy any application that can be Dockerized, with no limits. Dokploy supports builds from Git repositories, Dockerfiles, Nixpacks, and Buildpacks like Heroku and Paketo.",
 			"q10": "How does Dokploy handle database management?",
-			"a10": "Dokploy supports multiple database systems including Postgres, MySQL, MariaDB, MongoDB, and Redis, providing tools for easy deployment and management directly from the dashboard."
+			"a10": "Dokploy supports multiple database systems including Postgres, MySQL, MariaDB, MongoDB, and Redis, providing tools for easy deployment and management and backups directly from the dashboard."
 		},
 		"footer": {
 			"copyright": "Copyright © {year} Dokploy. All rights reserved."
