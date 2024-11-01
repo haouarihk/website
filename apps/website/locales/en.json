@@ -6,7 +6,7 @@
 			"docs": "Docs",
 			"pricing": "Pricing",
 			"support": "Support",
-			"dashboard": "Dashboard",
+			"dashboard": "Sign In",
 			"discord": "Discord",
 			"i18nButtonPlaceholder": "Language",
 			"i18nEn": "English",
@@ -91,7 +91,23 @@
 			"q9": "What types of applications can I deploy with Dokploy?",
 			"a9": "You can deploy any application that can be Dockerized, with no limits. Dokploy supports builds from Git repositories, Dockerfiles, Nixpacks, and Buildpacks like Heroku and Paketo.",
 			"q10": "How does Dokploy handle database management?",
-			"a10": "Dokploy supports multiple database systems including Postgres, MySQL, MariaDB, MongoDB, and Redis, providing tools for easy deployment and management and backups directly from the dashboard."
+			"a10": "Dokploy supports multiple database systems including Postgres, MySQL, MariaDB, MongoDB, and Redis, providing tools for easy deployment and management and backups directly from the dashboard.",
+			"q11": "How does Dokploy's Open Source plan work?",
+			"a11": "You can host Dokploy UI on your own infrastructure and you will be responsible for the maintenance and updates.",
+			"q12": "Do I need to provide my own server for the managed plan?",
+			"a12": "Yes, in the managed plan, you provide your own server eg(Hetzner, Hostinger, AWS, ETC.) VPS, and we manage the Dokploy UI infrastructure for you.",
+			"q13": "What happens if I need more than one server?",
+			"a13": "The first server costs $4.50/month, if you buy more than one it will be $3.50/month per server.",
+			"q14": "Is there a limit on the number of deployments?",
+			"a14": "No, there is no limit on the number of deployments in any of the plans.",
+			"q15": "What happens if I exceed my purchased server limit?",
+			"a15": "The most recently added servers will be deactivated. You won't be able to create services on inactive servers until they are reactivated.",
+			"q16": "Do you offer a refunds?",
+			"a16": "We do not offer refunds. However, you can cancel your subscription at any time. Feel free to try our open-source version for free before making a purchase.",
+			"q17": "What kind of support do you offer?",
+			"a17": "We offer community support for the open source version and priority support for paid plans (Via Discord or Email at support@dokploy.com).",
+			"q18": "What's the catch on the Paid Plan?",
+			"a18": "Nothing, you link your server(VPS) to your account and you can deploy unlimited applications, databases, and users and you get unlimited updates, deployments, backups and more."
 		},
 		"footer": {
 			"copyright": "Copyright © {year} Dokploy. All rights reserved."
@@ -126,13 +142,10 @@
 				},
 				"features": {
 					"f1": "Complete Flexibility: Install Dokploy UI on your own infrastructure",
-					"f2": "Unlimited Deployments",
-					"f3": "Self-hosted Infrastructure",
-					"f4": "Community Support",
-					"f5": "Access to Core Features",
-					"f6": "Dokploy Integration",
-					"f7": "Basic Backups",
-					"f8": "Access to All Updates",
+					"f2": "Self-hosted Infrastructure",
+					"f3": "Community Support",
+					"f4": "Access to Core Features",
+					"f5": "Access to All Updates",
 					"f9": "Unlimited Servers"
 				},
 				"go": "Installation"
@@ -146,8 +159,12 @@
 				"servers": "{serverQuantity} Servers (You bring the servers)",
 				"features": {
 					"f1": "Managed Hosting: No need to manage your own servers",
-					"f2": "Priority Support",
-					"f3": "Future-Proof Features"
+					"f2": "Unlimited Deployments",
+					"f3": "Unlimited Databases",
+					"f4": "Unlimited Applications",
+					"f5": "Unlimited Users",
+					"f6": "Priority Support",
+					"f7": "New Updates"
 				},
 				"go": "Subscribe"
 			}

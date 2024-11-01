@@ -158,7 +158,7 @@ export function PrimaryFeatures() {
 								{features.map((feature, index) => (
 									<Tab.Panel key={`panel-${index}`}>
 										<div className="relative sm:px-6 ">
-											<div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
+											<div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-card/60 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
 											<p className="relative mx-auto max-w-2xl text-base text-white sm:text-center mb-10">
 												{t(feature.description)}
 											</p>
@@ -174,7 +174,7 @@ export function PrimaryFeatures() {
 												bounce: 0.2,
 												duration: 0.8,
 											}}
-											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] "
+											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border-b shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] "
 										>
 											<div className="relative">
 												<Safari

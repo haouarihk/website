@@ -13,6 +13,34 @@ const faqs = [
 		answer: "faq.a1",
 	},
 	{
+		question: "faq.q11",
+		answer: "faq.a11",
+	},
+	{
+		question: "faq.q12",
+		answer: "faq.a12",
+	},
+	{
+		question: "faq.q13",
+		answer: "faq.a13",
+	},
+	{
+		question: "faq.q14",
+		answer: "faq.a14",
+	},
+	{
+		question: "faq.q15",
+		answer: "faq.a15",
+	},
+	{
+		question: "faq.q17",
+		answer: "faq.a17",
+	},
+	{
+		question: "faq.q18",
+		answer: "faq.a18",
+	},
+	{
 		question: "faq.q2",
 		answer: "faq.a2",
 	},
@@ -35,6 +63,10 @@ const faqs = [
 	{
 		question: "faq.q8",
 		answer: "faq.a8",
+	},
+	{
+		question: "faq.q16",
+		answer: "faq.a16",
 	},
 	{
 		question: "faq.q9",
@@ -74,7 +106,9 @@ export function Faqs() {
 				>
 					{faqs.map((column, columnIndex) => (
 						<AccordionItem value={`${columnIndex}`} key={columnIndex}>
-							<AccordionTrigger>{t(column.question)}</AccordionTrigger>
+							<AccordionTrigger className="text-left">
+								{t(column.question)}
+							</AccordionTrigger>
 							<AccordionContent>{t(column.answer)}</AccordionContent>
 						</AccordionItem>
 					))}

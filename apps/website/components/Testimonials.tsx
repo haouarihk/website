@@ -188,11 +188,11 @@ export function Testimonials() {
 			aria-label="What our customers are saying"
 			className=" py-20 sm:py-32"
 		>
-			<div className="mx-auto max-w-2xl md:text-center">
-				<h2 className="font-display text-3xl tracking-tight  sm:text-4xl">
+			<div className="mx-auto max-w-2xl md:text-center px-4">
+				<h2 className="font-display text-3xl tracking-tight  sm:text-4xl text-center">
 					Why Developers Love Dokploy
 				</h2>
-				<p className="mt-4 text-lg tracking-tight text-muted-foreground ">
+				<p className="mt-4 text-lg tracking-tight text-muted-foreground text-center">
 					Think we’re bragging? Hear from the devs who once doubted too—until
 					Dokploy made their lives (and deployments) surprisingly easier.
 				</p>

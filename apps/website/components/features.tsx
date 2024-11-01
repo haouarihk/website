@@ -98,7 +98,7 @@ export function FeaturesSectionDemo() {
 				flexible database management—all with Dokploy’s developer-focused
 				features.
 			</p>
-			<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto mt-10">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto mt-10 max-sm:p-0 max-sm:mx-0 max-sm:w-full">
 				{features.map((feature, index) => (
 					<Feature key={feature.title} {...feature} index={index} />
 				))}
