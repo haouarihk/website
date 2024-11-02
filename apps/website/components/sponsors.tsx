@@ -11,7 +11,7 @@ import {
 	TooltipTrigger,
 } from "./ui/tooltip";
 
-export const RippleDemo = () => {
+export const Sponsors = () => {
 	const t = useTranslations("HomePage");
 	return (
 		<div className="mt-20 flex flex-col justify-center gap-y-10 w-full ">

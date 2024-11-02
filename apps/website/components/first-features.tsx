@@ -13,7 +13,7 @@ import {
 } from "@tabler/icons-react";
 import { Layers, Lock, UnlockIcon } from "lucide-react";
 
-export function FeaturesSectionDemo() {
+export function FirstFeaturesSection() {
 	const features = [
 		{
 			title: "Flexible Application Deployment",

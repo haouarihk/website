@@ -42,7 +42,7 @@ const features = [
 	},
 ];
 
-export function PrimaryFeatures() {
+export function SecondaryFeaturesSections() {
 	const t = useTranslations("HomePage");
 	const [tabOrientation, setTabOrientation] = useState<
 		"horizontal" | "vertical"

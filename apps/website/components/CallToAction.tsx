@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 
 export function CallToAction() {
 	const t = useTranslations("HomePage");
-	const linkT = useTranslations("Link");
 	return (
 		<section
 			id="get-started-today"

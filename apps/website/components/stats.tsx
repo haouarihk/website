@@ -1,4 +1,4 @@
-import { GithubIcon, HandCoins, Users } from "lucide-react";
+import { HandCoins, Users } from "lucide-react";
 import React from "react";
 import { useId } from "react";
 import NumberTicker from "./ui/number-ticker";
