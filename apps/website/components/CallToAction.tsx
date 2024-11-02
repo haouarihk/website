@@ -5,11 +5,10 @@ import { Button } from "./ui/button";
 
 export function CallToAction() {
 	const t = useTranslations("HomePage");
-	const linkT = useTranslations("Link");
 	return (
 		<section
 			id="get-started-today"
-			className="relative  overflow-hidden  border-y border-border/30 bg-black py-10"
+			className="relative  overflow-hidden  border-y border-border/30 bg-black py-10 mt-20"
 		>
 			<svg
 				viewBox="0 0 2000 1000"
@@ -41,7 +40,7 @@ export function CallToAction() {
 
 					<Button className="mt-10 rounded-full" asChild>
 						<Link
-							href={linkT("docs.install")}
+							href={"https://app.dokploy.com/register"}
 							aria-label="Dokploy on GitHub"
 							target="_blank"
 							className="flex flex-row items-center gap-2"

@@ -7,17 +7,13 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { Container } from "./Container";
+import Safari from "./ui/safari";
 
 const features = [
 	{
-		title: "primaryFeatures.projects",
-		description: "primaryFeatures.projectsDes",
-		image: "/primary/projects.png",
-	},
-	{
 		title: "primaryFeatures.applications",
 		description: "primaryFeatures.applicationsDes",
-		image: "/primary/applications.png",
+		image: "/primary/primary.png",
 	},
 	{
 		title: "primaryFeatures.compose",
@@ -25,9 +21,9 @@ const features = [
 		image: "/primary/compose.png",
 	},
 	{
-		title: "primaryFeatures.multinode",
-		description: "primaryFeatures.multinodeDes",
-		image: "/primary/multinode.png",
+		title: "primaryFeatures.multiserver",
+		description: "primaryFeatures.multiserverDes",
+		image: "/primary/servers.png",
 	},
 	{
 		title: "primaryFeatures.monitoring",
@@ -39,9 +35,14 @@ const features = [
 		description: "primaryFeatures.backupsDes",
 		image: "/primary/backups.png",
 	},
+	{
+		title: "primaryFeatures.traefik",
+		description: "primaryFeatures.traefikDes",
+		image: "/primary/traefik.png",
+	},
 ];
 
-export function PrimaryFeatures() {
+export function SecondaryFeaturesSections() {
 	const t = useTranslations("HomePage");
 	const [tabOrientation, setTabOrientation] = useState<
 		"horizontal" | "vertical"
@@ -85,7 +86,7 @@ export function PrimaryFeatures() {
 				height={1636}
 				unoptimized
 			/> */}
-			<Container className="relative">
+			<div className="mx-auto max-w-7xl max-lg:px-4 relative">
 				<div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
 					<h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
 						{t("primaryFeatures.title")}
@@ -96,16 +97,16 @@ export function PrimaryFeatures() {
 				</div>
 				<Tab.Group
 					as="div"
-					className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
-					vertical={tabOrientation === "vertical"}
+					className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20"
+					vertical={false}
 				>
 					{({ selectedIndex }) => (
 						<>
-							<div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
+							<div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 overflow-visible sm:pb-0">
 								<Tab.List
 									aria-description="primary feature tabs"
 									aria-roledescription="primary feature tabs"
-									className="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal"
+									className="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 "
 								>
 									{features.map((feature, featureIndex) => (
 										<motion.div
@@ -113,14 +114,14 @@ export function PrimaryFeatures() {
 											initial={false}
 											key={`feature-${featureIndex}`}
 											className={cn(
-												"group relative rounded-full px-4 py-1 transition-colors lg:rounded-l-xl lg:rounded-r-none lg:p-6 ",
+												"group relative rounded-full px-4 py-1 transition-colors ",
 											)}
 										>
 											<AnimatePresence>
 												{selectedIndex === featureIndex && (
 													<motion.span
 														layoutId="tab"
-														className="absolute inset-0 z-10 rounded-full bg-white/5 mix-blend-difference lg:rounded-l-xl lg:rounded-r-none"
+														className="absolute inset-0 z-10 rounded-full bg-white/5 mix-blend-difference"
 														initial={{ opacity: 1 }}
 														animate={{ opacity: 1 }}
 														exit={{ opacity: 0 }}
@@ -138,13 +139,13 @@ export function PrimaryFeatures() {
 														"font-display text-lg text-primary ui-not-focus-visible:outline-none",
 													)}
 												>
-													<span className="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none" />
+													<span className="absolute inset-0 rounded-full" />
 													{t(feature.title)}
 												</Tab>
 											</h3>
 											<p
 												className={cn(
-													"mt-2 hidden text-sm text-muted-foreground lg:block",
+													"mt-2 hidden text-sm text-muted-foreground ",
 												)}
 											>
 												{t(feature.description)}
@@ -153,34 +154,35 @@ export function PrimaryFeatures() {
 									))}
 								</Tab.List>
 							</div>
-							<Tab.Panels className="lg:col-span-7">
+							<Tab.Panels className="">
 								{features.map((feature, index) => (
 									<Tab.Panel key={`panel-${index}`}>
-										<div className="relative sm:px-6 lg:hidden">
-											<div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
-											<p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
+										<div className="relative sm:px-6 ">
+											<div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-card/60 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
+											<p className="relative mx-auto max-w-2xl text-base text-white sm:text-center mb-10">
 												{t(feature.description)}
 											</p>
 										</div>
 
 										<motion.div
 											key={feature.title}
-											initial={isMounted ? { opacity: 0.8, x: 50 } : {}}
-											animate={isMounted ? { opacity: 1, x: 0 } : {}}
+											initial={isMounted ? { opacity: 0.4 } : {}}
+											animate={isMounted ? { opacity: 1 } : {}}
 											exit={{ opacity: 0, x: -50 }}
 											transition={{
 												type: "spring",
 												bounce: 0.2,
-												duration: 0.6,
+												duration: 0.8,
 											}}
-											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] lg:w-[67.8125rem]"
+											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border-b shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] "
 										>
-											<img
-												alt=""
-												className="w-full"
-												src={feature.image}
-												srcSet={`${feature.image} 1x`}
-											/>
+											<div className="relative">
+												<Safari
+													url={"Dokploy UI"}
+													className="size-full"
+													src={feature.image}
+												/>
+											</div>
 										</motion.div>
 									</Tab.Panel>
 								))}
@@ -188,7 +190,7 @@ export function PrimaryFeatures() {
 						</>
 					)}
 				</Tab.Group>
-			</Container>
+			</div>
 		</section>
 	);
 }
