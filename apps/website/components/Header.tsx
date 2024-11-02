@@ -125,6 +125,20 @@ function MobileNavigation() {
 						<MobileNavLink href={linkT("docs.intro")} target="_blank">
 							{t("navigation.docs")}
 						</MobileNavLink>
+						<MobileNavLink href={linkT("docs.intro")} target="_blank">
+							<Button className=" w-full" asChild>
+								<Link
+									href="https://app.dokploy.com/register"
+									aria-label="Sign In Dokploy Cloud"
+									target="_blank"
+								>
+									<div className="group flex-row relative mx-auto flex max-w-fit items-center justify-center rounded-2xl text-sm font-medium w-full">
+										<span>{t("navigation.dashboard")}</span>
+										<ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+									</div>
+								</Link>
+							</Button>
+						</MobileNavLink>
 					</Popover.Panel>
 				</Transition.Child>
 			</Transition.Root>
@@ -152,7 +166,7 @@ export function Header() {
 							</NavLink>
 						</div>
 					</div>
-					<div className="flex items-center gap-x-2 md:gap-x-5">
+					<div className="flex items-center gap-x-4 md:gap-x-5">
 						<Link href="https://x.com/getdokploy" target="_blank">
 							<svg
 								stroke="currentColor"
@@ -180,7 +194,7 @@ export function Header() {
 							<HeartIcon className="animate-heartbeat size-4 fill-red-600 text-red-500 " />
 						</Link> */}
 
-						<Button className="rounded-full" asChild>
+						<Button className="rounded-full max-md:hidden" asChild>
 							<Link
 								href="https://app.dokploy.com/register"
 								aria-label="Sign In Dokploy Cloud"
