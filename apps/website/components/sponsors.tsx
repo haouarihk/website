@@ -16,9 +16,9 @@ export const Sponsors = () => {
 	return (
 		<div className="mt-20 flex flex-col justify-center gap-y-10 w-full ">
 			<div className="flex flex-col justify-start gap-4  px-4">
-				<h1 className="mx-auto max-w-2xl font-display text-3xl font-medium tracking-tight  text-primary  sm:text-5xl text-center">
+				<h3 className="mx-auto max-w-2xl font-display text-3xl font-medium tracking-tight  text-primary  sm:text-5xl text-center">
 					{t("hero.sponsors.title")}
-				</h1>
+				</h3>
 				<p className="mx-auto max-w-2xl text-lg tracking-tight text-muted-foreground text-center">
 					{t("hero.sponsors.description")}
 				</p>
