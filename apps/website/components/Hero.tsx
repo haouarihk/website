@@ -53,7 +53,7 @@ export function Hero() {
 		return () => clearTimeout(timer);
 	}, [isCopied]);
 	return (
-		<div className="bg-black pt-20 lg:pt-32 h-[1100px] sm:h-[1100px]">
+		<div className="h-[1100px] bg-black pt-20 sm:h-[1100px] lg:pt-32">
 			<div className=" bottom-0 flex w-full items-center justify-center overflow-hidden rounded-lg  bg-background md:shadow-xl">
 				<div className="relative px-4">
 					<div className="text-center">
@@ -72,7 +72,7 @@ export function Hero() {
 											"inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent",
 										)}
 									>
-										Introducing Dokploy Cloud
+										{t("hero.cloud")}
 									</span>
 									<ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
 								</AnimatedGradientText>
@@ -108,7 +108,7 @@ export function Hero() {
 							{t("hero.des")}
 						</motion.p>
 						<motion.div
-							className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
+							className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.3, delay: 0.4 }}
@@ -176,14 +176,14 @@ export function Hero() {
 						</motion.div>
 					</div>
 					<motion.div
-						className="mt-10 max-w-2xl mx-auto"
+						className="mx-auto mt-10 max-w-2xl"
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.3, delay: 0.6 }}
 					>
 						<div className="mt-10 flex flex-row justify-center gap-x-8 rounded-lg sm:gap-x-0  sm:gap-y-10 xl:gap-x-12 xl:gap-y-0">
 							<HeroVideoDialog
-								className="block max-w-md w-full rounded-xl"
+								className="block w-full max-w-md rounded-xl"
 								animationStyle="top-in-bottom-out"
 								videoSrc="https://www.youtube-nocookie.com/embed/mznYKPvhcfw?si=vHvqP3HKy0V3XkOZ"
 								thumbnailSrc="https://dokploy.com/banner.webp"
@@ -201,7 +201,7 @@ export function Hero() {
 					repeatDelay={1}
 					className={cn(
 						"[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
-						"inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 absolute",
+						"absolute inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
 					)}
 				/>
 			</div>
