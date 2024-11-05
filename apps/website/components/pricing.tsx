@@ -250,7 +250,6 @@ export function Pricing() {
 									{[
 										t("plan.cloud.features.f1"),
 										t("plan.cloud.features.f2"),
-										t("plan.cloud.features.f2"),
 										t("plan.cloud.features.f3"),
 										t("plan.cloud.features.f4"),
 										t("plan.cloud.features.f5"),

@@ -41,12 +41,14 @@
 			"applicationsDes": "Dokploy 通过集中管理您的应用和数据库来提升安全性和效率，并大大简化了跨基础设施的访问和管理。",
 			"compose": "Docker Compose",
 			"composeDes": "Dokploy 提供对复杂应用和服务的原生 Docker Compose 支持。",
-			"multinode": "多节点",
-			"multinodeDes": "Dokploy 使用 Docker Swarm 来管理集群，可自动将应用扩容至多个节点。",
+			"multiserver": "多服务器部署",
+			"multiserverDes": "毫不费力地将应用程序部署到多个服务器上。",
 			"monitoring": "监控",
 			"monitoringDes": "随时掌控你的系统性能和应用健康，确保服务无间断运行。",
 			"backups": "备份",
-			"backupsDes": "使用 Dokploy 的自动备份功能来保护您的数据，并在需要时极速还原。"
+			"backupsDes": "使用 Dokploy 的自动备份功能来保护您的数据，并在需要时极速还原。",
+			"traefik": "Traefik",
+			"traefikDes": "使用我们的编辑器轻松管理你的域名、证书和其他设置。"
 		},
 		"secondaryFeatures": {
 			"title": "先进的管理工具",
@@ -91,7 +93,23 @@
 			"q9": "dokploy 可以支持部署哪种类型的应用？",
 			"a9": "Dokploy 支持很多应用，不仅包括 Docker 镜像，也可以从 Git Repository 直接启动，DokPloy 提供了丰富的自定义构建工具，如 Nixpacks, Dockerfiles, 抑或是 Buildpacks （就像 Heroku 和 Paketo）",
 			"q10": "Dokploy 支持哪些数据库？",
-			"a10": "Dokploy 支持 Postgres, MySQL, MariaDB, MongoDB, 以及 Redis。我们还提供方便的图形化管理工具以供使用。"
+			"a10": "Dokploy 支持 Postgres, MySQL, MariaDB, MongoDB, 以及 Redis。我们还提供方便的图形化管理工具以供使用。",
+			"q11": "Dokploy 的开源版本是什么？",
+			"a11": "您可以免费安装 Dokploy 开源版本，并自行负责 Dokploy 的日后维护工作",
+			"q12": "付费计划还需要自己的服务器吗？",
+			"a12": "是的，在付费计划中，您依然需要提供您用于实际运行服务的服务器（如阿里云、腾讯云、AWS 等），我们会为您管理 Dokploy 控制面板。",
+			"q13": "如果我需要管理更多的服务器怎么办？",
+			"a13": "第一台服务器的费用为 $4.5/月，之后每台的费用是 $3.5/月。",
+			"q14": "部署服务的数量有限制吗？",
+			"a14": "不管您如何使用 Dokploy，我们都不会限制您部署服务的数量。",
+			"q15": "如果我意外超过了最大服务器数量怎么办？",
+			"a15": "最新添加的服务器将被停用，您将不能向其创建服务，直到它们被重新激活。",
+			"q16": "关于退款服务的政策？",
+			"a16": "您可以随时取消您的订阅，但请原谅我们无法提供退款服务，您可以无限试用开源版本，然后再购买。",
+			"q17": "关于技术支持?",
+			"a17": "付费计划可以得到优先的技术支持，开源版本则是由社区提供技术支持。",
+			"q18": "Dokploy 开源吗?",
+			"a18": "是的，Dokploy 完全开源，您可以参与贡献或者是 Fork 后自行修改以用于您的私人需求。"
 		},
 		"footer": {
 			"copyright": "版权属于 © {year} Dokploy， 保留所有权利"
@@ -109,7 +127,7 @@
 		}
 	},
 	"Pricing": {
-		"swirlyDoodleTitle": "简洁明了的,",
+		"swirlyDoodleTitle": "简洁明了的",
 		"restTitle": "定价",
 		"description": "更聪明的部署方式，更快的扩容速度，以及不会让你破产的账单。",
 		"billingCycle": {
@@ -126,8 +144,8 @@
 				},
 				"features": {
 					"f1": "灵活的架构，您可以单独部署 Dokploy 管理端",
-					"f2": "无限数量的部署",
-					"f3": "自维护的基础设施",
+					"f2": "无限部署",
+					"f3": "您负责维护基础设施",
 					"f4": "来自社区的有限支持",
 					"f5": "所有功能可用",
 					"f6": "Dokploy 集成",
@@ -146,8 +164,12 @@
 				"servers": "{serverQuantity}台受控服务器",
 				"features": {
 					"f1": "由 Dokploy 云提供支持的独立控制面板",
-					"f2": "优先技术支持",
-					"f3": "优先体验先行功能"
+					"f2": "无限部署",
+					"f3": "无限数据库",
+					"f4": "无限应用",
+					"f5": "无限用户",
+					"f6": "优先技术支持",
+					"f7": "最新的功能特性"
 				},
 				"go": "订阅"
 			}
