@@ -45,6 +45,13 @@ const Ripple = React.memo(function Ripple({
 			link: "https://www.lxaer.com?ref=dokploy",
 			type: "hero",
 		},
+		{
+			name: "Mandarin 3D",
+			image:
+				"https://raw.githubusercontent.com/Dokploy/dokploy/canary/.github/sponsors/mandarin.png",
+			link: "https://mandarin3d.com/?ref=dokploy",
+			type: "hero",
+		},
 	];
 	const premiumSponsors = [
 		{
