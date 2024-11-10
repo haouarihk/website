@@ -14,6 +14,9 @@
 		"uninstall",
 		"videos",
 		"...",
+		"---Cloud---",
+		"cloud",
+		"differences",
 		"---Server---",
 		"(S3-Destinations)",
 		"(Git-Sources)",
@@ -23,16 +26,16 @@
 		"ssh-keys",
 		"certificates",
 		"---Services---",
+		"domains",
 		"applications",
 		"docker-compose",
 		"databases",
 		"templates",
-		"page-conventions",
-		"navigation",
-		"---UI---",
-		"theme",
-		"components",
-		"mdx",
-		"blocks"
+		"(examples)",
+		"auto-deploy",
+
+		"---Advanced---",
+		"cluster",
+		"multi-server"
 	]
 }

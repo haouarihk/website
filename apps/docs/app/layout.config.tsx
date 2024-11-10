@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layout";
-import { GlobeIcon, HeartIcon } from "lucide-react";
+import { Github, GlobeIcon, HeartIcon } from "lucide-react";
 
 export const Logo = () => {
 	return (
@@ -69,6 +69,16 @@ export const baseOptions: BaseLayoutProps = {
 			icon: (
 				<>
 					<HeartIcon fill="currentColor" />
+				</>
+			),
+		},
+		{
+			text: "Github",
+			url: "https://github.com/dokploy/dokploy",
+			active: "nested-url",
+			icon: (
+				<>
+					<Github fill="currentColor" />
 				</>
 			),
 		},

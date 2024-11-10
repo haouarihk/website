@@ -1,9 +1,15 @@
 ---
-title: Auto-deploy
-description: How to auto-deploy your docker-compose application with Dokploy
+title: Auto Deploy
+description: Automatically deploying your application to Dokploy can be achieved through two primary methods using Webhooks or the Dokploy API. Each method supports various platforms and provides a streamlined deployment process.
 ---
 
-Automatically deploying your docker-compose application to Dokploy can be achieved through two primary methods: using Webhooks or the Dokploy API. Each method supports various platforms and provides a streamlined deployment process.
+## Supported Services:
+
+Auto deploy is only valid for the following services:
+
+- Applications
+- Docker Compose
+- Templates Open Source
 
 ## Github
 
@@ -11,12 +17,15 @@ For Github, we provide autodeploy without any configuration. This will automatic
 
 ## Webhook URL
 
-Webhooks allow you to automatically deploy your docker-compose application whenever changes are made in your source repository.
+Webhooks allow you to automatically deploy your application whenever changes are made in your source repository.
 
 - GitHub
 - GitLab
 - Bitbucket
 - Gitea
+- DockerHub (Only for Applications)
+
+
 
 ### Configuration Steps
 
@@ -24,7 +33,7 @@ Webhooks allow you to automatically deploy your docker-compose application whene
 2. **Obtain Webhook URL**: Locate the Webhook URL from the deployment logs.
 
 <ImageZoom
-  src="/assets/webhook-url-compose.png"
+  src="/assets/webhook-url.png"
   alt="Webhook URL"
   width={1000}
   height={500}
@@ -45,9 +54,15 @@ Webhooks allow you to automatically deploy your docker-compose application whene
 #### Important Notes
 
 - **Branch Matching**: When using Git-based providers (GitHub, GitLab, etc.), ensure that the branch configured in Dokploy matches the branch you intend to push to. Misalignment will result in a "Branch Not Match" error.
+- **Docker Tags**: For deployments using DockerHub, ensure the tag pushed matches the one specified in Dokploy.
 - The steps are the same for all the providers.
 
-## API Method
+
+<Callout type="info">
+    The steps are almost the same for all the Git providers, GitHub, GitLab, Bitbucket, Gitea.
+</Callout>
+
+### API Method
 
 Deploy your application programmatically using the Dokploy API from anywhere.
 
@@ -56,7 +71,7 @@ Deploy your application programmatically using the Dokploy API from anywhere.
 Steps:
 
 1. **Generate a Token**: Create an API token in your profile settings on Dokploy.
-2. **Retrieve Compose ID**:
+2. **Retrieve Application ID**:
 
 ```http
 curl -X 'GET' \
@@ -65,18 +80,18 @@ curl -X 'GET' \
   -H 'Authorization: Bearer <token>'
 ```
 
-This command lists all projects and services. Identify the composeId for the compose you wish to deploy.
+This command lists all projects and services. Identify the applicationId for the application you wish to deploy.
 
 3. **Trigger Deployment**:
 
 ```http
 curl -X 'POST' \
-  'https://your-domain/api/compose.deploy' \
+  'https://your-domain/api/application.deploy' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <token>' \
   -d '{
-  "composeId": "string"
+  "applicationId": "string"
 }'
 ```
 
