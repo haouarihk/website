@@ -2,7 +2,14 @@
 import clsx from "clsx";
 
 import { cn } from "@/lib/utils";
-import { ArrowRight, MinusIcon, PlusIcon } from "lucide-react";
+import { IconInfoCircle } from "@tabler/icons-react";
+import {
+	ArrowRight,
+	MinusIcon,
+	PlusCircleIcon,
+	PlusIcon,
+	X,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,8 +17,15 @@ import { useState } from "react";
 import { Container } from "./Container";
 import { Badge } from "./ui/badge";
 import { Button, buttonVariants } from "./ui/button";
+import HeroVideoDialog from "./ui/hero-video-dialog";
 import { NumberInput } from "./ui/input";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "./ui/tooltip";
 
 function SwirlyDoodle(props: React.ComponentPropsWithoutRef<"svg">) {
 	return (
@@ -74,6 +88,8 @@ export function Pricing() {
 	const [isAnnual, setIsAnnual] = useState(false);
 	const [serverQuantity, setServerQuantity] = useState(1);
 	const featured = true;
+
+	const [openVideo, setOpenVideo] = useState(false);
 	return (
 		<section
 			id="pricing"
@@ -272,6 +288,33 @@ export function Pricing() {
 												serverQuantity,
 											})}
 										</span>
+										<TooltipProvider>
+											<Tooltip open={openVideo}>
+												<TooltipTrigger onClick={() => setOpenVideo(true)}>
+													<IconInfoCircle className="size-5 text-muted-foreground hover:text-primary transition-colors " />
+												</TooltipTrigger>
+												<TooltipContent className=" rounded-lg text-center w-[400px] z-[200] text-white font-semibold">
+													<div className="text-muted-foreground hover:text-primary transition-colors flex justify-end self-end w-full mb-2">
+														<X
+															onClick={() => setOpenVideo(false)}
+															className="text-muted-foreground hover:text-primary transition-colors flex self-end size-4 cursor-pointer"
+														/>
+													</div>
+													<p className="text-primary mb-2 text-left">
+														We Recommend to watch the video to understand the
+														benefits of Dokploy Cloud
+													</p>
+
+													<HeroVideoDialog
+														className="block w-full max-w-md rounded-xl z-20"
+														animationStyle="top-in-bottom-out"
+														videoSrc="https://www.youtube.com/embed/x2s_Y5ON-ms?si=i6gntgMmyPDLuPih"
+														thumbnailSrc="https://dokploy.com/banner.png"
+														thumbnailAlt="Hero Video"
+													/>
+												</TooltipContent>
+											</Tooltip>
+										</TooltipProvider>
 									</div>
 
 									<div className="flex items-center space-x-2">
