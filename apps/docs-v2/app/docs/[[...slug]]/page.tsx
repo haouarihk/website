@@ -8,14 +8,16 @@ import {
 	DocsPage,
 	DocsTitle,
 } from "fumadocs-ui/page";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 export default async function Page(props: {
 	params: Promise<{ slug?: string[] }>;
 }) {
 	const params = await props.params;
 	const page = source.getPage(params.slug);
-	if (!page) notFound();
+	if (!page) {
+		permanentRedirect("/docs/core");
+	}
 
 	const MDX = page.data.body;
 
