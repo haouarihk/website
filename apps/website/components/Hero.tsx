@@ -185,8 +185,8 @@ export function Hero() {
 							<HeroVideoDialog
 								className="block w-full max-w-md rounded-xl"
 								animationStyle="top-in-bottom-out"
-								videoSrc="https://www.youtube-nocookie.com/embed/mznYKPvhcfw?si=vHvqP3HKy0V3XkOZ"
-								thumbnailSrc="https://dokploy.com/banner.webp"
+								videoSrc="https://www.youtube.com/embed/x2s_Y5ON-ms?si=i6gntgMmyPDLuPih"
+								thumbnailSrc="https://dokploy.com/banner.png"
 								thumbnailAlt="Hero Video"
 							/>
 						</div>

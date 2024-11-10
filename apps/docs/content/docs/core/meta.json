@@ -33,6 +33,7 @@
 		"templates",
 		"(examples)",
 		"auto-deploy",
+		"providers",
 
 		"---Advanced---",
 		"cluster",
