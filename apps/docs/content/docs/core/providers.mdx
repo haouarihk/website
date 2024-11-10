@@ -5,13 +5,13 @@ description: Learn how to use providers in your application or docker compose.
 
 Dokploy offers several deployment methods, streamlining the process whether you're utilizing GitHub, any Git provider, Docker, or automated deployments.
 
-- GitHub
-- Gitlab
-- Bitbucket
-- Git
-- Docker (Only Applications)
-- Drag and Drop .zip (Only Applications)
-- Raw (Only Docker Compose)
+1. GitHub
+2. Gitlab
+3. Bitbucket
+4. Git
+5. Docker (Only Applications)
+6. Drag and Drop .zip (Only Applications)
+7. Raw (Only Docker Compose)
 
 ## GitHub, Gitlab, Bitbucket
 
@@ -55,8 +55,21 @@ This is for Github, but the same applies for Gitlab, Bitbucket, Gitea, etc.
 This enables you to pull repositories from your private repository, a method consistent across nearly all providers,
 remember to use the SSH URL `git@github.com:user/repo.git` and not the HTTPS URL `https://github.com/user/repo.git`.
 
-## Docker
+## Docker (Applications)
 
-For Docker deployments:
+For Docker deployments you have two options:
 
-- Provide a Docker image. For private repositories, enter the username and password.
+1. Login to your registry using the [Registry Section](/docs/core/registry) and it automatically will pull the image from the registry in the case of a private registry.
+2. Provide the username and password directly in the application settings.
+
+
+## Drag and Drop .zip (Applications)
+
+You can upload a zip file directly from your computer and trigger a deployment.
+
+
+
+## Raw (Docker Compose)
+
+You specify a docker compose file directly in the code editor and trigger a deployment.
+

@@ -9,7 +9,6 @@ Auto deploy is only valid for the following services:
 
 - Applications
 - Docker Compose
-- Templates Open Source
 
 ## Github
 
@@ -62,9 +61,22 @@ Webhooks allow you to automatically deploy your application whenever changes are
     The steps are almost the same for all the Git providers, GitHub, GitLab, Bitbucket, Gitea.
 </Callout>
 
-### API Method
 
-Deploy your application programmatically using the Dokploy API from anywhere.
+## Dockerhub (Only Applications)
+
+To setup auto deploys for Dockerhub, follow the steps below:
+
+1. Go to your application and select `Deployments` tab.
+2. Copy the `Webhook URL`.
+3. Go to your Dockerhub repository and select `Webhooks` tab.
+4. Set a name for the webhook and paste the `Webhook URL` copied in step 2.
+5. That's it, now every time you push to your repository, your application will trigger a deployment in dokploy.
+
+The deployment will trigger only if the `Tag` matches the one specified in Dokploy.
+
+## API Method
+
+Deploy your application programmatically using the Dokploy API from anywhere, this is useful when you want to trigger a deployment from a CI/CD pipeline or from a script.
 
 ### Steps to Deploy Using API
 
