@@ -9,7 +9,7 @@ export const metadata = createMetadata({
 		template: "%s | Dokploy",
 		default: "Dokploy",
 	},
-	description: "The Open Source Alternative to Vercel, Heroku, and Netlify.",
+	description: "The Open Source Alternative to Vercel, Heroku, and Netlify",
 	metadataBase: new URL(baseUrl),
 });
 
