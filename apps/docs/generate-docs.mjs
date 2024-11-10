@@ -3,7 +3,7 @@ import { generateFiles } from "fumadocs-openapi";
 try {
 	void generateFiles({
 		input: ["./api.json"],
-		output: "./content/docs/api",
+		output: "./content/docs/api/generated",
 		per: "tag",
 		name: (tag, name) => {
 			console.log(tag, name);

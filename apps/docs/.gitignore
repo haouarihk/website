@@ -3,6 +3,8 @@
 
 # generated content
 .contentlayer
+.content-collections
+.source
 
 # test & build
 /coverage
@@ -10,9 +12,6 @@
 /out/
 /build
 *.tsbuildinfo
-
-# bun
-bun.lockb
 
 # misc
 .DS_Store
@@ -22,8 +21,6 @@ bun.lockb
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.idea/*
-.idea
 
 # others
 .env*.local

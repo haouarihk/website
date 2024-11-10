@@ -1,5 +1,13 @@
-import type { BaseLayoutProps } from "fumadocs-ui/layout";
+import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { Github, GlobeIcon, HeartIcon } from "lucide-react";
+import Link from "next/link";
+/**
+ * Shared layout configurations
+ *
+ * you can configure layouts individually from:
+ * Home Layout: app/(home)/layout.tsx
+ * Docs Layout: app/docs/layout.tsx
+ */
 
 export const Logo = () => {
 	return (
@@ -27,14 +35,13 @@ export const Logo = () => {
 };
 
 export const baseOptions: BaseLayoutProps = {
-	githubUrl: "https://github.com/dokploy/dokploy",
 	nav: {
-		url: "/get-started/introduction",
-		title: (
-			<>
+		// title: "Dokploy",
+		children: (
+			<Link href="/docs/core" className="flex items-center gap-2">
 				<Logo />
-				<span className="text-foreground">Dokploy</span>
-			</>
+				<span className="text-foreground font-semibold">Dokploy</span>
+			</Link>
 		),
 	},
 	links: [
