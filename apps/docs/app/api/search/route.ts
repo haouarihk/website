@@ -1,4 +1,4 @@
-import { getPages } from "@/app/source";
+import { getPages } from "@/app/source.config";
 import { createI18nSearchAPI } from "fumadocs-core/search/server";
 
 import { languages } from "@/i18n";

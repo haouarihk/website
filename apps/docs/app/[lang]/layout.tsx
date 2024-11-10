@@ -5,7 +5,7 @@ import { RootProvider } from "fumadocs-ui/provider";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import { baseOptions } from "../layout.config";
-import { pageTree } from "../source";
+import { pageTree } from "../source.config";
 import "../global.css";
 import GoogleAnalytics from "@/components/analytics/google";
 import {

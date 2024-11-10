@@ -1,6 +1,6 @@
 import { url } from "@/utils/metadata";
 import type { MetadataRoute } from "next";
-import { getPages } from "./source";
+import { getPages } from "./source.config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	return [

@@ -1,4 +1,4 @@
-import { getLanguages, getPage } from "@/app/source";
+import { getLanguages, getPage } from "@/app/source.config";
 import { url, baseUrl } from "@/utils/metadata";
 import { DocsBody, DocsPage } from "fumadocs-ui/page";
 import type { Metadata } from "next";
