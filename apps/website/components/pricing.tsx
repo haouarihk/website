@@ -184,7 +184,7 @@ export function Pricing() {
 											{t("plan.free.features.f9")}
 										</span>
 										<Link
-											href="https://docs.dokploy.com/en/docs/core/get-started/installation#docker"
+											href="https://docs.dokploy.com/docs/core/installation#docker"
 											target="_blank"
 											className="flex items-start text-sm text-primary"
 										>

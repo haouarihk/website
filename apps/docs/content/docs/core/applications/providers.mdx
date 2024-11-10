@@ -1,0 +1,58 @@
+---
+title: Providers
+description: Learn how to use providers in your application.
+---
+
+Dokploy offers several deployment methods, streamlining the process whether you're utilizing GitHub, any Git provider, Docker, or automated deployments.
+
+- GitHub
+- Gitlab
+- Bitbucket
+- Git (Any Git Provider)
+- Docker
+- Drop(Drag and Drop .zip)
+
+## GitHub, Gitlab, Bitbucket
+
+Go to [Git Sources](/docs/core/github) and select the provider you want to use.
+
+## Git
+
+For deployments from any Git repository, whether public or private, you can use either SSH or HTTPS:
+
+### Public Repositories (HTTPS)
+
+1. Enter the repository URL in `HTTPS URL`.
+2. Type the branch name.
+3. Click on `Save`.
+
+### Private Repositories
+
+For private repositories, is required to first create an SSH Key.
+
+1. Go to [SSH Keys](/docs/core/ssh-keys/overview) and click on `Create SSH Key`.
+2. Click on `Generate RSA SSH Key` and copy the `Public Key`.
+
+<ImageZoom
+  src="/assets/dokploy-ssh-key.png"
+  width={800}
+  height={630}
+  className="rounded-lg"
+/>
+
+You can then copy the SSH key and paste it into the settings of your account.
+
+<ImageZoom
+  src="/assets/private-repository.png"
+  width={800}
+  height={630}
+  className="rounded-lg"
+/>
+
+This enables you to pull repositories from your private repository, a method consistent across nearly all providers.
+
+## Docker
+
+For Docker deployments:
+
+- Provide a Docker image. For private repositories, enter the username and password.
