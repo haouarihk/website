@@ -3,7 +3,7 @@ title: Overview
 description: "Explore the multiple deployment methods available in Dokploy, including GitHub, Git, Docker, and automated deployments via webhooks."
 ---
 
-Applications in Dokploy are treated as a single service or container, making it easy and intuitive for users to work with each application in its own workspace.
+Applications in Dokploy are treated as a single service, entity or container, making it easy and intuitive for users to work with each application in its own workspace.
 
 We offer multiple functionalities that you can use to manage your applications, such as:
 
@@ -46,11 +46,11 @@ There are two ways to assign a domain:
 
 This section provides advanced configuration options for experienced users. It includes tools for custom commands within the container, managing Docker Swarm settings, and adjusting cluster settings such as replicas and registry selection. These tools are typically not required for standard application deployment and are intended for complex management and troubleshooting tasks.
 
-- **Run Command**: Execute custom commands directly in the container for advanced management or troubleshooting.
+- **Run Command**: Execute custom commands directly in the container, after the application has been build & running.
 - **Cluster Settings**: Configure the number of replicas and select the Docker registry for your deployment to manage how your application scales and where it pulls images from.
 - **Swarm Settings**: Access additional Docker Swarm configurations for detailed orchestration and scaling across multiple nodes.
 - **Resources**: Adjust the CPU and memory allocation for your application.
-- **Volumes**: To ensure data persistence across deployments, configure storage volumes for your application.
+- **Volumes**: To ensure data persistence across deployments, configure storage volumes for your application, you can create Volumes, Binds, File Mounts.
 - **Ports**: Expose your application to the internet by configuring network ports.
 - **Traefik**: Modify Traefik settings to manage HTTP request handling for your application.
 

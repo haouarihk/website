@@ -3,6 +3,9 @@ title: "Requirements"
 description: "See a requirements for a domain for the Dokploy panel"
 ---
 
+import { Callout } from 'fumadocs-ui/components/callout';
+
+
 This guide will give you an idea of the requirements to assign a domain to your Dokploy panel or use it in any other application, whether Docker Compose or otherwise.
 
 ## Requirements
@@ -16,7 +19,12 @@ Before beginning, ensure you have a domain purchased from one of the following p
 - [Domain.com](https://www.domain.com/)
 
 
-## Transfer Setup(Optional)
+<Callout type="info">
+If you don't have a domain, you can use our integrated free domains from Traefik.me in the Dokploy panel, without doing any configuration however is only for HTTP, if you want to have a HTTPS domain you need to buy a domain from one of the providers above.
+</Callout>
+
+
+## Transfer Setup (Optional)
 
 We recommend transferring your domain to Cloudflare for free SSL certificates and flexibility in using tools:
 
