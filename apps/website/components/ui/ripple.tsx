@@ -77,6 +77,13 @@ const Ripple = React.memo(function Ripple({
 			link: "https://cloudblast.io/?ref=dokploy",
 			type: "supporting",
 		},
+		{
+			name: "Startup Fame",
+			image:
+				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/startupfame.png",
+			link: "https://startupfa.me/?ref=dokploy",
+			type: "supporting",
+		},
 	];
 
 	const communitySponsors = [
