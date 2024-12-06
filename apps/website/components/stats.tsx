@@ -50,7 +50,7 @@ const grid = [
 		),
 		component: (
 			<p className="whitespace-pre-wrap text-2xl !font-semibold  tracking-tighter  mt-4">
-				<NumberTicker value={9000} />+
+				<NumberTicker value={10000} />+
 			</p>
 		),
 	},
@@ -72,7 +72,7 @@ const grid = [
 		),
 		component: (
 			<p className="whitespace-pre-wrap text-2xl !font-semibold  tracking-tighter  mt-4">
-				<NumberTicker value={700000} />+
+				<NumberTicker value={900000} />+
 			</p>
 		),
 	},
@@ -83,7 +83,7 @@ const grid = [
 		icon: <Users className="h-6 w-6 stroke-white" />,
 		component: (
 			<p className="whitespace-pre-wrap text-2xl !font-semibold tracking-tighter  mt-4">
-				<NumberTicker value={65} />+
+				<NumberTicker value={85} />+
 			</p>
 		),
 	},
@@ -94,7 +94,7 @@ const grid = [
 		icon: <HandCoins className="h-6 w-6 stroke-white" />,
 		component: (
 			<p className="whitespace-pre-wrap text-2xl !font-semibold  tracking-tighter mt-4">
-				<NumberTicker value={35} />+
+				<NumberTicker value={38} />+
 			</p>
 		),
 	},
