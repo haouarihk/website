@@ -83,6 +83,30 @@ services:
       - 80
 ```
 
+This is only valid for Docker Compose not for Docker Stack.
+
+When using Docker Stack, the ports are exposed automatically, so you don't need to specify them explicitly.
+
+Example of what not to do:
+
+```yaml
+services:
+  app:
+    image: dokploy/dokploy:latest
+    ports:
+      - 3000
+```
+
+Recommended approach:
+
+```yaml
+services:
+  app:
+    image: dokploy/dokploy:latest
+    expose:
+      - 3000
+```
+
 Then, when creating the domain in Dokploy, specify the service name and port, like this:
 
 ```yaml
