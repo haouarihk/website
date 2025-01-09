@@ -54,8 +54,7 @@ const Ripple = React.memo(function Ripple({
 		},
 		{
 			name: "LightNode",
-			image:
-				"https://raw.githubusercontent.com/Dokploy/dokploy/canary/.github/sponsors/light-node.webp",
+			image: "lightnode-logo.png",
 			link: "https://www.lightnode.com/?ref=dokploy",
 			type: "hero",
 		},
