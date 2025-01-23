@@ -106,6 +106,9 @@ install_dokploy() {
 
     chmod 777 /etc/dokploy
 
+    docker pull postgres:16
+    docker pull redis:7
+    docker pull traefik:v3.1.2
     docker pull dokploy/dokploy:canary
 
     # Installation
