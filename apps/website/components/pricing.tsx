@@ -9,6 +9,7 @@ import {
 	PlusCircleIcon,
 	PlusIcon,
 	X,
+	XCircleIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -193,6 +194,12 @@ export function Pricing() {
 											<span className="ml-2">{feature}</span>
 										</li>
 									))}
+									<li className="flex text-muted-foreground">
+										<XCircleIcon className="size-5 self-center text-destructive" />
+										<span className="ml-3 text-destructive">
+											Remote Servers Monitoring
+										</span>
+									</li>
 								</ul>
 								<div className="mt-4 flex flex-col gap-2">
 									<div className="flex flex-col items-center justify-center gap-2">

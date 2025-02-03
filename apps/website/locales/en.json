@@ -163,8 +163,9 @@
 					"f3": "Unlimited Databases",
 					"f4": "Unlimited Applications",
 					"f5": "Unlimited Users",
-					"f6": "Priority Support",
-					"f7": "New Updates"
+					"f6": "Remote Servers Monitoring",
+					"f7": "Priority Support",
+					"f8": "New Updates"
 				},
 				"go": "Subscribe"
 			}
