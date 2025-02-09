@@ -98,10 +98,10 @@ const Ripple = React.memo(function Ripple({
 			type: "supporting",
 		},
 		{
-			name: "Open Alternative",
+			name: "OpenAlternative",
 			image:
 				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/openalternative.png",
-			link: "https://openalternative.com/?ref=dokploy",
+			link: "https://openalternative.co/?ref=dokploy",
 			type: "supporting",
 		},
 	];
