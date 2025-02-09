@@ -97,6 +97,13 @@ const Ripple = React.memo(function Ripple({
 			link: "https://itsdb-center.com/?ref=dokploy",
 			type: "supporting",
 		},
+		{
+			name: "Open Alternative",
+			image:
+				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/openalternative.png",
+			link: "https://openalternative.com/?ref=dokploy",
+			type: "supporting",
+		},
 	];
 
 	const communitySponsors = [
