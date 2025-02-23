@@ -26,6 +26,7 @@
 		"ssh-keys",
 		"certificates",
 		"---Services---",
+		"variables",
 		"domains",
 		"applications",
 		"docker-compose",
