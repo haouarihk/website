@@ -104,6 +104,13 @@ const Ripple = React.memo(function Ripple({
 			link: "https://openalternative.co/?ref=dokploy",
 			type: "supporting",
 		},
+		{
+			name: "Synexa",
+			image:
+				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/synexa.png",
+			link: "https://synexa.ai/?ref=dokploy",
+			type: "supporting",
+		},
 	];
 
 	const communitySponsors = [
