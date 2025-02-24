@@ -155,3 +155,30 @@ export default defineConfig({
 - **Other Frameworks**: Check your framework's documentation for network interface configuration
 
 Remember to deploy again your application after making these changes for them to take effect.
+
+## Docker Compose Volume Mounts
+
+When using Docker Compose, you can configure volume mounts in your `docker-compose.yml` file:
+
+```yaml
+volumes:
+  - my-database:/var/lib/mysql
+```
+
+### Creating Configuration Files
+
+If you need to create configuration files before deploying your compose setup:
+
+1. Go to Advanced -> Mounts
+2. Create a new File Mount
+3. Add your configuration content in the content field
+4. Specify the file path for your configuration
+
+Note: All File Mounts are automatically created in the `/files` directory. For example, if you create a file named `my-config.json`, it will be available at `/files/my-config.json`.
+
+You can then reference this configuration file in your `docker-compose.yml`:
+
+```yaml
+volumes:
+  - ../files/my-config.json:/etc/my-app/config
+```
