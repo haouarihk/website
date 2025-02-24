@@ -20,7 +20,8 @@ This is expected behavior. If the application is running on a different node (wo
 
 ## Mounts Are Causing My Application Not to Run?
 
-Docker Swarm won't run your application if there are invalid mounts, even if the deployment shows as successful. Double-check your mounts to ensure they are valid.
+Docker Swarm won't run your application if there are invalid mounts, even if the deployment shows as successful. Double-check your mounts to ensure they are valid or check the General Swarm Section
+and find your application, and you will see the real error.
 
 ## Volumes in Docker Compose Not Working?
 
@@ -181,4 +182,18 @@ You can then reference this configuration file in your `docker-compose.yml`:
 ```yaml
 volumes:
   - ../files/my-config.json:/etc/my-app/config
+```
+
+
+## Failed to initialize Docker Swarm
+
+Error response from daemon: must specify a listening address because the address to advertise is not recognized as a system address, and a system's IP address to use could not be uniquely identified
+
+This error occurs when the Docker Swarm is not properly initialized.
+
+To fix this, you need to assign a the public IP address to the Docker Swarm, ideally you can use a private IP address from your network, but if you require features from docker swarm, you
+will need to use a public IP address.
+
+```bash
+curl -sSL https://dokploy.com/install.sh | ADVERTISE_ADDR=your-ip sh
 ```
