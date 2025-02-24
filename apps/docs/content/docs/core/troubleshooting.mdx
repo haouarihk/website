@@ -10,13 +10,13 @@ You see the deployment succeeded, and logs are running, but the domain isn't wor
 1. **Correct Port Mapping**: Ensure the domain is using the correct port for your application. For example, if you're using Next.js, the port should be `3000`, or for Laravel, it should be `8000`. If you change the app port, update the domain to reflect that.
 2. **Avoid Using `Ports` in Advanced Settings**: Generally, there's no need to use the `Ports` feature unless you want to access your app via `IP:port`. Leaving this feature enabled may interfere with your domain.
 
-3. **Let's Encrypt Certificates**: It's crucial to point the domain to your server’s IP **before** adding it in Dokploy. If the domain is added first, the certificate won’t be generated, and you may need to recreate the domain or restart Traefik.
+3. **Let's Encrypt Certificates**: It's crucial to point the domain to your server's IP **before** adding it in Dokploy. If the domain is added first, the certificate won't be generated, and you may need to recreate the domain or restart Traefik.
 
 4. **Listen on 0.0.0.0, Not 127.0.0.1**: If your app is bound to `127.0.0.1` (which is common in Vite apps), switch it to `0.0.0.0` to allow external access.
 
 ## Logs and Monitoring Not Working After Changing Application Placement?
 
-This is expected behavior. If the application is running on a different node (worker), the UI won’t have access to logs or monitoring, as they're not on the same node.
+This is expected behavior. If the application is running on a different node (worker), the UI won't have access to logs or monitoring, as they're not on the same node.
 
 ## Mounts Are Causing My Application Not to Run?
 
@@ -60,7 +60,7 @@ There are a few potential reasons for this:
 
 ## Docker Compose Domain Not Working?
 
-When adding a domain in your Docker Compose file, it’s not necessary to expose the ports directly. Simply specify the port where your app is running. Exposing the ports can lead to conflicts with other applications or ports.
+When adding a domain in your Docker Compose file, it's not necessary to expose the ports directly. Simply specify the port where your app is running. Exposing the ports can lead to conflicts with other applications or ports.
 
 Example of what not to do:
 
@@ -114,3 +114,44 @@ domain: my-app.com
 serviceName: app
 port: 3000
 ```
+
+## Getting "Bad Gateway Error" When Accessing Your Application Domain
+
+If you're encountering a Bad Gateway Error when accessing your application through its domain, this typically indicates one of several common configuration issues:
+
+### Common Causes
+1. **Port Mismatch**: The configured port might be incorrect
+2. **Listen Address Configuration**: The service might be listening only on `127.0.0.1` instead of `0.0.0.0`
+
+### Common Solution for Modern JavaScript Frameworks
+This issue frequently occurs with modern JavaScript frameworks like Vite, Astro, or Vue.js applications. By default, these frameworks often listen only on localhost (`127.0.0.1`).
+
+To resolve this, you need to configure your application to listen on all available network interfaces (`0.0.0.0`).
+
+#### Example Configuration for Vite
+Here's how to properly configure a Vite application:
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+	plugins: [react()],
+	preview: {
+		port: 3000,
+		host: true,    // This enables listening on all network interfaces
+	},
+	server: {        // Also add this for development server
+		host: true,    // This enables listening on all network interfaces
+		port: 3000
+	}
+});
+```
+
+### Framework-Specific Notes
+- **Vite Apps**: Use the configuration above
+- **Astro**: Similar configuration in `astro.config.mjs`
+- **Vue.js**: Configure in `vite.config.js` if using Vite
+- **Other Frameworks**: Check your framework's documentation for network interface configuration
+
+Remember to deploy again your application after making these changes for them to take effect.
