@@ -16,22 +16,25 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 		day: "numeric",
 	});
 
+	const handleTwitterClick = (e: React.MouseEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+
 	return (
 		<Link
 			href={`/blog/${post.slug}`}
 			className="group block hover:bg-muted p-4 rounded-lg"
 		>
 			<article className="flex gap-6 items-start">
-				{post.feature_image && (
-					<div className="relative h-32 w-48 shrink-0">
-						<Image
-							src={post.feature_image}
-							alt={post.title}
-							fill
-							className="object-cover rounded-lg"
-						/>
-					</div>
-				)}
+				<div className="relative h-32 w-48 shrink-0">
+					<Image
+						src={post.feature_image || "/default.jpg"}
+						alt={post.feature_image ? post.title : "Default Image"}
+						fill
+						className="object-cover rounded-lg"
+					/>
+				</div>
 				<div className="flex-1 min-w-0">
 					<h2 className="text-xl font-semibold mb-2 group-hover:text-primary">
 						{post.title}
@@ -49,6 +52,7 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 											target="_blank"
 											rel="noopener noreferrer"
 											className="block cursor-pointer transition-opacity hover:opacity-90"
+											onClick={handleTwitterClick}
 										>
 											<Image
 												src={post.primary_author.profile_image}
@@ -73,6 +77,7 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 									target="_blank"
 									rel="noopener noreferrer"
 									className="hover:text-primary transition-colors"
+									onClick={handleTwitterClick}
 								>
 									{post.primary_author.name || "Unknown Author"}
 								</a>
