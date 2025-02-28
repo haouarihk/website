@@ -198,14 +198,11 @@
 	"blog": {
 		"title": "Blog",
 		"description": "Dernières nouvelles, mises à jour et articles de Dokploy",
-		"noPosts": "Aucun article trouvé. Revenez plus tard pour du nouveau contenu.",
-		"readMore": "Lire la suite",
-		"backToBlog": "Retour au Blog",
-		"tags": "Tags",
-		"postsTaggedWith": "Articles tagués avec",
-		"foundPosts": "{count, plural, =0 {Aucun article trouvé} one {# article trouvé} other {# articles trouvés}}",
-		"tagTitle": "Articles tagués avec {tag}",
-		"tagDescription": "Parcourir tous les articles de blog tagués avec {tag}",
-		"relatedPosts": "Articles similaires"
+		"noPosts": "Aucun article disponible",
+		"noResults": "Aucun article ne correspond à vos critères",
+		"searchPlaceholder": "Rechercher des articles...",
+		"allTags": "Tous les tags",
+		"relatedPosts": "Articles similaires",
+		"tagDescription": "Articles tagués avec"
 	}
 }

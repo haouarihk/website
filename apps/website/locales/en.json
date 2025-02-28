@@ -199,14 +199,16 @@
 	"blog": {
 		"title": "Blog",
 		"description": "Latest news, updates, and articles from Dokploy",
-		"noPosts": "No posts found. Check back later for new content.",
-		"readMore": "Read more",
-		"backToBlog": "Back to Blog",
-		"tags": "Tags",
-		"postsTaggedWith": "Posts tagged with",
+		"noPosts": "No posts available",
+		"noResults": "No posts found matching your criteria",
+		"searchPlaceholder": "Search posts...",
+		"allTags": "All Tags",
+		"relatedPosts": "Related Posts",
+		"tagDescription": "Posts tagged with",
 		"foundPosts": "{count, plural, =0 {No posts found} one {# post found} other {# posts found}}",
 		"tagTitle": "Posts tagged with {tag}",
-		"tagDescription": "Browse all blog posts tagged with {tag}",
-		"relatedPosts": "Related Posts"
+		"backToBlog": "Back to Blog",
+		"tags": "Tags",
+		"postsTaggedWith": "Posts tagged with"
 	}
 }

@@ -203,14 +203,17 @@
 	"blog": {
 		"title": "博客",
 		"description": "Dokploy 的最新消息、更新和文章",
-		"noPosts": "未找到文章。稍后再来查看新内容。",
+		"noPosts": "暂无文章",
+		"noResults": "没有找到符合条件的文章",
+		"searchPlaceholder": "搜索文章...",
+		"allTags": "所有标签",
+		"relatedPosts": "相关文章",
+		"tagDescription": "标签文章",
 		"readMore": "阅读更多",
 		"backToBlog": "返回博客",
 		"tags": "标签",
 		"postsTaggedWith": "标签为",
 		"foundPosts": "{count, plural, =0 {未找到文章} other {找到 # 篇文章}}",
-		"tagTitle": "标签为 {tag} 的文章",
-		"tagDescription": "浏览所有标签为 {tag} 的博客文章",
-		"relatedPosts": "相关文章"
+		"tagTitle": "标签为 {tag} 的文章"
 	}
 }
