@@ -2,8 +2,8 @@ import GhostContentAPI from "@tryghost/content-api";
 
 // Ghost API configuration
 const ghostConfig = {
-	url: "http://testing-ghost-8423be-31-220-108-27.traefik.me",
-	key: "d8c93e7121f36a95cd60921a04",
+	url: process.env.GHOST_URL || "NONE",
+	key: process.env.GHOST_KEY || "NONE",
 	version: "v5.0",
 };
 
@@ -83,7 +83,6 @@ export async function getPosts(options = {}): Promise<Post[]> {
 			include: "authors",
 			limit: "all",
 		})) as Post[];
-		console.log("Posts data from Ghost API:", JSON.stringify(result, null, 2));
 		return result;
 	} catch (error) {
 		console.error("Error fetching posts:", error);
