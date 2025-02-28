@@ -113,6 +113,26 @@ export default async function BlogPostPage({ params }: Props) {
 				{...props}
 			/>
 		),
+		table: ({ node, ...props }) => (
+			<div className="my-6 w-full overflow-x-auto border rounded-lg">
+				<table className="w-full border-collapse" {...props} />
+			</div>
+		),
+		thead: ({ node, ...props }) => (
+			<thead className="bg-muted border-b border-border" {...props} />
+		),
+		tbody: ({ node, ...props }) => (
+			<tbody className="divide-y divide-border" {...props} />
+		),
+		tr: ({ node, ...props }) => (
+			<tr className="transition-colors hover:bg-muted/50" {...props} />
+		),
+		th: ({ node, ...props }) => (
+			<th className="p-4 text-left font-semibold" {...props} />
+		),
+		td: ({ node, ...props }) => (
+			<td className="p-4 text-muted-foreground" {...props} />
+		),
 		img: ({ node, src, alt }) => (
 			<div className="relative w-full h-64 my-6 rounded-lg overflow-hidden">
 				{src && <ZoomableImage src={src} alt={alt || ""} />}
