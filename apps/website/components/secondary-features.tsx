@@ -13,17 +13,22 @@ const features = [
 	{
 		title: "primaryFeatures.applications",
 		description: "primaryFeatures.applicationsDes",
-		image: "/primary/primary.png",
+		image: "/dashboard.png",
 	},
 	{
 		title: "primaryFeatures.compose",
 		description: "primaryFeatures.composeDes",
-		image: "/primary/compose.png",
+		image: "/compose.png",
 	},
 	{
 		title: "primaryFeatures.multiserver",
 		description: "primaryFeatures.multiserverDes",
-		image: "/primary/servers.png",
+		image: "/remote.png",
+	},
+	{
+		title: "primaryFeatures.logs",
+		description: "primaryFeatures.logsDes",
+		image: "/logs.png",
 	},
 	{
 		title: "primaryFeatures.monitoring",
@@ -33,12 +38,17 @@ const features = [
 	{
 		title: "primaryFeatures.backups",
 		description: "primaryFeatures.backupsDes",
-		image: "/primary/backups.png",
+		image: "/backups.png",
 	},
 	{
 		title: "primaryFeatures.traefik",
 		description: "primaryFeatures.traefikDes",
-		image: "/primary/traefik.png",
+		image: "/traefik.png",
+	},
+	{
+		title: "primaryFeatures.templates",
+		description: "primaryFeatures.templatesDes",
+		image: "/templates.png",
 	},
 ];
 
@@ -174,14 +184,19 @@ export function SecondaryFeaturesSections() {
 												bounce: 0.2,
 												duration: 0.8,
 											}}
-											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border-b shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] "
+											className="mt-10 h-[24rem] w-[45rem] overflow-hidden rounded-xl border shadow-xl sm:w-auto  lg:mt-0 lg:h-[40rem] "
 										>
-											<div className="relative">
-												<Safari
-													url={"Dokploy UI"}
-													className="size-full"
-													src={feature.image}
-												/>
+											<div className="relative w-full">
+												<div className="mx-auto">
+													<div className="w-full h-11 rounded-t-lg bg-card flex justify-start items-center space-x-1.5 px-3">
+														<span className="w-3 h-3 rounded-full bg-red-400" />
+														<span className="w-3 h-3 rounded-full bg-yellow-400" />
+														<span className="w-3 h-3 rounded-full bg-green-400" />
+													</div>
+													<div className="bg-gray-100 w-full h-96">
+														<img src={feature.image} alt={feature.title} />
+													</div>
+												</div>
 											</div>
 										</motion.div>
 									</Tab.Panel>
