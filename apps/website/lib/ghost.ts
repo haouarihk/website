@@ -66,6 +66,7 @@ export interface Post {
 		slug: string;
 		profile_image: string | null;
 		bio: string | null;
+		twitter: string | null;
 	};
 	authors?: Array<{
 		id: string;

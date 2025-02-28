@@ -167,17 +167,44 @@ export default async function BlogPostPage({ params }: Props) {
 					<div className="flex items-center mb-6">
 						{post.primary_author?.profile_image && (
 							<div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
-								<Image
-									src={post.primary_author.profile_image}
-									alt={post.primary_author.name}
-									fill
-									className="object-cover"
-								/>
+								{post.primary_author.twitter ? (
+									<a
+										href={`https://twitter.com/${post.primary_author.twitter}`}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="block cursor-pointer transition-opacity hover:opacity-90"
+									>
+										<Image
+											src={post.primary_author.profile_image}
+											alt={post.primary_author.name}
+											fill
+											className="object-cover"
+										/>
+									</a>
+								) : (
+									<Image
+										src={post.primary_author.profile_image}
+										alt={post.primary_author.name}
+										fill
+										className="object-cover"
+									/>
+								)}
 							</div>
 						)}
 						<div>
 							<p className="font-medium">
-								{post.primary_author?.name || "Unknown Author"}
+								{post.primary_author?.twitter ? (
+									<a
+										href={`https://twitter.com/${post.primary_author.twitter}`}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:text-primary transition-colors"
+									>
+										{post.primary_author.name || "Unknown Author"}
+									</a>
+								) : (
+									post.primary_author?.name || "Unknown Author"
+								)}
 							</p>
 							<p className="text-sm text-muted-foreground">
 								{formattedDate} • {post.reading_time} min read
