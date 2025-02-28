@@ -11,7 +11,11 @@
 			"i18nButtonPlaceholder": "语言",
 			"i18nFr": "Français",
 			"i18nEn": "English",
-			"i18nZh-Hans": "简体中文"
+			"i18nZh-Hans": "简体中文",
+			"blog": "博客",
+			"home": "首页",
+			"login": "登录",
+			"register": "注册"
 		},
 		"hero": {
 			"cloud": "隆重介绍 Dokploy 云",
@@ -195,5 +199,17 @@
 			"q8": "Dokploy 开源吗?",
 			"a8": "是的，Dokploy 完全开源，您可以参与贡献或者是 Fork 后自行修改以用于您的私人需求。"
 		}
+	},
+	"blog": {
+		"title": "博客",
+		"description": "Dokploy 的最新消息、更新和文章",
+		"noPosts": "未找到文章。稍后再来查看新内容。",
+		"readMore": "阅读更多",
+		"backToBlog": "返回博客",
+		"tags": "标签",
+		"postsTaggedWith": "标签为",
+		"foundPosts": "{count, plural, =0 {未找到文章} other {找到 # 篇文章}}",
+		"tagTitle": "标签为 {tag} 的文章",
+		"tagDescription": "浏览所有标签为 {tag} 的博客文章"
 	}
 }

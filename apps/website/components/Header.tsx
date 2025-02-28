@@ -127,6 +127,7 @@ function MobileNavigation() {
 						<MobileNavLink href={linkT("docs.intro")} target="_blank">
 							{t("navigation.docs")}
 						</MobileNavLink>
+						<MobileNavLink href="/blog">{t("navigation.blog")}</MobileNavLink>
 						<MobileNavLink href={linkT("docs.intro")} target="_blank">
 							<Button className=" w-full" asChild>
 								<Link
@@ -166,6 +167,7 @@ export function Header() {
 							<NavLink href={linkT("docs.intro")} target="_blank">
 								{t("navigation.docs")}
 							</NavLink>
+							<NavLink href="/blog">{t("navigation.blog")}</NavLink>
 						</div>
 					</div>
 					<div className="flex items-center gap-x-4 md:gap-x-5">
