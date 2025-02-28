@@ -206,6 +206,7 @@
 		"postsTaggedWith": "Posts tagged with",
 		"foundPosts": "{count, plural, =0 {No posts found} one {# post found} other {# posts found}}",
 		"tagTitle": "Posts tagged with {tag}",
-		"tagDescription": "Browse all blog posts tagged with {tag}"
+		"tagDescription": "Browse all blog posts tagged with {tag}",
+		"relatedPosts": "Related Posts"
 	}
 }

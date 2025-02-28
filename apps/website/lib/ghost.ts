@@ -80,11 +80,10 @@ export interface Post {
 export async function getPosts(options = {}): Promise<Post[]> {
 	try {
 		const result = (await api.posts.browse({
+			include: "authors",
 			limit: "all",
-			include: ["tags", "authors"],
 		})) as Post[];
-		console.log(result);
-
+		console.log("Posts data from Ghost API:", JSON.stringify(result, null, 2));
 		return result;
 	} catch (error) {
 		console.error("Error fetching posts:", error);
@@ -94,7 +93,10 @@ export async function getPosts(options = {}): Promise<Post[]> {
 
 export async function getPost(slug: string): Promise<Post | null> {
 	try {
-		const result = (await api.posts.read({ slug })) as Post;
+		const result = (await api.posts.read({
+			slug,
+			include: ["authors"],
+		})) as Post;
 		return result;
 	} catch (error) {
 		console.error("Error fetching post:", error);

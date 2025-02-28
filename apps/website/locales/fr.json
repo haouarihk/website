@@ -205,6 +205,7 @@
 		"postsTaggedWith": "Articles tagués avec",
 		"foundPosts": "{count, plural, =0 {Aucun article trouvé} one {# article trouvé} other {# articles trouvés}}",
 		"tagTitle": "Articles tagués avec {tag}",
-		"tagDescription": "Parcourir tous les articles de blog tagués avec {tag}"
+		"tagDescription": "Parcourir tous les articles de blog tagués avec {tag}",
+		"relatedPosts": "Articles similaires"
 	}
 }
