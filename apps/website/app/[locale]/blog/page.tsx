@@ -1,6 +1,6 @@
 import { getPosts, getTags } from "@/lib/ghost";
 import type { Post } from "@/lib/ghost";
-import { Search } from "lucide-react";
+import { RssIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
@@ -48,13 +48,20 @@ export default async function BlogPage({
 	});
 
 	return (
-		<div className="container mx-auto px-4 py-12 flex flex-col gap-4">
-			<div className="flex flex-col gap-2">
-				<h1 className="text-4xl font-bold">{t("title")}</h1>
-				<div className="flex items-center gap-2">
-					<Search className="size-5" />
-					Welcome to the blog
+		<div className="container mx-auto px-4 py-12 max-w-5xl">
+			<div className="flex items-center justify-between mb-8">
+				<div>
+					<p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
+						BLOG
+					</p>
+					<h1 className="text-4xl font-bold">Stories behind the magic</h1>
 				</div>
+				<Link
+					href="/rss.xml"
+					className="text-muted-foreground hover:text-foreground"
+				>
+					<RssIcon className="h-5 w-5" />
+				</Link>
 			</div>
 
 			<SearchAndFilter
@@ -66,14 +73,13 @@ export default async function BlogPage({
 			/>
 
 			{filteredPosts.length === 0 ? (
-				<div className="text-center py-12  min-h-[35vh] items-center justify-center flex">
-					<p className="text-xl  flex items-center gap-2">
+				<div className="text-center py-12">
+					<p className="text-xl text-muted-foreground">
 						{search || selectedTag ? t("noResults") : t("noPosts")}
-						<Search className="size-5" />
 					</p>
 				</div>
 			) : (
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div className="space-y-8">
 					{filteredPosts.map((post: Post) => (
 						<BlogPostCard key={post.id} post={post} locale={locale} />
 					))}
@@ -91,47 +97,51 @@ function BlogPostCard({ post, locale }: { post: Post; locale: string }) {
 	});
 
 	return (
-		<Link href={`/blog/${post.slug}`} className="group">
-			<div className="bg-card rounded-lg overflow-hidden h-fit shadow-lg transition-all duration-300 hover:shadow-xl border border-border">
+		<Link
+			href={`/blog/${post.slug}`}
+			className="group block hover:bg-muted p-4 rounded-lg"
+		>
+			<article className="flex gap-6 items-start">
 				{post.feature_image && (
-					<div className="relative h-48 w-full">
+					<div className="relative h-32 w-48 shrink-0">
 						<Image
 							src={post.feature_image}
 							alt={post.title}
 							fill
-							className="object-cover"
+							className="object-cover rounded-lg"
 						/>
 					</div>
 				)}
-				<div className="p-6">
-					<h2 className="text-xl font-semibold mb-2 transition-colors">
+				<div className="flex-1 min-w-0">
+					<h2 className="text-xl font-semibold mb-2 group-hover:text-primary">
 						{post.title}
 					</h2>
-					<p className="text-sm  text-muted-foreground mb-4">
-						{formattedDate} • {post.reading_time} min read
-					</p>
-					<p className=" text-primary/80 line-clamp-3 mb-4">
+					<p className="text-muted-foreground line-clamp-2 mb-4">
 						{post.custom_excerpt || post.excerpt}
 					</p>
-					<div className="flex items-center">
-						{post.primary_author?.profile_image && (
-							<div className="relative h-10 w-10 rounded-full overflow-hidden mr-3">
-								<Image
-									src={post.primary_author.profile_image}
-									alt={post.primary_author.name}
-									fill
-									className="object-cover"
-								/>
-							</div>
-						)}
-						<div>
-							<p className="font-medium">
-								{post.primary_author?.name || "Unknown Author"}
-							</p>
+					<div className="flex items-center text-sm text-muted-foreground">
+						<div className="flex items-center">
+							{post.primary_author?.profile_image && (
+								<div className="relative h-6 w-6 rounded-full overflow-hidden mr-2">
+									<Image
+										src={post.primary_author.profile_image}
+										alt={post.primary_author.name}
+										fill
+										className="object-cover"
+									/>
+								</div>
+							)}
+							<span>{post.primary_author?.name || "Unknown Author"}</span>
 						</div>
+						<span className="mx-2">in</span>
+						<span>{post.primary_tag?.name || "General"}</span>
+						<span className="mx-2">•</span>
+						<span>{post.reading_time} min read</span>
+						<span className="mx-2">•</span>
+						<span>{formattedDate}</span>
 					</div>
 				</div>
-			</div>
+			</article>
 		</Link>
 	);
 }

@@ -74,21 +74,24 @@ export default async function BlogPostPage({ params }: Props) {
 
 	const components: Partial<Components> = {
 		h1: ({ node, ...props }) => (
-			<h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
+			<h1 className="text-3xl text-primary font-bold mt-8 mb-4" {...props} />
 		),
 		h2: ({ node, ...props }) => (
-			<h2 className="text-2xl font-bold mt-6 mb-3" {...props} />
+			<h2 className="text-2xl text-primary/90 font-bold mt-6 mb-3" {...props} />
 		),
 		h3: ({ node, ...props }) => (
-			<h3 className="text-xl font-bold mt-4 mb-2" {...props} />
+			<h3 className="text-xl text-primary/90 font-bold mt-4 mb-2" {...props} />
 		),
 		p: ({ node, ...props }) => (
-			<p className="text-base leading-relaxed mb-4" {...props} />
+			<p
+				className="text-base text-muted-foreground leading-relaxed mb-4"
+				{...props}
+			/>
 		),
 		a: ({ node, href, ...props }) => (
 			<a
 				href={href}
-				className="text-primary hover:text-primary/80 transition-colors"
+				className="text-blue-500 hover:text-blue-500/80 transition-colors"
 				target="_blank"
 				rel="noopener noreferrer"
 				{...props}
@@ -117,7 +120,7 @@ export default async function BlogPostPage({ params }: Props) {
 	};
 
 	return (
-		<article className="container mx-auto px-4 py-12 max-w-4xl">
+		<article className="container mx-auto px-4 py-12 max-w-5xl">
 			<Link
 				href="/blog"
 				className="inline-flex items-center mb-8 text-primary hover:text-primary/80 transition-colors"
@@ -137,7 +140,7 @@ export default async function BlogPostPage({ params }: Props) {
 				{t("backToBlog")}
 			</Link>
 
-			<div className="bg-card rounded-lg p-8 shadow-lg border border-border">
+			<div className=" rounded-lg p-8 shadow-lg border border-border">
 				<header className="mb-8">
 					<h1 className="text-4xl font-bold mb-4">{post.title}</h1>
 					<div className="flex items-center mb-6">
