@@ -28,7 +28,7 @@ export async function GET() {
 	<channel>
 		<title>Dokploy Blog</title>
 		<link>https://dokploy.com/blog</link>
-		<description>Stories behind the magic</description>
+		<description>Dokploy Latest News & Updates</description>
 		<language>en</language>
 		<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 		${posts

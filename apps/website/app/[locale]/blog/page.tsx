@@ -54,7 +54,7 @@ export default async function BlogPage({
 					<p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
 						BLOG
 					</p>
-					<h1 className="text-4xl font-bold">Stories behind the magic</h1>
+					<h1 className="text-4xl font-bold">Dokploy Latest News & Updates</h1>
 				</div>
 				<Link
 					href="/rss.xml"
