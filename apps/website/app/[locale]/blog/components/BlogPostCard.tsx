@@ -3,13 +3,14 @@
 import type { Post } from "@/lib/ghost";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 interface BlogPostCardProps {
 	post: Post;
 	locale: string;
 }
 
 export function BlogPostCard({ post, locale }: BlogPostCardProps) {
+	const router = useRouter();
 	const formattedDate = new Date(post.published_at).toLocaleDateString(locale, {
 		year: "numeric",
 		month: "long",
@@ -17,6 +18,9 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 	});
 
 	const handleTwitterClick = (e: React.MouseEvent) => {
+		if (post.primary_author?.twitter) {
+			router.push(`https://twitter.com/${post.primary_author.twitter}`);
+		}
 		e.preventDefault();
 		e.stopPropagation();
 	};
@@ -29,7 +33,7 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 			<article className="flex gap-6 items-start">
 				<div className="relative h-32 w-48 shrink-0">
 					<Image
-						src={post.feature_image || "/default.jpg"}
+						src={post.feature_image || "/og.png"}
 						alt={post.feature_image ? post.title : "Default Image"}
 						fill
 						className="object-cover rounded-lg"
@@ -47,12 +51,10 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 							{post.primary_author?.profile_image && (
 								<div className="relative h-6 w-6 rounded-full overflow-hidden mr-2">
 									{post.primary_author.twitter ? (
-										<a
-											href={`https://twitter.com/${post.primary_author.twitter}`}
-											target="_blank"
-											rel="noopener noreferrer"
+										<button
 											className="block cursor-pointer transition-opacity hover:opacity-90"
 											onClick={handleTwitterClick}
+											type="button"
 										>
 											<Image
 												src={post.primary_author.profile_image}
@@ -60,7 +62,7 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 												fill
 												className="object-cover"
 											/>
-										</a>
+										</button>
 									) : (
 										<Image
 											src={post.primary_author.profile_image}
@@ -72,15 +74,13 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 								</div>
 							)}
 							{post.primary_author?.twitter ? (
-								<a
-									href={`https://twitter.com/${post.primary_author.twitter}`}
-									target="_blank"
-									rel="noopener noreferrer"
+								<button
 									className="hover:text-primary transition-colors"
 									onClick={handleTwitterClick}
+									type="button"
 								>
 									{post.primary_author.name || "Unknown Author"}
-								</a>
+								</button>
 							) : (
 								<span>{post.primary_author?.name || "Unknown Author"}</span>
 							)}
