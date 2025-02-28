@@ -73,7 +73,7 @@ export default async function BlogPage({
 			/>
 
 			{filteredPosts.length === 0 ? (
-				<div className="text-center py-12">
+				<div className="text-center py-12 min-h-[20vh] flex items-center justify-center">
 					<p className="text-xl text-muted-foreground">
 						{search || selectedTag ? t("noResults") : t("noPosts")}
 					</p>

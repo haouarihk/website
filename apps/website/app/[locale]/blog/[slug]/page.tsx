@@ -10,6 +10,7 @@ import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { ZoomableImage } from "./components/ZoomableImage";
 
 type Props = {
 	params: { locale: string; slug: string };
@@ -114,7 +115,7 @@ export default async function BlogPostPage({ params }: Props) {
 		),
 		img: ({ node, src, alt }) => (
 			<div className="relative w-full h-64 my-6 rounded-lg overflow-hidden">
-				<Image src={src || ""} alt={alt || ""} fill className="object-cover" />
+				{src && <ZoomableImage src={src} alt={alt || ""} />}
 			</div>
 		),
 	};
@@ -164,13 +165,11 @@ export default async function BlogPostPage({ params }: Props) {
 						</div>
 					</div>
 					{post.feature_image && (
-						<div className="relative h-96 w-full rounded-lg overflow-hidden mb-8">
-							<Image
+						<div className="relative w-full h-[400px] mb-8">
+							<ZoomableImage
 								src={post.feature_image}
 								alt={post.title}
-								fill
-								className="object-cover"
-								priority
+								className="rounded-lg"
 							/>
 						</div>
 					)}

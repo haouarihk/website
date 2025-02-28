@@ -1,6 +1,25 @@
 import { getPosts } from "@/lib/ghost";
 import { NextResponse } from "next/server";
 
+function escapeXml(unsafe: string): string {
+	return unsafe.replace(/[<>&'"]/g, (c) => {
+		switch (c) {
+			case "<":
+				return "&lt;";
+			case ">":
+				return "&gt;";
+			case "&":
+				return "&amp;";
+			case "'":
+				return "&apos;";
+			case '"':
+				return "&quot;";
+			default:
+				return c;
+		}
+	});
+}
+
 export async function GET() {
 	const posts = await getPosts();
 
@@ -17,13 +36,14 @@ export async function GET() {
 				(post) => `
 		<item>
 			<title><![CDATA[${post.title}]]></title>
-			<link>https://dokploy.com/blog/${post.slug}</link>
-			<guid>https://dokploy.com/blog/${post.slug}</guid>
+			<link>https://dokploy.com/blog/${escapeXml(post.slug)}</link>
+			<guid>https://dokploy.com/blog/${escapeXml(post.slug)}</guid>
 			<description><![CDATA[${post.excerpt}]]></description>
+			<content:encoded><![CDATA[${post.html}]]></content:encoded>
 			<pubDate>${new Date(post.published_at).toUTCString()}</pubDate>
 			${
 				post.feature_image
-					? `<enclosure url="${post.feature_image}" type="image/jpeg" />`
+					? `<enclosure url="${escapeXml(post.feature_image)}" type="image/jpeg" />`
 					: ""
 			}
 			${
@@ -39,7 +59,7 @@ export async function GET() {
 
 	return new NextResponse(rss, {
 		headers: {
-			"Content-Type": "application/xml",
+			"Content-Type": "application/xml; charset=utf-8",
 			"Cache-Control": "s-maxage=3600, stale-while-revalidate",
 		},
 	});
