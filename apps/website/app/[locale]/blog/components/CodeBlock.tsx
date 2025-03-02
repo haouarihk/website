@@ -75,18 +75,10 @@ export function CodeBlock({ code, language, className = "" }: CodeBlockProps) {
 		formatCode();
 	}, [code, language]);
 
-	// Ensure we're working with a string and remove any potential duplicate line breaks
-	const processedCode =
-		typeof formattedCode === "string"
-			? formattedCode.replace(/\n+/g, "\n")
-			: typeof formattedCode === "object"
-				? JSON.stringify(formattedCode, null, 2)
-				: String(formattedCode);
-
 	return (
 		<Highlight
 			theme={themes.dracula}
-			code={processedCode}
+			code={formattedCode}
 			language={language.toLowerCase()}
 		>
 			{({
@@ -96,43 +88,40 @@ export function CodeBlock({ code, language, className = "" }: CodeBlockProps) {
 				getLineProps,
 				getTokenProps,
 			}) => (
-				<div className="relative group">
-					<pre
-						className={`${preClassName} ${className} overflow-x-auto p-4 rounded-lg text-[13px] leading-[1.5] font-mono`}
-						style={{
-							...style,
-							backgroundColor: "rgb(40, 42, 54)", // Dracula background
-						}}
-					>
-						<div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-							<button
-								type="button"
-								onClick={() => {
-									navigator.clipboard.writeText(processedCode);
+				<div
+					className={`${preClassName} ${className} overflow-x-auto p-4 rounded-lg text-[14px] leading-[1.5] font-mono relative group`}
+					style={{
+						...style,
+					}}
+				>
+					<div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+						<button
+							type="button"
+							onClick={() => {
+								navigator.clipboard.writeText(formattedCode);
+							}}
+							className="px-2 py-1 text-xs rounded bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+						>
+							Copy
+						</button>
+					</div>
+					{tokens.map((line, i) => (
+						<div key={i} {...getLineProps({ line })} className="table-row">
+							<span
+								className="table-cell text-right pr-4 select-none w-[2.5em] text-zinc-500 text-xs"
+								style={{
+									color: "rgb(98, 114, 164)", // Dracula comment color
 								}}
-								className="px-2 py-1 text-xs rounded bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
 							>
-								Copy
-							</button>
+								{i + 1}
+							</span>
+							<span className="table-cell">
+								{line.map((token, key) => (
+									<span key={key} {...getTokenProps({ token })} />
+								))}
+							</span>
 						</div>
-						{tokens.map((line, i) => (
-							<div key={i} {...getLineProps({ line })} className="table-row">
-								<span
-									className="table-cell text-right pr-4 select-none w-[2.5em] text-zinc-500 text-xs"
-									style={{
-										color: "rgb(98, 114, 164)", // Dracula comment color
-									}}
-								>
-									{i + 1}
-								</span>
-								<span className="table-cell">
-									{line.map((token, key) => (
-										<span key={key} {...getTokenProps({ token })} />
-									))}
-								</span>
-							</div>
-						))}
-					</pre>
+					))}
 				</div>
 			)}
 		</Highlight>

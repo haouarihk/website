@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import TurndownService from "turndown";
 import { CodeBlock } from "../components/CodeBlock";
 import { ZoomableImage } from "./components/ZoomableImage";
 
@@ -75,6 +76,13 @@ export default async function BlogPostPage({ params }: Props) {
 	if (!post) {
 		notFound();
 	}
+
+	// Convertir HTML a Markdown
+	const turndownService = new TurndownService({
+		headingStyle: "atx",
+		codeBlockStyle: "fenced",
+	});
+	const markdown = turndownService.turndown(post.html);
 
 	const formattedDate = new Date(post.published_at).toLocaleDateString(locale, {
 		year: "numeric",
@@ -152,60 +160,14 @@ export default async function BlogPostPage({ params }: Props) {
 			</div>
 		),
 		code: ({ inline, className, children, ...props }: CodeProps) => {
-			if (inline) {
-				return (
-					<code
-						className="px-1.5 py-0.5 rounded-md bg-muted font-mono text-sm"
-						{...props}
-					>
-						{children}
-					</code>
-				);
-			}
-
 			const match = /language-(\w+)/.exec(className || "");
 
-			// Extraer el contenido del código de la estructura anidada
-			const extractCodeContent = (children: React.ReactNode): string => {
-				if (typeof children === "string") {
-					return children;
-				}
-				if (Array.isArray(children)) {
-					return children
-						.map((child) => {
-							if (typeof child === "string") {
-								return child;
-							}
-							if (child && typeof child === "object" && "props" in child) {
-								return extractCodeContent(child.props.children);
-							}
-							return "";
-						})
-						.join("");
-				}
-				if (children && typeof children === "object" && "props" in children) {
-					return extractCodeContent(children.props.children);
-				}
-				return "";
-			};
-
-			const codeContent = extractCodeContent(children)
-				.replace(/&lt;/g, "<")
-				.replace(/&gt;/g, ">")
-				.replace(/&quot;/g, '"')
-				.replace(/&#39;/g, "'")
-				.replace(/&amp;/g, "&")
-				.trim();
-
-			// Wrap CodeBlock in a div to prevent it from being inside a p tag
 			return (
-				<div className="not-prose my-6">
-					<CodeBlock
-						code={codeContent}
-						language={match ? match[1] : "text"}
-						className="my-6"
-					/>
-				</div>
+				<CodeBlock
+					code={children?.toString() || ""}
+					language={match ? match[1] : "text"}
+					className="my-6"
+				/>
 			);
 		},
 	};
@@ -298,7 +260,7 @@ export default async function BlogPostPage({ params }: Props) {
 						rehypePlugins={[rehypeRaw]}
 						components={components}
 					>
-						{post.html}
+						{markdown}
 					</ReactMarkdown>
 				</div>
 
