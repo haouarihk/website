@@ -34,21 +34,35 @@ export async function generateMetadata(
 		};
 	}
 
+	const ogUrl = new URL(
+		`/${params.locale}/api/og`,
+		process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+	);
+	ogUrl.searchParams.set("slug", params.slug);
+
 	return {
 		title: post.title,
 		description: post.custom_excerpt || post.excerpt,
-		openGraph: post.feature_image
-			? {
-					images: [
-						{
-							url: post.feature_image,
-							width: 1200,
-							height: 630,
-							alt: post.title,
-						},
-					],
-				}
-			: undefined,
+		openGraph: {
+			title: post.title,
+			description: post.custom_excerpt || post.excerpt,
+			type: "article",
+			url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${post.slug}`,
+			images: [
+				{
+					url: ogUrl.toString(),
+					width: 1200,
+					height: 630,
+					alt: post.title,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: post.title,
+			description: post.custom_excerpt || post.excerpt,
+			images: [ogUrl.toString()],
+		},
 	};
 }
 

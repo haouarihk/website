@@ -1,9 +1,14 @@
 import createMiddleware from "next-intl/middleware";
-import { routing } from "./i18n/routing";
 
-export default createMiddleware(routing);
+export default createMiddleware({
+	locales: ["en", "fr", "zh-Hans"],
+	defaultLocale: "en",
+	localePrefix: "always",
+	// Excluir la ruta de la API de OG images
+	localeDetection: true,
+});
 
 export const config = {
 	// Match only internationalized pathnames
-	matcher: ["/((?!_next|.*\\..*).*)"],
+	matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
