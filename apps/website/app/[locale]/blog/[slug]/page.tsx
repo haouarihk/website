@@ -1,20 +1,20 @@
 import { getPost, getPosts } from "@/lib/ghost";
-import type { Post } from "@/lib/ghost";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import * as prettier from "prettier";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import type React from "react";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { codeToHtml } from "shiki";
+import type { BundledLanguage } from "shiki/bundle/web";
 import TurndownService from "turndown";
-import { CodeBlock } from "../components/CodeBlock";
 import { ZoomableImage } from "./components/ZoomableImage";
-
 type Props = {
 	params: { locale: string; slug: string };
 };
@@ -63,7 +63,53 @@ interface CodeProps
 	className?: string;
 	children?: React.ReactNode;
 }
+interface LanguageProps {
+	children: string;
+	lang: BundledLanguage;
+}
 
+const getParserForLanguage = (language: string): string => {
+	const languageMap: { [key: string]: string } = {
+		js: "babel",
+		jsx: "babel",
+		ts: "typescript",
+		tsx: "typescript",
+		json: "json",
+		css: "css",
+		scss: "scss",
+		less: "less",
+		html: "html",
+		xml: "xml",
+		markdown: "markdown",
+		md: "markdown",
+		yaml: "yaml",
+		yml: "yaml",
+	};
+
+	return languageMap[language.toLowerCase()] || "babel";
+};
+
+async function CodeBlock(props: LanguageProps) {
+	const format = await prettier.format(props.children, {
+		semi: true,
+		singleQuote: true,
+		tabWidth: 2,
+		useTabs: false,
+		printWidth: 120,
+		parser: getParserForLanguage(props.lang),
+	});
+	const out = await codeToHtml(format, {
+		lang: props.lang,
+		theme: "houston",
+	});
+
+	return (
+		<div
+			dangerouslySetInnerHTML={{ __html: out }}
+			className="text-sm p-4 rounded-lg bg-[#18191F]"
+		/>
+	);
+}
 export default async function BlogPostPage({ params }: Props) {
 	const { locale, slug } = params;
 	const t = await getTranslations({ locale, namespace: "blog" });
@@ -163,11 +209,9 @@ export default async function BlogPostPage({ params }: Props) {
 			const match = /language-(\w+)/.exec(className || "");
 
 			return (
-				<CodeBlock
-					code={children?.toString() || ""}
-					language={match ? match[1] : "text"}
-					className="my-6"
-				/>
+				<CodeBlock lang={match ? (match[1] as BundledLanguage) : "ts"}>
+					{children?.toString() || ""}
+				</CodeBlock>
 			);
 		},
 	};
