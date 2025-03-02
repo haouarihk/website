@@ -14,7 +14,10 @@ import remarkGfm from "remark-gfm";
 import { codeToHtml } from "shiki";
 import type { BundledLanguage } from "shiki/bundle/web";
 import TurndownService from "turndown";
+// @ts-ignore
+import * as turndownPluginGfm from "turndown-plugin-gfm";
 import { ZoomableImage } from "./components/ZoomableImage";
+
 type Props = {
 	params: { locale: string; slug: string };
 };
@@ -128,38 +131,12 @@ export default async function BlogPostPage({ params }: Props) {
 		headingStyle: "atx",
 		codeBlockStyle: "fenced",
 	});
-
-	// Configurar el manejo de tablas
-	turndownService.addRule("table", {
-		filter: ["table"],
-		replacement: (content, node) => {
-			const rows = node.rows;
-			let markdown = "\n";
-
-			// Headers
-			if (rows.length > 0) {
-				const headers = Array.from(rows[0].cells).map((cell) =>
-					cell.textContent.trim(),
-				);
-				markdown += `| ${headers.join(" | ")} |\n`;
-				markdown += `| ${headers.map(() => "---").join(" | ")} |\n`;
-			}
-
-			// Body
-			for (let i = 1; i < rows.length; i++) {
-				const cells = Array.from(rows[i].cells).map((cell) =>
-					cell.textContent.trim(),
-				);
-				markdown += `| ${cells.join(" | ")} |\n`;
-			}
-
-			return `${markdown}\n`;
-		},
-	});
+	const gfm = turndownPluginGfm.gfm;
+	const tables = turndownPluginGfm.tables;
+	const strikethrough = turndownPluginGfm.strikethrough;
+	turndownService.use([tables, strikethrough, gfm]);
 
 	const markdown = turndownService.turndown(post.html);
-
-	console.log(markdown);
 
 	const formattedDate = new Date(post.published_at).toLocaleDateString(locale, {
 		year: "numeric",
@@ -232,9 +209,11 @@ export default async function BlogPostPage({ params }: Props) {
 			<td className="p-4 text-muted-foreground" {...props} />
 		),
 		img: ({ node, src, alt }) => (
-			<span className="relative w-64 h-64 my-6 rounded-lg ">
-				{src && <ZoomableImage src={src} alt={alt || ""} />}
-			</span>
+			<ZoomableImage
+				src={src || ""}
+				alt={alt || ""}
+				className="object-cover max-w-lg mx-auto rounded-lg border border-border"
+			/>
 		),
 		code: ({ inline, className, children, ...props }: CodeProps) => {
 			const match = /language-(\w+)/.exec(className || "");
@@ -319,11 +298,11 @@ export default async function BlogPostPage({ params }: Props) {
 						</div>
 					</div>
 					{post.feature_image && (
-						<div className="relative w-full h-[400px] mb-8">
+						<div className="relative w-full  h-[400px] mb-8">
 							<ZoomableImage
 								src={post.feature_image}
 								alt={post.title}
-								className="rounded-lg"
+								className="rounded-lg h-full w-full object-cover"
 							/>
 						</div>
 					)}
