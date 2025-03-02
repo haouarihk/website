@@ -155,9 +155,9 @@ export default async function BlogPostPage({ params }: Props) {
 			<td className="p-4 text-muted-foreground" {...props} />
 		),
 		img: ({ node, src, alt }) => (
-			<div className="relative w-full h-64 my-6 rounded-lg overflow-hidden">
+			<span className="relative w-64 h-64 my-6 rounded-lg ">
 				{src && <ZoomableImage src={src} alt={alt || ""} />}
-			</div>
+			</span>
 		),
 		code: ({ inline, className, children, ...props }: CodeProps) => {
 			const match = /language-(\w+)/.exec(className || "");

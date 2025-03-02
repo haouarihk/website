@@ -1,8 +1,5 @@
-import clsx from "clsx";
 import { Inter, Lexend } from "next/font/google";
 import "@/styles/tailwind.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import "react-photo-view/dist/react-photo-view.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -71,18 +68,6 @@ export const metadata: Metadata = {
 	},
 };
 
-const inter = Inter({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-inter",
-});
-
-const lexend = Lexend({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-lexend",
-});
-
 export default async function RootLayout({
 	children,
 	params,
@@ -90,28 +75,11 @@ export default async function RootLayout({
 	children: React.ReactNode;
 	params: { locale: string };
 }) {
-	const { locale } = params;
-	const messages = await getMessages();
 	return (
-		<html
-			lang={locale}
-			className={clsx("h-full scroll-smooth", inter.variable, lexend.variable)}
-		>
-			<head>
-				<script
-					defer
-					src="https://umami.dokploy.com/script.js"
-					data-website-id="7d1422e4-3776-4870-8145-7d7b2075d470"
-				/>
-			</head>
-			{/* <GoogleAnalytics /> */}
-			<body className="flex h-full flex-col">
-				<NextIntlClientProvider messages={messages}>
-					<Header />
-					{children}
-					<Footer />
-				</NextIntlClientProvider>
-			</body>
-		</html>
+		<div className="flex h-full flex-col">
+			<Header />
+			{children}
+			<Footer />
+		</div>
 	);
 }
