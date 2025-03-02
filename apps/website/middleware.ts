@@ -2,10 +2,10 @@ import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
 	locales: ["en", "fr", "zh-Hans"],
+
+	// Used when no locale matches
 	defaultLocale: "en",
-	localePrefix: "always",
-	// Excluir la ruta de la API de OG images
-	localeDetection: true,
+	localePrefix: "as-needed",
 });
 
 export const config = {
