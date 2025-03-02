@@ -128,7 +128,38 @@ export default async function BlogPostPage({ params }: Props) {
 		headingStyle: "atx",
 		codeBlockStyle: "fenced",
 	});
+
+	// Configurar el manejo de tablas
+	turndownService.addRule("table", {
+		filter: ["table"],
+		replacement: (content, node) => {
+			const rows = node.rows;
+			let markdown = "\n";
+
+			// Headers
+			if (rows.length > 0) {
+				const headers = Array.from(rows[0].cells).map((cell) =>
+					cell.textContent.trim(),
+				);
+				markdown += `| ${headers.join(" | ")} |\n`;
+				markdown += `| ${headers.map(() => "---").join(" | ")} |\n`;
+			}
+
+			// Body
+			for (let i = 1; i < rows.length; i++) {
+				const cells = Array.from(rows[i].cells).map((cell) =>
+					cell.textContent.trim(),
+				);
+				markdown += `| ${cells.join(" | ")} |\n`;
+			}
+
+			return `${markdown}\n`;
+		},
+	});
+
 	const markdown = turndownService.turndown(post.html);
+
+	console.log(markdown);
 
 	const formattedDate = new Date(post.published_at).toLocaleDateString(locale, {
 		year: "numeric",
