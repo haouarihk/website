@@ -97,6 +97,7 @@ export async function getPost(slug: string): Promise<Post | null> {
 			slug,
 			include: ["authors"],
 		})) as Post;
+
 		return result;
 	} catch (error) {
 		console.error("Error fetching post:", error);

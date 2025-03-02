@@ -6,10 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import type React from "react";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { CodeBlock } from "../components/CodeBlock";
 import { ZoomableImage } from "./components/ZoomableImage";
 
 type Props = {
@@ -54,6 +56,13 @@ export async function generateStaticParams() {
 	}));
 }
 
+interface CodeProps
+	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+	inline?: boolean;
+	className?: string;
+	children?: React.ReactNode;
+}
+
 export default async function BlogPostPage({ params }: Props) {
 	const { locale, slug } = params;
 	const t = await getTranslations({ locale, namespace: "blog" });
@@ -83,12 +92,16 @@ export default async function BlogPostPage({ params }: Props) {
 		h3: ({ node, ...props }) => (
 			<h3 className="text-xl text-primary/90 font-bold mt-4 mb-2" {...props} />
 		),
-		p: ({ node, ...props }) => (
-			<p
-				className="text-base text-muted-foreground leading-relaxed mb-4"
-				{...props}
-			/>
-		),
+		p: ({ node, children, ...props }) => {
+			return (
+				<p
+					className="text-base text-muted-foreground leading-relaxed mb-4"
+					{...props}
+				>
+					{children}
+				</p>
+			);
+		},
 		a: ({ node, href, ...props }) => (
 			<a
 				href={href}
@@ -138,6 +151,63 @@ export default async function BlogPostPage({ params }: Props) {
 				{src && <ZoomableImage src={src} alt={alt || ""} />}
 			</div>
 		),
+		code: ({ inline, className, children, ...props }: CodeProps) => {
+			if (inline) {
+				return (
+					<code
+						className="px-1.5 py-0.5 rounded-md bg-muted font-mono text-sm"
+						{...props}
+					>
+						{children}
+					</code>
+				);
+			}
+
+			const match = /language-(\w+)/.exec(className || "");
+
+			// Extraer el contenido del código de la estructura anidada
+			const extractCodeContent = (children: React.ReactNode): string => {
+				if (typeof children === "string") {
+					return children;
+				}
+				if (Array.isArray(children)) {
+					return children
+						.map((child) => {
+							if (typeof child === "string") {
+								return child;
+							}
+							if (child && typeof child === "object" && "props" in child) {
+								return extractCodeContent(child.props.children);
+							}
+							return "";
+						})
+						.join("");
+				}
+				if (children && typeof children === "object" && "props" in children) {
+					return extractCodeContent(children.props.children);
+				}
+				return "";
+			};
+
+			const codeContent = extractCodeContent(children)
+				.replace(/&lt;/g, "<")
+				.replace(/&gt;/g, ">")
+				.replace(/&quot;/g, '"')
+				.replace(/&#39;/g, "'")
+				.replace(/&amp;/g, "&")
+				.trim();
+
+			// Wrap CodeBlock in a div to prevent it from being inside a p tag
+			return (
+				<div className="not-prose my-6">
+					<CodeBlock
+						code={codeContent}
+						language={match ? match[1] : "text"}
+						className="my-6"
+					/>
+				</div>
+			);
+		},
 	};
 
 	return (
