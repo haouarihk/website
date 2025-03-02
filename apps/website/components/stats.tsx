@@ -4,7 +4,7 @@ import { useId } from "react";
 import NumberTicker from "./ui/number-ticker";
 
 const statsValues = {
-	githubStars: 17100,
+	githubStars: 17500,
 	dockerDownloads: 1000000,
 	contributors: 135,
 	sponsors: 45,
