@@ -1,7 +1,6 @@
 "use client";
 
 import type { Post } from "@/lib/ghost";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 interface BlogPostCardProps {
@@ -28,25 +27,24 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 	return (
 		<Link
 			href={`/blog/${post.slug}`}
-			className="group block hover:bg-muted p-4 rounded-lg"
+			className="group block hover:bg-muted p-4 rounded-lg border border-border"
 		>
-			<article className="flex gap-6 items-start">
-				<div className="relative h-32 w-48 shrink-0">
-					<Image
+			<article className="flex gap-6 items-start max-sm:flex-col items-center">
+				<div className="relative  shrink-0 flex items-center justify-center mx-auto">
+					<img
 						src={post.feature_image || "/og.png"}
 						alt={post.feature_image ? post.title : "Default Image"}
-						fill
-						className="object-cover rounded-lg"
+						className="object-cover rounded-lg object-center mx-auto self-center h-32 w-64 sm:w-32 sm:h-24"
 					/>
 				</div>
-				<div className="flex-1 min-w-0">
+				<div className="w-full flex-wrap flex">
 					<h2 className="text-xl font-semibold mb-2 group-hover:text-primary">
 						{post.title}
 					</h2>
 					<p className="text-muted-foreground line-clamp-2 mb-4">
 						{post.custom_excerpt || post.excerpt}
 					</p>
-					<div className="flex items-center text-sm text-muted-foreground">
+					<div className="flex items-center text-sm text-muted-foreground flex-wrap">
 						<div className="flex items-center">
 							{post.primary_author?.profile_image && (
 								<div className="relative h-6 w-6 rounded-full overflow-hidden mr-2">
@@ -56,18 +54,16 @@ export function BlogPostCard({ post, locale }: BlogPostCardProps) {
 											onClick={handleTwitterClick}
 											type="button"
 										>
-											<Image
+											<img
 												src={post.primary_author.profile_image}
 												alt={post.primary_author.name}
-												fill
 												className="object-cover"
 											/>
 										</button>
 									) : (
-										<Image
+										<img
 											src={post.primary_author.profile_image}
 											alt={post.primary_author.name}
-											fill
 											className="object-cover"
 										/>
 									)}
