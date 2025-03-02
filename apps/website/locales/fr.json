@@ -11,7 +11,11 @@
 			"i18nButtonPlaceholder": "Langue",
 			"i18nFr": "Français",
 			"i18nEn": "English",
-			"i18nZh-Hans": "简体中文"
+			"i18nZh-Hans": "简体中文",
+			"blog": "Blog",
+			"home": "Accueil",
+			"login": "Connexion",
+			"register": "S'inscrire"
 		},
 		"hero": {
 			"cloud": "Présentation de Dokploy Cloud",
@@ -37,6 +41,10 @@
 			"title": "Contrôle complet de votre écosystème numérique",
 			"des": "Simplifiez la gestion de vos projets et données, assurez une surveillance robuste et sécurisez vos sauvegardes — tout cela sans vous soucier des détails minutieux.",
 			"projects": "Projets",
+			"templates": "Templates",
+			"templatesDes": "Un clic pour déployer des templates open source.",
+			"logs": "Logs",
+			"logsDes": "Surveillez et gérez les logs de vos applications avec facilité, en assurant un dépannage efficace et des performances optimales.",
 			"projectsDes": "Gérez et organisez tous vos projets au même endroit, en suivant de manière détaillée l'avancement et l'allocation des ressources.",
 			"applications": "Applications & Bases de données",
 			"applicationsDes": "Centralisez le contrôle de vos applications et bases de données pour améliorer la sécurité et l'efficacité, simplifiant l'accès et la gestion sur toute votre infrastructure.",
@@ -190,5 +198,15 @@
 			"q8": "Dokploy est-il open-source ?",
 			"a8": "Oui, Dokploy est entièrement open-source. Vous pouvez contribuer ou modifier selon vos besoins pour vos projets."
 		}
+	},
+	"blog": {
+		"title": "Blog",
+		"description": "Dernières nouvelles, mises à jour et articles de Dokploy",
+		"noPosts": "Aucun article disponible",
+		"noResults": "Aucun article ne correspond à vos critères",
+		"searchPlaceholder": "Rechercher des articles...",
+		"allTags": "Tous les tags",
+		"relatedPosts": "Articles similaires",
+		"tagDescription": "Articles tagués avec"
 	}
 }

@@ -3,7 +3,7 @@ import { Inter, Lexend } from "next/font/google";
 import "@/styles/tailwind.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-
+import "react-photo-view/dist/react-photo-view.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import type { Metadata } from "next";

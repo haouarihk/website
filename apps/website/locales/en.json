@@ -11,7 +11,11 @@
 			"i18nButtonPlaceholder": "Language",
 			"i18nFr": "Français",
 			"i18nEn": "English",
-			"i18nZh-Hans": "简体中文"
+			"i18nZh-Hans": "简体中文",
+			"blog": "Blog",
+			"home": "Home",
+			"login": "Login",
+			"register": "Register"
 		},
 		"hero": {
 			"cloud": "Introducing Dokploy Cloud",
@@ -37,6 +41,10 @@
 			"title": "Comprehensive Control for Your Digital Ecosystem",
 			"des": "Simplify your project and data management, ensure robust monitoring, and secure your backups—all without the fuss over minute details.",
 			"projects": "Projects",
+			"templates": "Templates",
+			"templatesDes": "One click to deploy open source templates.",
+			"logs": "Logs",
+			"logsDes": "Monitor and manage your applications' logs with ease, ensuring efficient troubleshooting and optimal performance.",
 			"projectsDes": "Manage and organize all your projects in one place, keeping detailed track of progress and resource allocation.",
 			"applications": "Applications & Databases",
 			"applicationsDes": "Centralize control over your applications and databases for enhanced security and efficiency, simplifying access and management across your infrastructure.",
@@ -69,7 +77,7 @@
 		},
 		"callToAction": {
 			"title": "Unlock Your Deployment Potential with Dokploy Cloud",
-			"des": "Say goodbye to infrastructure hassles—Dokploy Cloud handles it all. Effortlessly deploy, manage Docker containers, and secure your traffic with Traefik. Focus on building, we’ll handle the rest.",
+			"des": "Say goodbye to infrastructure hassles—Dokploy Cloud handles it all. Effortlessly deploy, manage Docker containers, and secure your traffic with Traefik. Focus on building, we'll handle the rest.",
 			"button": "Get Started Now"
 		},
 		"faq": {
@@ -173,7 +181,7 @@
 		},
 		"faq": {
 			"title": "Frequently asked questions",
-			"description": "If you can’t find what you’re looking for, please send us an email to",
+			"description": "If you can't find what you're looking for, please send us an email to",
 			"q1": "How does Dokploy's Open Source plan work?",
 			"a1": "You can host Dokploy UI on your own infrastructure and you will be responsible for the maintenance and updates.",
 			"q2": "Do I need to provide my own server for the managed plan?",
@@ -191,5 +199,20 @@
 			"q8": "Is Dokploy open-source?",
 			"a8": "Yes, Dokploy is fully open-source. You can contribute or modify it as needed for your projects."
 		}
+	},
+	"blog": {
+		"title": "Blog",
+		"description": "Latest news, updates, and articles from Dokploy",
+		"noPosts": "No posts available",
+		"noResults": "No posts found matching your criteria",
+		"searchPlaceholder": "Search posts...",
+		"allTags": "All Tags",
+		"relatedPosts": "Related Posts",
+		"tagDescription": "Posts tagged with",
+		"foundPosts": "{count, plural, =0 {No posts found} one {# post found} other {# posts found}}",
+		"tagTitle": "Posts tagged with {tag}",
+		"backToBlog": "Back to Blog",
+		"tags": "Tags",
+		"postsTaggedWith": "Posts tagged with"
 	}
 }

@@ -11,7 +11,11 @@
 			"i18nButtonPlaceholder": "语言",
 			"i18nFr": "Français",
 			"i18nEn": "English",
-			"i18nZh-Hans": "简体中文"
+			"i18nZh-Hans": "简体中文",
+			"blog": "博客",
+			"home": "首页",
+			"login": "登录",
+			"register": "注册"
 		},
 		"hero": {
 			"cloud": "隆重介绍 Dokploy 云",
@@ -37,6 +41,10 @@
 			"title": "全面掌控您的基础设施",
 			"des": "Dokploy 不仅简化您的项目部署和数据管理流程，同时还提供完备的数据备份，一切只在弹指间。",
 			"projects": "项目",
+			"logs": "日志",
+			"templates": "模板",
+			"templatesDes": "一键部署热门开源项目。",
+			"logsDes": "轻松监控和处理您的应用程序日志，确保高效故障排除和最佳性能。",
 			"projectsDes": "您所有的项目和所需的一切信息都将归集一处。",
 			"applications": "应用和数据库",
 			"applicationsDes": "Dokploy 通过集中管理您的应用和数据库来提升安全性和效率，并大大简化了跨基础设施的访问和管理。",
@@ -195,5 +203,21 @@
 			"q8": "Dokploy 开源吗?",
 			"a8": "是的，Dokploy 完全开源，您可以参与贡献或者是 Fork 后自行修改以用于您的私人需求。"
 		}
+	},
+	"blog": {
+		"title": "博客",
+		"description": "Dokploy 的最新消息、更新和文章",
+		"noPosts": "暂无文章",
+		"noResults": "没有找到符合条件的文章",
+		"searchPlaceholder": "搜索文章...",
+		"allTags": "所有标签",
+		"relatedPosts": "相关文章",
+		"tagDescription": "标签文章",
+		"readMore": "阅读更多",
+		"backToBlog": "返回博客",
+		"tags": "标签",
+		"postsTaggedWith": "标签为",
+		"foundPosts": "{count, plural, =0 {未找到文章} other {找到 # 篇文章}}",
+		"tagTitle": "标签为 {tag} 的文章"
 	}
 }
