@@ -1,28 +1,23 @@
-import { CopyButton } from "@/components/ui/copy-button";
 import { getPost, getPosts } from "@/lib/ghost";
 import type { Metadata, ResolvingMetadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import prettier from "prettier";
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import type React from "react";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
-import { codeToHtml } from "shiki";
 import type { BundledLanguage } from "shiki/bundle/web";
-import slugify from "slugify";
 import TurndownService from "turndown";
 // @ts-ignore
 import * as turndownPluginGfm from "turndown-plugin-gfm";
+import { CodeBlock } from "./components/CodeBlock";
 import { H1, H2, H3 } from "./components/Headings";
 import { TableOfContents } from "./components/TableOfContents";
 import { ZoomableImage } from "./components/ZoomableImage";
-
 type Props = {
 	params: { locale: string; slug: string };
 };
@@ -84,62 +79,6 @@ export async function generateStaticParams() {
 	);
 }
 
-interface CodeProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-	inline?: boolean;
-	className?: string;
-	children?: React.ReactNode;
-}
-interface LanguageProps {
-	children: string;
-	lang: BundledLanguage;
-}
-
-const getParserForLanguage = (language: string): string => {
-	const languageMap: { [key: string]: string } = {
-		js: "babel",
-		jsx: "babel",
-		ts: "typescript",
-		tsx: "typescript",
-		json: "json",
-		css: "css",
-		scss: "scss",
-		less: "less",
-		html: "html",
-		xml: "xml",
-		markdown: "markdown",
-		md: "markdown",
-		yaml: "yaml",
-		yml: "yaml",
-	};
-
-	return languageMap[language.toLowerCase()] || "babel";
-};
-
-async function CodeBlock(props: LanguageProps) {
-	const format = await prettier.format(props.children, {
-		semi: true,
-		singleQuote: true,
-		tabWidth: 2,
-		useTabs: false,
-		printWidth: 120,
-		parser: getParserForLanguage(props.lang),
-	});
-	const out = await codeToHtml(format, {
-		lang: props.lang,
-		theme: "houston",
-	});
-
-	return (
-		<div className="group relative">
-			<CopyButton text={format} />
-			<div
-				dangerouslySetInnerHTML={{ __html: out }}
-				className="text-sm p-4 rounded-lg bg-[#18191F] overflow-auto"
-			/>
-		</div>
-	);
-}
 export default async function BlogPostPage({ params }: Props) {
 	const { locale, slug } = await params;
 	// setRequestLocale(locale);
@@ -235,9 +174,8 @@ export default async function BlogPostPage({ params }: Props) {
 				className="object-cover max-w-lg mx-auto rounded-lg border max-lg:w-64 border-border overflow-hidden"
 			/>
 		),
-		code: ({ inline, className, children, ...props }: CodeProps) => {
+		code: ({ className, children }) => {
 			const match = /language-(\w+)/.exec(className || "");
-
 			return (
 				<CodeBlock lang={match ? (match[1] as BundledLanguage) : "ts"}>
 					{children?.toString() || ""}
