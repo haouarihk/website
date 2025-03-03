@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { Container } from "./Container";
-import Safari from "./ui/safari";
 
 const features = [
 	{

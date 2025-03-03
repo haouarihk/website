@@ -2,7 +2,7 @@ import { getPosts, getTags } from "@/lib/ghost";
 import type { Post } from "@/lib/ghost";
 import { RssIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { BlogPostCard } from "./components/BlogPostCard";
 import { SearchAndFilter } from "./components/SearchAndFilter";
@@ -19,19 +19,22 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage({
-	params: { locale },
+	params,
 	searchParams,
 }: {
 	params: { locale: string };
 	searchParams: { [key: string]: string | string[] | undefined };
 }) {
+	const { locale } = await params;
+	const searchParams2 = await searchParams;
+	setRequestLocale(locale);
 	const t = await getTranslations({ locale, namespace: "blog" });
 	const posts = await getPosts();
 	const tags = (await getTags()) as Tag[];
 	const search =
-		typeof searchParams.search === "string" ? searchParams.search : "";
+		typeof searchParams2.search === "string" ? searchParams2.search : "";
 	const selectedTag =
-		typeof searchParams.tag === "string" ? searchParams.tag : "";
+		typeof searchParams2.tag === "string" ? searchParams2.tag : "";
 
 	const filteredPosts = posts.filter((post) => {
 		const matchesSearch =

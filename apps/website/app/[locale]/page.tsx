@@ -7,8 +7,11 @@ import { Pricing } from "@/components/pricing";
 import { SecondaryFeaturesSections } from "@/components/secondary-features";
 import { Sponsors } from "@/components/sponsors";
 import { StatsSection } from "@/components/stats";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+	const { locale } = await params;
+	setRequestLocale(locale);
 	return (
 		<div>
 			<main>

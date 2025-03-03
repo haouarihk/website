@@ -4,6 +4,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://dokploy.com"),
@@ -75,6 +76,8 @@ export default async function RootLayout({
 	children: React.ReactNode;
 	params: { locale: string };
 }) {
+	const { locale } = await params;
+	setRequestLocale(locale);
 	return (
 		<div className="flex h-full flex-col">
 			<Header />

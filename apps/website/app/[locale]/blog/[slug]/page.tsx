@@ -1,7 +1,7 @@
 import { CopyButton } from "@/components/ui/copy-button";
 import { getPost, getPosts } from "@/lib/ghost";
 import type { Metadata, ResolvingMetadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,7 +27,8 @@ export async function generateMetadata(
 	{ params }: Props,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const post = await getPost(params.slug);
+	const { locale, slug } = await params;
+	const post = await getPost(slug);
 
 	if (!post) {
 		return {
@@ -36,10 +37,10 @@ export async function generateMetadata(
 	}
 
 	const ogUrl = new URL(
-		`/${params.locale}/api/og`,
+		`/${locale}/api/og`,
 		process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
 	);
-	ogUrl.searchParams.set("slug", params.slug);
+	ogUrl.searchParams.set("slug", slug);
 
 	return {
 		title: post.title,
@@ -69,10 +70,14 @@ export async function generateMetadata(
 
 export async function generateStaticParams() {
 	const posts = await getPosts();
+	const locales = ["en", "fr", "zh-Hans"];
 
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
+	return posts.flatMap((post) =>
+		locales.map((locale) => ({
+			locale,
+			slug: post.slug,
+		})),
+	);
 }
 
 interface CodeProps
@@ -126,13 +131,14 @@ async function CodeBlock(props: LanguageProps) {
 			<CopyButton text={format} />
 			<div
 				dangerouslySetInnerHTML={{ __html: out }}
-				className="text-sm p-4 rounded-lg bg-[#18191F]"
+				className="text-sm p-4 rounded-lg bg-[#18191F] overflow-auto"
 			/>
 		</div>
 	);
 }
 export default async function BlogPostPage({ params }: Props) {
-	const { locale, slug } = params;
+	const { locale, slug } = await params;
+	// setRequestLocale(locale);
 	const t = await getTranslations({ locale, namespace: "blog" });
 	const post = await getPost(slug);
 	const allPosts = await getPosts();
@@ -164,7 +170,10 @@ export default async function BlogPostPage({ params }: Props) {
 
 	const components: Partial<Components> = {
 		h1: ({ node, ...props }) => (
-			<h1 className="text-3xl text-primary font-bold mt-8 mb-4" {...props} />
+			<h1
+				className="text-xl md:text-2xl xl:text-3xl text-primary font-bold mt-8 mb-4"
+				{...props}
+			/>
 		),
 		h2: ({ node, ...props }) => (
 			<h2 className="text-2xl text-primary/90 font-bold mt-6 mb-3" {...props} />
@@ -230,7 +239,7 @@ export default async function BlogPostPage({ params }: Props) {
 			<ZoomableImage
 				src={src || ""}
 				alt={alt || ""}
-				className="object-cover max-w-lg mx-auto rounded-lg border border-border"
+				className="object-cover max-w-lg mx-auto rounded-lg border max-lg:w-64 border-border overflow-hidden"
 			/>
 		),
 		code: ({ inline, className, children, ...props }: CodeProps) => {
@@ -245,7 +254,7 @@ export default async function BlogPostPage({ params }: Props) {
 	};
 
 	return (
-		<article className="container mx-auto px-4 py-12 max-w-5xl">
+		<article className="container mx-auto px-4 pb-12 max-w-5xl">
 			<Link
 				href="/blog"
 				className="inline-flex items-center mb-8 text-primary hover:text-primary/80 transition-colors"
@@ -267,7 +276,9 @@ export default async function BlogPostPage({ params }: Props) {
 
 			<div className=" rounded-lg p-8 shadow-lg border border-border">
 				<header className="mb-8">
-					<h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+					<h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-4">
+						{post.title}
+					</h1>
 					<div className="flex items-center mb-6">
 						{post.primary_author?.profile_image && (
 							<div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
