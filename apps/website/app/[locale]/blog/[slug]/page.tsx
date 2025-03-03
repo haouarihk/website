@@ -221,18 +221,16 @@ export default async function BlogPostPage({ params }: Props) {
 											rel="noopener noreferrer"
 											className="block cursor-pointer transition-opacity hover:opacity-90"
 										>
-											<Image
+											<img
 												src={post.primary_author.profile_image}
 												alt={post.primary_author.name}
-												fill
 												className="object-cover"
 											/>
 										</a>
 									) : (
-										<Image
+										<img
 											src={post.primary_author.profile_image}
 											alt={post.primary_author.name}
-											fill
 											className="object-cover"
 										/>
 									)}
