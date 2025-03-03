@@ -276,7 +276,7 @@ export default async function BlogPostPage({ params }: Props) {
 
 			<div className=" rounded-lg p-8 shadow-lg border border-border">
 				<header className="mb-8">
-					<h1 className="text-2xl md:text-3xl xl:text-4xl font-bold mb-4">
+					<h1 className="text-xl md:text-2xl xl:text-3xl font-bold mb-4">
 						{post.title}
 					</h1>
 					<div className="flex items-center mb-6">
