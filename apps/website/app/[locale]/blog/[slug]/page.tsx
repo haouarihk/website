@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import * as prettier from "prettier";
+import prettier from "prettier";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import type React from "react";
 import ReactMarkdown from "react-markdown";
