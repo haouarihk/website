@@ -67,21 +67,20 @@ export async function generateMetadata(
 	};
 }
 
-export async function generateStaticParams() {
-	const posts = await getPosts();
-	const locales = ["en", "fr", "zh-Hans"];
+// export async function generateStaticParams() {
+// 	const posts = await getPosts();
+// 	const locales = ["en", "fr", "zh-Hans"];
 
-	return posts.flatMap((post) =>
-		locales.map((locale) => ({
-			locale,
-			slug: post.slug,
-		})),
-	);
-}
+// 	return posts.flatMap((post) =>
+// 		locales.map((locale) => ({
+// 			locale,
+// 			slug: post.slug,
+// 		})),
+// 	);
+// }
 
 export default async function BlogPostPage({ params }: Props) {
 	const { slug } = await params;
-	// setRequestLocale(locale);
 	const t = await getTranslations("blog");
 	const post = await getPost(slug);
 	const allPosts = await getPosts();
