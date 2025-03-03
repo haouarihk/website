@@ -47,29 +47,37 @@ export function TableOfContents() {
 		<nav className="space-y-2 text-sm">
 			<p className="font-medium mb-4">Table of Contents</p>
 			<ul className="space-y-2">
-				{headings.map((heading) => (
-					<li
-						key={heading.id}
-						style={{ paddingLeft: `${(heading.level - 1) * 1}rem` }}
-					>
-						<a
-							href={`#${heading.id}`}
-							onClick={(e) => {
-								e.preventDefault();
-								document.getElementById(heading.id)?.scrollIntoView({
-									behavior: "smooth",
-								});
-							}}
-							className={`hover:text-primary transition-colors block ${
-								activeId === heading.id
-									? "text-primary font-medium"
-									: "text-muted-foreground"
-							}`}
-						>
-							{heading.text}
-						</a>
+				{headings.length > 0 ? (
+					<>
+						{headings.map((heading) => (
+							<li
+								key={heading.id}
+								style={{ paddingLeft: `${(heading.level - 1) * 1}rem` }}
+							>
+								<a
+									href={`#${heading.id}`}
+									onClick={(e) => {
+										e.preventDefault();
+										document.getElementById(heading.id)?.scrollIntoView({
+											behavior: "smooth",
+										});
+									}}
+									className={`hover:text-primary transition-colors block ${
+										activeId === heading.id
+											? "text-primary font-medium"
+											: "text-muted-foreground"
+									}`}
+								>
+									{heading.text}
+								</a>
+							</li>
+						))}
+					</>
+				) : (
+					<li>
+						<p className="text-muted-foreground">No headings found</p>
 					</li>
-				))}
+				)}
 			</ul>
 		</nav>
 	);
