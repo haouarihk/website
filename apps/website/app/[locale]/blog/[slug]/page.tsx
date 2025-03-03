@@ -177,9 +177,10 @@ export default async function BlogPostPage({ params }: Props) {
 		code: ({ className, children }) => {
 			const match = /language-(\w+)/.exec(className || "");
 			return (
-				<CodeBlock lang={match ? (match[1] as BundledLanguage) : "ts"}>
-					{children?.toString() || ""}
-				</CodeBlock>
+				<CodeBlock
+					lang={match ? (match[1] as BundledLanguage) : "ts"}
+					code={children?.toString() || ""}
+				/>
 			);
 		},
 	};
