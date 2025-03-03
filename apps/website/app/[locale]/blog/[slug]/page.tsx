@@ -22,50 +22,50 @@ type Props = {
 	params: { locale: string; slug: string };
 };
 
-export async function generateMetadata(
-	{ params }: Props,
-	parent: ResolvingMetadata,
-): Promise<Metadata> {
-	const { locale, slug } = await params;
-	const post = await getPost(slug);
+// export async function generateMetadata(
+// 	{ params }: Props,
+// 	parent: ResolvingMetadata,
+// ): Promise<Metadata> {
+// 	const { locale, slug } = await params;
+// 	const post = await getPost(slug);
 
-	if (!post) {
-		return {
-			title: "Post Not Found",
-		};
-	}
+// 	if (!post) {
+// 		return {
+// 			title: "Post Not Found",
+// 		};
+// 	}
 
-	const ogUrl = new URL(
-		`/${locale}/api/og`,
-		process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-	);
-	ogUrl.searchParams.set("slug", slug);
+// 	const ogUrl = new URL(
+// 		`/${locale}/api/og`,
+// 		process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+// 	);
+// 	ogUrl.searchParams.set("slug", slug);
 
-	return {
-		title: post.title,
-		description: post.custom_excerpt || post.excerpt,
-		openGraph: {
-			title: post.title,
-			description: post.custom_excerpt || post.excerpt,
-			type: "article",
-			url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${post.slug}`,
-			images: [
-				{
-					url: ogUrl.toString(),
-					width: 1200,
-					height: 630,
-					alt: post.title,
-				},
-			],
-		},
-		twitter: {
-			card: "summary_large_image",
-			title: post.title,
-			description: post.custom_excerpt || post.excerpt,
-			images: [ogUrl.toString()],
-		},
-	};
-}
+// 	return {
+// 		title: post.title,
+// 		description: post.custom_excerpt || post.excerpt,
+// 		openGraph: {
+// 			title: post.title,
+// 			description: post.custom_excerpt || post.excerpt,
+// 			type: "article",
+// 			url: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${post.slug}`,
+// 			images: [
+// 				{
+// 					url: ogUrl.toString(),
+// 					width: 1200,
+// 					height: 630,
+// 					alt: post.title,
+// 				},
+// 			],
+// 		},
+// 		twitter: {
+// 			card: "summary_large_image",
+// 			title: post.title,
+// 			description: post.custom_excerpt || post.excerpt,
+// 			images: [ogUrl.toString()],
+// 		},
+// 	};
+// }
 
 export async function generateStaticParams() {
 	const posts = await getPosts();
