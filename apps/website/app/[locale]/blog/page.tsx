@@ -2,11 +2,10 @@ import { getPosts, getTags } from "@/lib/ghost";
 import type { Post } from "@/lib/ghost";
 import { RssIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { BlogPostCard } from "./components/BlogPostCard";
 import { SearchAndFilter } from "./components/SearchAndFilter";
-
 interface Tag {
 	id: string;
 	name: string;
@@ -27,8 +26,7 @@ export default async function BlogPage({
 }) {
 	const { locale } = await params;
 	const searchParams2 = await searchParams;
-	setRequestLocale(locale);
-	const t = await getTranslations({ locale, namespace: "blog" });
+	const t = await getTranslations("blog");
 	const posts = await getPosts();
 	const tags = (await getTags()) as Tag[];
 	const search =

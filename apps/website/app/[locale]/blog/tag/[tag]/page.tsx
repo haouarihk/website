@@ -11,8 +11,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { tag, locale } = params;
-	const t = await getTranslations({ locale, namespace: "blog" });
+	const { tag } = await params;
+	const t = await getTranslations("blog");
 
 	return {
 		title: `${t("tagTitle", { tag })}`,
@@ -29,8 +29,8 @@ export async function generateStaticParams() {
 }
 
 export default async function TagPage({ params }: Props) {
-	const { locale, tag } = params;
-	const t = await getTranslations({ locale, namespace: "blog" });
+	const { tag } = await params;
+	const t = await getTranslations("blog");
 	const posts = await getPostsByTag(tag);
 
 	if (!posts || posts.length === 0) {
