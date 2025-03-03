@@ -87,7 +87,7 @@ export async function generateOGImage({
 							color: "#fff",
 							zIndex: 1,
 						},
-						children: "Dokploy",
+						children: "Dokploy - Blog Post",
 					},
 				},
 				{
