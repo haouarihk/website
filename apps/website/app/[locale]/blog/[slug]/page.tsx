@@ -19,6 +19,7 @@ import slugify from "slugify";
 import TurndownService from "turndown";
 // @ts-ignore
 import * as turndownPluginGfm from "turndown-plugin-gfm";
+import { H1, H2, H3 } from "./components/Headings";
 import { TableOfContents } from "./components/TableOfContents";
 import { ZoomableImage } from "./components/ZoomableImage";
 
@@ -172,55 +173,17 @@ export default async function BlogPostPage({ params }: Props) {
 	});
 
 	const components: Partial<Components> = {
-		h1: ({ node, ...props }) => {
-			const id = slugify(props.children?.toString() || "", {
-				lower: true,
-				strict: true,
-			});
-			return (
-				<h1
-					id={id}
-					className="text-xl md:text-2xl xl:text-3xl text-primary font-bold mt-8 mb-4"
-					{...props}
-				/>
-			);
-		},
-		h2: ({ node, ...props }) => {
-			const id = slugify(props.children?.toString() || "", {
-				lower: true,
-				strict: true,
-			});
-			return (
-				<h2
-					id={id}
-					className="text-2xl text-primary/90 font-semibold mt-6 mb-3"
-					{...props}
-				/>
-			);
-		},
-		h3: ({ node, ...props }) => {
-			const id = slugify(props.children?.toString() || "", {
-				lower: true,
-				strict: true,
-			});
-			return (
-				<h3
-					id={id}
-					className="text-xl text-primary/90 font-semibold mt-4 mb-2"
-					{...props}
-				/>
-			);
-		},
-		p: ({ node, children, ...props }) => {
-			return (
-				<p
-					className="text-base text-muted-foreground leading-relaxed mb-4"
-					{...props}
-				>
-					{children}
-				</p>
-			);
-		},
+		h1: H1,
+		h2: H2,
+		h3: H3,
+		p: ({ node, children, ...props }) => (
+			<p
+				className="text-base text-muted-foreground leading-relaxed mb-4"
+				{...props}
+			>
+				{children}
+			</p>
+		),
 		a: ({ node, href, ...props }) => (
 			<a
 				href={href}
