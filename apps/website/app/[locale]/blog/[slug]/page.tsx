@@ -1,3 +1,4 @@
+import { CopyButton } from "@/components/ui/copy-button";
 import { getPost, getPosts } from "@/lib/ghost";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -121,10 +122,13 @@ async function CodeBlock(props: LanguageProps) {
 	});
 
 	return (
-		<div
-			dangerouslySetInnerHTML={{ __html: out }}
-			className="text-sm p-4 rounded-lg bg-[#18191F]"
-		/>
+		<div className="group relative">
+			<CopyButton text={format} />
+			<div
+				dangerouslySetInnerHTML={{ __html: out }}
+				className="text-sm p-4 rounded-lg bg-[#18191F]"
+			/>
+		</div>
 	);
 }
 export default async function BlogPostPage({ params }: Props) {
