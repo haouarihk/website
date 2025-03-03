@@ -14,7 +14,7 @@ import type { BundledLanguage } from "shiki/bundle/web";
 import TurndownService from "turndown";
 // @ts-ignore
 import * as turndownPluginGfm from "turndown-plugin-gfm";
-import { CodeBlock } from "./components/CodeBlock";
+// import { CodeBlock } from "./components/CodeBlock";
 import { H1, H2, H3 } from "./components/Headings";
 import { TableOfContents } from "./components/TableOfContents";
 import { ZoomableImage } from "./components/ZoomableImage";
@@ -178,15 +178,15 @@ export default async function BlogPostPage({ params }: Props) {
 					className="object-cover max-w-lg mx-auto rounded-lg border max-lg:w-64 border-border overflow-hidden"
 				/>
 			),
-			code: ({ className, children }) => {
-				const match = /language-(\w+)/.exec(className || "");
-				return (
-					<CodeBlock
-						lang={match ? (match[1] as BundledLanguage) : "ts"}
-						code={children?.toString() || ""}
-					/>
-				);
-			},
+			// code: ({ className, children }) => {
+			// 	const match = /language-(\w+)/.exec(className || "");
+			// 	return (
+			// 		<CodeBlock
+			// 			lang={match ? (match[1] as BundledLanguage) : "ts"}
+			// 			code={children?.toString() || ""}
+			// 		/>
+			// 	);
+			// },
 		};
 
 		return (
