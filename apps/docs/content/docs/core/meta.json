@@ -36,7 +36,7 @@
 		"(examples)",
 		"auto-deploy",
 		"providers",
-
+		"watch-paths",
 		"---Advanced---",
 		"cluster",
 		"multi-server"
