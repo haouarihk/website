@@ -3,6 +3,7 @@
 import { CopyButton } from "@/components/ui/copy-button";
 import * as babel from "prettier/plugins/babel";
 import * as estree from "prettier/plugins/estree";
+import * as yaml from "prettier/plugins/yaml";
 import * as prettier from "prettier/standalone";
 import { type JSX, useLayoutEffect, useState } from "react";
 import type { BundledLanguage } from "shiki/bundle/web";
@@ -16,12 +17,32 @@ interface CodeBlockProps {
 
 async function formatCode(code: string, lang: string) {
 	try {
-		// Configuración básica para JavaScript/TypeScript
-		const plugins = [babel, estree];
-		console.log("Formatting with plugins:", plugins);
+		let parser: string;
+		let plugins = [];
+
+		// Select parser and plugins based on language
+		switch (lang.toLowerCase()) {
+			case "yaml":
+			case "yml":
+				parser = "yaml";
+				plugins = [yaml];
+				break;
+			case "javascript":
+			case "typescript":
+			case "jsx":
+			case "tsx":
+				parser = "babel-ts";
+				plugins = [babel, estree];
+				break;
+			default:
+				// For unsupported languages, return the original code
+				return code;
+		}
+
+		console.log(`Formatting ${lang} with parser:`, parser);
 
 		const formatted = await prettier.format(code, {
-			parser: "babel-ts",
+			parser,
 			plugins,
 			semi: true,
 			singleQuote: true,
@@ -34,7 +55,7 @@ async function formatCode(code: string, lang: string) {
 		return formatted;
 	} catch (error) {
 		console.error("Error formatting code:", error);
-		return code; // Retorna el código original si hay error
+		return code; // Return original code if there's an error
 	}
 }
 
