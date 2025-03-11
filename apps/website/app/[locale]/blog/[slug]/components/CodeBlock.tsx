@@ -46,6 +46,7 @@ export function CodeBlock({ code, lang, initial }: CodeBlockProps) {
 		async function formatAndHighlight() {
 			try {
 				console.log("Original code:", code);
+				console.log("Language:", lang);
 				const formatted = await formatCode(code, lang);
 				setFormattedCode(formatted);
 

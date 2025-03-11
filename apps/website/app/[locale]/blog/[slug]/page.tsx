@@ -329,10 +329,9 @@ export default async function BlogPostPage({ params }: Props) {
 									<div className="bg-card rounded-lg overflow-hidden h-full shadow-lg transition-all duration-300 hover:shadow-xl border border-border">
 										{relatedPost.feature_image && (
 											<div className="relative h-48 w-full">
-												<Image
-													src={relatedPost.feature_image}
+												<img
+													src={relatedPost.feature_image || "/og.png"}
 													alt={relatedPost.title}
-													fill
 													className="object-cover"
 												/>
 											</div>
