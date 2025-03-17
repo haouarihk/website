@@ -2,6 +2,7 @@
 import React from "react";
 
 import { cn } from "@/lib/utils";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import {
@@ -10,7 +11,6 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "./tooltip";
-
 interface RippleProps {
 	mainCircleSize?: number;
 	mainCircleOpacity?: number;
@@ -223,11 +223,13 @@ const Ripple = React.memo(function Ripple({
 																</Avatar>
 															</Link>
 														</TooltipTrigger>
-														<TooltipContent>
-															<p className="text-xs font-semibold ">
-																{item.name}
-															</p>
-														</TooltipContent>
+														<TooltipPrimitive.Portal>
+															<TooltipContent>
+																<p className="text-xs font-semibold ">
+																	{item.name}
+																</p>
+															</TooltipContent>
+														</TooltipPrimitive.Portal>
 													</Tooltip>
 												</TooltipProvider>
 											</div>
@@ -270,11 +272,13 @@ const Ripple = React.memo(function Ripple({
 																</Avatar>
 															</Link>
 														</TooltipTrigger>
-														<TooltipContent>
-															<p className="text-xs font-semibold ">
-																{item.name}
-															</p>
-														</TooltipContent>
+														<TooltipPrimitive.Portal>
+															<TooltipContent>
+																<p className="text-xs font-semibold ">
+																	{item.name}
+																</p>
+															</TooltipContent>
+														</TooltipPrimitive.Portal>
 													</Tooltip>
 												</TooltipProvider>
 											</div>
@@ -317,11 +321,13 @@ const Ripple = React.memo(function Ripple({
 																</Avatar>
 															</Link>
 														</TooltipTrigger>
-														<TooltipContent>
-															<p className="text-xs font-semibold ">
-																{item.name}
-															</p>
-														</TooltipContent>
+														<TooltipPrimitive.Portal>
+															<TooltipContent>
+																<p className="text-xs font-semibold ">
+																	{item.name}
+																</p>
+															</TooltipContent>
+														</TooltipPrimitive.Portal>
 													</Tooltip>
 												</TooltipProvider>
 											</div>
