@@ -440,9 +440,6 @@ export function Pricing() {
 												{t("plan.selfHosted.buyNow")}
 											</Link>
 										</Button>
-										<Button variant="outline">
-											{t("plan.selfHosted.contactSales")}
-										</Button>
 									</div>
 								</section>
 
@@ -522,9 +519,6 @@ export function Pricing() {
 											<Link href="https://app.dokploy.com/buy/enterprise">
 												{t("plan.selfHosted.buyNow")}
 											</Link>
-										</Button>
-										<Button variant="outline">
-											{t("plan.selfHosted.contactSales")}
 										</Button>
 									</div>
 								</section>
