@@ -2,7 +2,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import confetti from "canvas-confetti";
-import { CheckCircle2, Copy, Terminal } from "lucide-react";
+import { CheckCircle2, Copy, Mail, Terminal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -46,10 +46,17 @@ export default function LicenseSuccess() {
 						Thank you for your purchase!
 					</h1>
 
-					<p className="text-xl leading-8 text-zinc-400 mb-12">
+					<p className="text-xl leading-8 text-zinc-400 mb-6">
 						Your Dokploy license has been successfully activated. Here's your
 						API key to get started.
 					</p>
+
+					<div className="flex items-center justify-center gap-2 mb-12">
+						<Mail className="h-5 w-5 text-zinc-500" />
+						<p className="text-sm text-zinc-500">
+							We've also sent your API key to your email for safekeeping
+						</p>
+					</div>
 
 					<div className="bg-black/50 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 mb-12">
 						<div className="flex flex-col items-center space-y-6">
