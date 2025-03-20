@@ -167,8 +167,6 @@ export function Pricing() {
 
 			const { sessionId } = await response.json();
 
-			console.log(sessionId);
-
 			// Redirect to Stripe checkout
 			const { error } = await stripe.redirectToCheckout({
 				sessionId,
