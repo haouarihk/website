@@ -168,6 +168,7 @@ export function Header() {
 								{t("navigation.docs")}
 							</NavLink>
 							<NavLink href="/blog">{t("navigation.blog")}</NavLink>
+							<NavLink href="/reset-license">Reset License</NavLink>
 						</div>
 					</div>
 					<div className="flex items-center gap-x-4 md:gap-x-5">

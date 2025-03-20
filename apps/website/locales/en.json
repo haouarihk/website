@@ -177,6 +177,51 @@
 					"f8": "New Updates"
 				},
 				"go": "Subscribe"
+			},
+			"selfHosted": {
+				"title": "Self-Hosted License",
+				"description": "Deploy and manage Dokploy on your own infrastructure with enterprise-grade features and support",
+				"basic": {
+					"title": "Basic License",
+					"description": "Perfect for small teams and startups",
+					"priceAnnual": "$89.99",
+					"priceMonthly": "$9.99",
+					"features": {
+						"f1": "Remote Servers Monitoring",
+						"f2": "Priority Support",
+						"f3": "New Updates"
+					}
+				},
+				"professional": {
+					"title": "Premium License",
+					"description": "For growing businesses",
+					"priceAnnual": "$199.99",
+					"priceMonthly": "$19.99",
+					"features": {
+						"f1": "Remote Servers Monitoring",
+						"f2": "Priority Support",
+						"f3": "New Updates",
+						"f4": "Custom branding"
+					}
+				},
+				"enterprise": {
+					"title": "Business License",
+					"description": "For large organizations",
+					"priceAnnual": "$299.99",
+					"priceMonthly": "$29.99",
+					"features": {
+						"f1": "Remote Servers Monitoring",
+						"f2": "24/7 Premium support",
+						"f3": "Security updates",
+						"f4": "Custom branding",
+						"f5": "Custom features"
+					}
+				},
+				"buyNow": "Buy Now",
+				"billingCycle": {
+					"monthly": "Monthly",
+					"annual": "Annual"
+				}
 			}
 		},
 		"faq": {
@@ -214,5 +259,14 @@
 		"backToBlog": "Back to Blog",
 		"tags": "Tags",
 		"postsTaggedWith": "Posts tagged with"
+	},
+	"Header": {
+		"signIn": "Sign in",
+		"signInCloud": "Sign in to Dokploy Cloud",
+		"pricing": "Pricing",
+		"faqs": "FAQs",
+		"docs": "Documentation",
+		"blog": "Blog",
+		"resetLicense": "Reset License"
 	}
 }

@@ -87,6 +87,7 @@ export function Pricing() {
 	const router = useRouter();
 	const t = useTranslations("Pricing");
 	const [isAnnual, setIsAnnual] = useState(false);
+	const [isSelfHostedAnnual, setIsSelfHostedAnnual] = useState(false);
 	const [serverQuantity, setServerQuantity] = useState(1);
 	const featured = true;
 
@@ -176,7 +177,6 @@ export function Pricing() {
 								</p>
 
 								<ul
-									role="list"
 									className={clsx(
 										" mt-4 flex flex-col gap-y-2 text-sm",
 										featured ? "text-white" : "text-slate-200",
@@ -264,7 +264,6 @@ export function Pricing() {
 								</p>
 
 								<ul
-									role="list"
 									className={clsx(
 										" mt-4 flex flex-col gap-y-2 text-sm",
 										featured ? "text-white" : "text-slate-200",
@@ -372,6 +371,164 @@ export function Pricing() {
 									</div>
 								</div>
 							</section>
+						</div>
+
+						{/* Divider */}
+						<div className="w-full border-t border-border/30 my-16" />
+
+						{/* Self-hosted License Section */}
+						<div className="w-full">
+							<div className="text-center mb-16">
+								<h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl mb-4">
+									{t("plan.selfHosted.title")}
+								</h2>
+								<p className="text-lg text-muted-foreground">
+									{t("plan.selfHosted.description")}
+								</p>
+								<div className="mt-8">
+									<Tabs
+										defaultValue="monthly"
+										value={isSelfHostedAnnual ? "annual" : "monthly"}
+										onValueChange={(e) => setIsSelfHostedAnnual(e === "annual")}
+									>
+										<TabsList>
+											<TabsTrigger value="monthly">
+												{t("plan.selfHosted.billingCycle.monthly")}
+											</TabsTrigger>
+											<TabsTrigger value="annual">
+												{t("plan.selfHosted.billingCycle.annual")}
+											</TabsTrigger>
+										</TabsList>
+									</Tabs>
+								</div>
+							</div>
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+								{/* Basic License */}
+								<section className="flex flex-col rounded-3xl border-2 border-dashed border-muted px-4 py-8">
+									<div className="flex flex-row items-center gap-2">
+										<p className="text-2xl font-semibold tracking-tight text-primary">
+											{isSelfHostedAnnual
+												? t("plan.selfHosted.basic.priceAnnual")
+												: t("plan.selfHosted.basic.priceMonthly")}{" "}
+											USD
+										</p>
+										<span className="text-muted-foreground">
+											/ {isSelfHostedAnnual ? "year" : "month"}
+										</span>
+									</div>
+									<h3 className="mt-4 text-lg font-medium text-white">
+										{t("plan.selfHosted.basic.title")}
+									</h3>
+									<p className="text-sm text-muted-foreground">
+										{t("plan.selfHosted.basic.description")}
+									</p>
+									<ul className="mt-4 flex flex-col gap-y-2 text-sm">
+										{Object.keys(t.raw("plan.selfHosted.basic.features")).map(
+											(key) => (
+												<li key={key} className="flex text-muted-foreground">
+													<CheckIcon />
+													<span className="ml-2">
+														{t(`plan.selfHosted.basic.features.${key}`)}
+													</span>
+												</li>
+											),
+										)}
+									</ul>
+									<div className="mt-6 flex flex-col gap-2">
+										<Button asChild>
+											<Link href="https://app.dokploy.com/buy/basic">
+												{t("plan.selfHosted.buyNow")}
+											</Link>
+										</Button>
+										<Button variant="outline">
+											{t("plan.selfHosted.contactSales")}
+										</Button>
+									</div>
+								</section>
+
+								{/* Professional License */}
+								<section className="flex flex-col rounded-3xl border-2 border-dashed border-muted px-4 py-8 bg-black/50">
+									<div className="flex flex-row items-center gap-2">
+										<p className="text-2xl font-semibold tracking-tight text-primary">
+											{isSelfHostedAnnual
+												? t("plan.selfHosted.professional.priceAnnual")
+												: t("plan.selfHosted.professional.priceMonthly")}{" "}
+											USD
+										</p>
+										<span className="text-muted-foreground">
+											/ {isSelfHostedAnnual ? "year" : "month"}
+										</span>
+									</div>
+									<h3 className="mt-4 text-lg font-medium text-white">
+										{t("plan.selfHosted.professional.title")}
+									</h3>
+									<p className="text-sm text-muted-foreground">
+										{t("plan.selfHosted.professional.description")}
+									</p>
+									<ul className="mt-4 flex flex-col gap-y-2 text-sm">
+										{Object.keys(
+											t.raw("plan.selfHosted.professional.features"),
+										).map((key) => (
+											<li key={key} className="flex text-muted-foreground">
+												<CheckIcon />
+												<span className="ml-2">
+													{t(`plan.selfHosted.professional.features.${key}`)}
+												</span>
+											</li>
+										))}
+									</ul>
+									<div className="mt-6 flex flex-col gap-2">
+										<Button asChild>
+											<Link href="https://app.dokploy.com/buy/professional">
+												{t("plan.selfHosted.buyNow")}
+											</Link>
+										</Button>
+									</div>
+								</section>
+
+								{/* Enterprise License */}
+								<section className="flex flex-col rounded-3xl border-2 border-dashed border-muted px-4 py-8">
+									<div className="flex flex-row items-center gap-2">
+										<p className="text-2xl font-semibold tracking-tight text-primary">
+											{isSelfHostedAnnual
+												? t("plan.selfHosted.enterprise.priceAnnual")
+												: t("plan.selfHosted.enterprise.priceMonthly")}{" "}
+											USD
+										</p>
+										<span className="text-muted-foreground">
+											/ {isSelfHostedAnnual ? "year" : "month"}
+										</span>
+									</div>
+									<h3 className="mt-4 text-lg font-medium text-white">
+										{t("plan.selfHosted.enterprise.title")}
+									</h3>
+									<p className="text-sm text-muted-foreground">
+										{t("plan.selfHosted.enterprise.description")}
+									</p>
+									<ul className="mt-4 flex flex-col gap-y-2 text-sm">
+										{Object.keys(
+											t.raw("plan.selfHosted.enterprise.features"),
+										).map((key) => (
+											<li key={key} className="flex text-muted-foreground">
+												<CheckIcon />
+												<span className="ml-2">
+													{t(`plan.selfHosted.enterprise.features.${key}`)}
+												</span>
+											</li>
+										))}
+									</ul>
+									<div className="mt-6 flex flex-col gap-2">
+										<Button asChild>
+											<Link href="https://app.dokploy.com/buy/enterprise">
+												{t("plan.selfHosted.buyNow")}
+											</Link>
+										</Button>
+										<Button variant="outline">
+											{t("plan.selfHosted.contactSales")}
+										</Button>
+									</div>
+								</section>
+							</div>
 						</div>
 					</div>
 				</div>
