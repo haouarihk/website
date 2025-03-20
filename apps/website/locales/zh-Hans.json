@@ -122,6 +122,11 @@
 		},
 		"footer": {
 			"copyright": "版权属于 © {year} Dokploy， 保留所有权利"
+		},
+		"selfHosted": {
+			"title": "自托管许可证",
+			"description": "在您自己的基础设施上部署和管理 Dokploy，享受企业级功能和支持",
+			"servers": "{serverQuantity} 台服务器"
 		}
 	},
 	"404": {

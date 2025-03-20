@@ -181,6 +181,7 @@
 			"selfHosted": {
 				"title": "Self-Hosted License",
 				"description": "Deploy and manage Dokploy on your own infrastructure with enterprise-grade features and support",
+				"servers": "{serverQuantity} Servers",
 				"basic": {
 					"title": "Basic License",
 					"description": "Perfect for small teams and startups",

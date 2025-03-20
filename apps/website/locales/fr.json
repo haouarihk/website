@@ -176,6 +176,20 @@
 					"f7": "Nouvelles mises à jour"
 				},
 				"go": "S'abonner"
+			},
+			"selfHosted": {
+				"title": "Licence Auto-hébergée",
+				"description": "Déployez et gérez Dokploy sur votre propre infrastructure avec des fonctionnalités et un support de niveau entreprise",
+				"servers": "{serverQuantity} Serveurs",
+				"features": {
+					"f1": "Complete Flexibility: Install Dokploy UI on your own infrastructure",
+					"f2": "Infrastructure Auto-Hébergée",
+					"f3": "Support de la communauté",
+					"f4": "Accès à toutes les fonctionnalités",
+					"f5": "Accès à toutes les mises à jour",
+					"f9": "Serveurs Illimitées"
+				},
+				"go": "Installation"
 			}
 		},
 		"faq": {

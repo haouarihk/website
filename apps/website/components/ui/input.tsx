@@ -36,7 +36,7 @@ const NumberInput = React.forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<Input
 				type="text"
-				className={cn("text-left", className)}
+				className={cn("text-center", className)}
 				ref={ref}
 				{...props}
 				value={props.value === undefined ? undefined : String(props.value)}
@@ -45,7 +45,9 @@ const NumberInput = React.forwardRef<HTMLInputElement, InputProps>(
 					if (value === "") {
 						props.onChange?.(e);
 					} else {
-						const number = Number.parseInt(value, 10);
+						// Remove currency symbol and convert to number
+						const numericValue = value.replace(/[^0-9.]/g, "");
+						const number = Number.parseFloat(numericValue);
 						if (!Number.isNaN(number)) {
 							const syntheticEvent = {
 								...e,
