@@ -1,12 +1,14 @@
 "use client";
 
 import { Container } from "@/components/Container";
+import { SERVER_LICENSE_URL } from "@/components/pricing";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-
+import { toast } from "sonner";
 export default function ResetLicensePage() {
 	const [email, setEmail] = useState("");
+	const [showOtp, setShowOtp] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -14,24 +16,35 @@ export default function ResetLicensePage() {
 		setIsLoading(true);
 
 		try {
-			// Here you would add the API call to reset the license
-			// For now, we'll just simulate a success response
-			await new Promise((resolve) => setTimeout(resolve, 1500));
+			const result = await fetch(`${SERVER_LICENSE_URL}/license/verification`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email }),
+			});
 
-			// toast({
-			// 	title: "Success!",
-			// 	description:
-			// 		"If an account exists with this email, you will receive instructions to reset your license.",
-			// 	variant: "default",
-			// });
+			const data = await result.json();
+			console.log(data);
 
-			setEmail("");
+			if (data.error) {
+				toast.error(
+					"Error sending verification code. Please try again later.",
+					{
+						description: data.error,
+					},
+				);
+			} else {
+				toast.success(
+					"We've sent you a code to verify your email. Please check your email for the code.",
+				);
+				setShowOtp(true);
+			}
 		} catch (error) {
-			// toast({
-			// 	title: "Error",
-			// 	description: "Something went wrong. Please try again later.",
-			// 	variant: "destructive",
-			// });
+			toast.error("Something went wrong. Please try again later.", {
+				duration: 15000,
+				description: error instanceof Error ? error.message : "Unknown error",
+			});
 		} finally {
 			setIsLoading(false);
 		}

@@ -80,8 +80,6 @@ export default function LicenseSuccess() {
 		toast.success("Copied to clipboard");
 	};
 
-	console.log(error);
-
 	return (
 		<div className="relative min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black">
 			<div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
