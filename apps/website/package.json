@@ -12,6 +12,7 @@
 	},
 	"browserslist": "defaults, not ie <= 11",
 	"dependencies": {
+		"copy-to-clipboard": "3.3.3",
 		"@headlessui/react": "^2.2.0",
 		"@headlessui/tailwindcss": "^0.2.0",
 		"@prettier/plugin-xml": "^3.4.1",

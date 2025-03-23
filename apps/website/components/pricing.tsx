@@ -50,7 +50,7 @@ function SwirlyDoodle(props: React.ComponentPropsWithoutRef<"svg">) {
 	);
 }
 
-const SERVER_LICENSE_URL =
+export const SERVER_LICENSE_URL =
 	process.env.NODE_ENV === "development"
 		? "http://localhost:4002/api"
 		: "https://licenses.dokploy.com";
