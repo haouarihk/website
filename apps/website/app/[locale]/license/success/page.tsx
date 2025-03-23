@@ -6,6 +6,7 @@ import copy from "copy-to-clipboard";
 import {
 	CheckCircle2,
 	Copy,
+	CopyIcon,
 	Loader2,
 	Mail,
 	RefreshCcw,
@@ -14,6 +15,7 @@ import {
 import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface LicenseSessionResponse {
 	type: "basic" | "professional" | "business";
@@ -70,6 +72,7 @@ export default function LicenseSuccess() {
 		copy(data?.key ?? "");
 		setCopied(true);
 		setTimeout(() => setCopied(false), 2000);
+		toast.success("Copied to clipboard");
 	};
 
 	return (
@@ -169,15 +172,30 @@ export default function LicenseSuccess() {
 											Steps to enable paid features
 										</p>
 										<ul>
-											<li>
-												<span>1. Web Server</span>
+											<li className="flex items-center gap-2">
+												<span>1. Install Dokploy Instance on your server</span>
+												<code className="text-green-500 font-mono bg-black rounded-lg p-1">
+													curl -sSL https://dokploy.com/install.sh | sh
+												</code>
+												<CopyIcon
+													className="w-4 h-4 cursor-pointer"
+													onClick={() => {
+														copy(
+															"curl -sSL https://dokploy.com/install.sh | sh",
+														);
+														toast.success("Copied to clipboard");
+													}}
+												/>
 											</li>
 											<li>
-												<span>2. Enable Paid Features</span>
+												<span>2. Go to your web server section</span>
+											</li>
+											<li>
+												<span>3. Enable Paid Features</span>
 											</li>
 											<li>
 												<span>
-													3. Copy the Key Below and Paste it in the license key
+													4. Copy the Key Below and Paste it in the license key
 													field and click on validate
 												</span>
 											</li>
