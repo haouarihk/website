@@ -40,7 +40,7 @@ export default function LicenseSuccess() {
 
 	useEffect(() => {
 		setLoading(true);
-		console.log(`${SERVER_LICENSE_URL}/license/session?sessionId=${sessionId}`);
+
 		fetch(`${SERVER_LICENSE_URL}/license/session?sessionId=${sessionId}`, {
 			method: "GET",
 			headers: {
@@ -48,10 +48,15 @@ export default function LicenseSuccess() {
 			},
 		})
 			.then((res) => res.json())
-			.then((data) => setData(data))
+			.then((data) => {
+				if (data.error) {
+					setError(data.error);
+				} else {
+					setData(data);
+				}
+			})
 			.catch((err) => {
-				console.error(err);
-				setError(err.message);
+				setError(err);
 			})
 			.finally(() => {
 				setLoading(false);
@@ -74,6 +79,8 @@ export default function LicenseSuccess() {
 		setTimeout(() => setCopied(false), 2000);
 		toast.success("Copied to clipboard");
 	};
+
+	console.log(error);
 
 	return (
 		<div className="relative min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black">
@@ -171,9 +178,9 @@ export default function LicenseSuccess() {
 										<p className="text-zinc-400 text-sm">
 											Steps to enable paid features
 										</p>
-										<ul>
+										<ul className="space-y-3">
 											<li className="flex items-center gap-2">
-												<span>1. Install Dokploy Instance on your server</span>
+												<span>1. Install Dokploy</span>
 												<code className="text-green-500 font-mono bg-black rounded-lg p-1">
 													curl -sSL https://dokploy.com/install.sh | sh
 												</code>
@@ -188,35 +195,59 @@ export default function LicenseSuccess() {
 												/>
 											</li>
 											<li>
-												<span>2. Go to your web server section</span>
-											</li>
-											<li>
-												<span>3. Enable Paid Features</span>
+												<span>
+													2. Navigate to Settings → License in your Dokploy
+													dashboard
+												</span>
 											</li>
 											<li>
 												<span>
-													4. Copy the Key Below and Paste it in the license key
-													field and click on validate
+													3. Enter your license key below and click Validate
+												</span>
+											</li>
+											<li>
+												<span>
+													4. All premium features will be automatically unlocked
+													depending on your license type
 												</span>
 											</li>
 										</ul>
 									</div>
-									<div className="flex items-center justify-between space-x-4 bg-black/50 rounded-lg p-4 border border-zinc-800">
-										<code className="text-green-500 text-lg font-mono">
-											{data?.key}
-										</code>
-										<Button
-											variant="outline"
-											size="icon"
-											onClick={copyToClipboard}
-											className="transition-all duration-200 hover:bg-green-500/10 hover:text-green-500"
-										>
-											{copied ? (
-												<CheckCircle2 className="h-5 w-5" />
-											) : (
-												<Copy className="h-5 w-5" />
-											)}
-										</Button>
+
+									<div className="flex flex-col gap-2 justify-start items-start">
+										<span className="text-white text-sm">License Details:</span>
+										<span className="text-zinc-400 text-sm">
+											License Type:{" "}
+											{data?.type === "basic"
+												? "Basic"
+												: data?.type === "professional"
+													? "Professional"
+													: "Business"}
+										</span>
+
+										<span className="text-zinc-400 text-sm">
+											Billing Type:{" "}
+											{data?.billingType === "monthly" ? "Monthly" : "Yearly"}
+										</span>
+
+										<span className="text-zinc-400 text-sm">License Key:</span>
+										<div className="flex items-center justify-between space-x-4 bg-black/50 rounded-lg p-4 border border-zinc-800">
+											<code className="text-green-500 text-lg font-mono">
+												{data?.key}
+											</code>
+											<Button
+												variant="outline"
+												size="icon"
+												onClick={copyToClipboard}
+												className="transition-all duration-200 hover:bg-green-500/10 hover:text-green-500"
+											>
+												{copied ? (
+													<CheckCircle2 className="h-5 w-5" />
+												) : (
+													<Copy className="h-5 w-5" />
+												)}
+											</Button>
+										</div>
 									</div>
 								</div>
 							</div>
