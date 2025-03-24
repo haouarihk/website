@@ -8,49 +8,73 @@ export const SERVER_LICENSE_URL =
 
 const LicenseCard = ({ license, stripeSuscription }: any) => {
 	return (
-		<div className="bg-gray-800 rounded-lg shadow-xl p-6 max-w-2xl mx-auto border border-gray-700">
+		<div className="bg-card backdrop-blur supports-[backdrop-filter]:bg-card/60 rounded-lg shadow-xl p-6 border border-border h-full">
 			<div className="space-y-6">
 				{/* License Information Section */}
 				<div>
-					<h2 className="text-2xl font-bold text-white mb-4">
+					<h2 className="text-xl font-bold text-foreground mb-4">
 						License Information
 					</h2>
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 gap-4">
 						<div>
-							<p className="text-sm font-semibold text-gray-400">License ID</p>
-							<p className="text-gray-200">{license.id}</p>
+							<p className="text-sm font-semibold text-muted-foreground">
+								License ID
+							</p>
+							<p className="text-foreground">{license.id}</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">License Key</p>
-							<p className="text-gray-200 break-all">{license.licenseKey}</p>
+							<p className="text-sm font-semibold text-muted-foreground">
+								License Key
+							</p>
+							<p className="text-foreground break-all">{license.licenseKey}</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
 								Activation Status
 							</p>
-							<p className="text-gray-200">
+							<p className="text-foreground">
 								{license.activatedAt ? "Activated" : "Not Activated"}
 							</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
+								Server IPs
+							</p>
+							{license.serverIps && license.serverIps.length > 0 ? (
+								<div className="space-y-1">
+									{license.serverIps.map((ip: string, index: number) => (
+										<p key={ip} className="text-foreground">
+											{ip}
+										</p>
+									))}
+								</div>
+							) : (
+								<p className="text-muted-foreground italic">
+									Not activated on any machine
+								</p>
+							)}
+						</div>
+						<div>
+							<p className="text-sm font-semibold text-muted-foreground">
 								Last Verification
 							</p>
-							<p className="text-gray-200">
+							<p className="text-foreground">
 								{license.lastVerifiedAt || "Not Verified"}
 							</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">Created At</p>
-							<p className="text-gray-200">
+							<p className="text-sm font-semibold text-muted-foreground">
+								Created At
+							</p>
+							<p className="text-foreground">
 								{new Date(license.createdAt).toLocaleDateString()}
 							</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
 								Last Updated
 							</p>
-							<p className="text-gray-200">
+							<p className="text-foreground">
 								{new Date(license.updatedAt).toLocaleDateString()}
 							</p>
 						</div>
@@ -60,47 +84,49 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 				{/* Subscription Information Section */}
 				<div>
 					<div className="flex justify-between items-center mb-4">
-						<h2 className="text-2xl font-bold text-white">
+						<h2 className="text-xl font-bold text-foreground">
 							Subscription Information
 						</h2>
-						<button
-							type="button"
-							className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200 flex items-center space-x-2"
-							// onClick={() => {
-							// 	// Handle subscription management here
-							// }}
-						>
-							<span>Manage Subscription</span>
-						</button>
 					</div>
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 gap-4">
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
 								Subscription ID
 							</p>
-							<p className="text-gray-200">{stripeSuscription.id}</p>
+							<p className="text-foreground">{stripeSuscription.id}</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">Quantity</p>
-							<p className="text-gray-200">
+							<p className="text-sm font-semibold text-muted-foreground">
+								Quantity
+							</p>
+							<p className="text-foreground">
 								{stripeSuscription.quantity} licenses
 							</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
 								Billing Type
 							</p>
-							<p className="text-gray-200 capitalize">
+							<p className="text-foreground capitalize">
 								{stripeSuscription.billingType}
 							</p>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-gray-400">
+							<p className="text-sm font-semibold text-muted-foreground">
 								Stripe Customer ID
 							</p>
-							<p className="text-gray-200">{license.stripeCustomerId}</p>
+							<p className="text-foreground">{license.stripeCustomerId}</p>
 						</div>
 					</div>
+				</div>
+
+				<div className="pt-4">
+					<button
+						type="button"
+						className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+					>
+						<span>Manage Subscription</span>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -127,13 +153,16 @@ export const ViewLicensePage = async ({
 
 	if (!data.success) {
 		return (
-			<div className="flex flex-col gap-4 items-center justify-center mx-auto py-8 px-4">
-				<h1 className="text-3xl font-bold text-white mb-8 text-center">
+			<div className="container mx-auto py-8 px-4">
+				<h1 className="text-3xl font-bold text-foreground mb-8 text-center">
 					License Details
 				</h1>
-				<span className="text-red-500 text-center flex flex-col gap-2">
+				<span className="text-destructive text-center flex flex-col gap-2">
 					{data.error}, Please try again in
-					<Link href="/reset-license" className="text-white">
+					<Link
+						href="/reset-license"
+						className="text-primary hover:text-primary/90"
+					>
 						Reset License
 					</Link>
 				</span>
@@ -141,20 +170,22 @@ export const ViewLicensePage = async ({
 		);
 	}
 
-	console.log(data);
-
 	return (
-		<div className="flex flex-col gap-4 items-center justify-center mx-auto py-8 px-4">
-			<h1 className="text-3xl font-bold text-white mb-8 text-center">
-				License Details
-			</h1>
-			{data?.licenses?.map((item: any) => (
-				<LicenseCard
-					key={item.license.id}
-					license={item.license}
-					stripeSuscription={item.stripeSuscription}
-				/>
-			))}
+		<div className="container mx-auto py-8 px-4">
+			<div className="flex flex-col gap-6">
+				<h1 className="text-3xl font-bold text-foreground text-center">
+					License Details
+				</h1>
+				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+					{data?.licenses?.map((item: any) => (
+						<LicenseCard
+							key={item.license.id}
+							license={item.license}
+							stripeSuscription={item.stripeSuscription}
+						/>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 };
