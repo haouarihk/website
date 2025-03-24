@@ -18,23 +18,9 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 					<div className="grid grid-cols-1 gap-4">
 						<div>
 							<p className="text-sm font-semibold text-muted-foreground">
-								License ID
-							</p>
-							<p className="text-foreground">{license.id}</p>
-						</div>
-						<div>
-							<p className="text-sm font-semibold text-muted-foreground">
 								License Key
 							</p>
 							<p className="text-foreground break-all">{license.licenseKey}</p>
-						</div>
-						<div>
-							<p className="text-sm font-semibold text-muted-foreground">
-								Activation Status
-							</p>
-							<p className="text-foreground">
-								{license.activatedAt ? "Activated" : "Not Activated"}
-							</p>
 						</div>
 						<div>
 							<p className="text-sm font-semibold text-muted-foreground">
@@ -70,18 +56,9 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 								{new Date(license.createdAt).toLocaleDateString()}
 							</p>
 						</div>
-						<div>
-							<p className="text-sm font-semibold text-muted-foreground">
-								Last Updated
-							</p>
-							<p className="text-foreground">
-								{new Date(license.updatedAt).toLocaleDateString()}
-							</p>
-						</div>
 					</div>
 				</div>
 
-				{/* Subscription Information Section */}
 				<div>
 					<div className="flex justify-between items-center mb-4">
 						<h2 className="text-xl font-bold text-foreground">
@@ -89,12 +66,6 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 						</h2>
 					</div>
 					<div className="grid grid-cols-1 gap-4">
-						<div>
-							<p className="text-sm font-semibold text-muted-foreground">
-								Subscription ID
-							</p>
-							<p className="text-foreground">{stripeSuscription.id}</p>
-						</div>
 						<div>
 							<p className="text-sm font-semibold text-muted-foreground">
 								Quantity
@@ -110,12 +81,6 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 							<p className="text-foreground capitalize">
 								{stripeSuscription.billingType}
 							</p>
-						</div>
-						<div>
-							<p className="text-sm font-semibold text-muted-foreground">
-								Stripe Customer ID
-							</p>
-							<p className="text-foreground">{license.stripeCustomerId}</p>
 						</div>
 					</div>
 				</div>
