@@ -147,7 +147,7 @@ export function Pricing() {
 
 			// Create checkout session
 			const response = await fetch(
-				`${SERVER_LICENSE_URL!}/create-checkout-session`,
+				`${SERVER_LICENSE_URL!}/stripe/create-checkout-session`,
 				{
 					method: "POST",
 					headers: {

@@ -41,12 +41,15 @@ export default function LicenseSuccess() {
 	useEffect(() => {
 		setLoading(true);
 
-		fetch(`${SERVER_LICENSE_URL}/license/session?sessionId=${sessionId}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
+		fetch(
+			`${SERVER_LICENSE_URL}/stripe/get-license-from-session?sessionId=${sessionId}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
 			},
-		})
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.error) {
