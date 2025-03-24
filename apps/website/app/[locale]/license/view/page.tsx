@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { ManageSubscriptionButton } from "./components";
 
 export const SERVER_LICENSE_URL =
 	process.env.NODE_ENV === "development"
@@ -10,7 +10,6 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 	return (
 		<div className="bg-card backdrop-blur supports-[backdrop-filter]:bg-card/60 rounded-lg shadow-xl p-6 border border-border h-full">
 			<div className="space-y-6">
-				{/* License Information Section */}
 				<div>
 					<h2 className="text-xl font-bold text-foreground mb-4">
 						License Information
@@ -86,12 +85,7 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 				</div>
 
 				<div className="pt-4">
-					<button
-						type="button"
-						className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-					>
-						<span>Manage Subscription</span>
-					</button>
+					<ManageSubscriptionButton customerId={license.stripeCustomerId} />
 				</div>
 			</div>
 		</div>
