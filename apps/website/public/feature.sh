@@ -156,7 +156,7 @@ install_dokploy() {
     -p 443:443/udp \
     traefik:v3.1.2
 
-
+    # Optional: Use docker service create instead of docker run
     #   docker service create \
     #     --name dokploy-traefik \
     #     --constraint 'node.role==manager' \
