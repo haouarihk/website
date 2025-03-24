@@ -1,5 +1,6 @@
+import { CopyButton } from "@/components/ui/copy-button";
 import Link from "next/link";
-import { ManageSubscriptionButton } from "./components";
+import { ManageSubscriptionButton, RemoveServerIpButton } from "./components";
 
 export const SERVER_LICENSE_URL =
 	process.env.NODE_ENV === "development"
@@ -19,7 +20,12 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 							<p className="text-sm font-semibold text-muted-foreground">
 								License Key
 							</p>
-							<p className="text-foreground break-all">{license.licenseKey}</p>
+							<p className="text-foreground break-all flex gap-2">
+								{license.licenseKey}{" "}
+								<div className="relative [&>button]:relative [&>button]:right-0 [&>button]:top-0">
+									<CopyButton text={license.licenseKey} />
+								</div>
+							</p>
 						</div>
 						<div>
 							<p className="text-sm font-semibold text-muted-foreground">
@@ -29,7 +35,11 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 								<div className="space-y-1">
 									{license.serverIps.map((ip: string, index: number) => (
 										<p key={ip} className="text-foreground">
-											{ip}
+											{ip}{" "}
+											<RemoveServerIpButton
+												licenseKey={license.licenseKey}
+												serverIp={ip}
+											/>
 										</p>
 									))}
 								</div>
@@ -79,6 +89,15 @@ const LicenseCard = ({ license, stripeSuscription }: any) => {
 							</p>
 							<p className="text-foreground capitalize">
 								{stripeSuscription.billingType}
+							</p>
+						</div>
+
+						<div>
+							<p className="text-sm font-semibold text-muted-foreground">
+								Type
+							</p>
+							<p className="text-foreground capitalize">
+								{stripeSuscription.type}
 							</p>
 						</div>
 					</div>
