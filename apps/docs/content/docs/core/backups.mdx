@@ -1,0 +1,51 @@
+---
+title: Backups
+description: 'Learn how to create backups of your applications and services.'
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+
+Dokploy provides a backup and restore feature that allows to save the whole file system that dokploy uses and database.
+
+
+Como requisito inciial, tiene que tener asociado un destination de S3, para que el sistema pueda hacer las copias de seguridad.
+
+luego puede dirigirse a la seccion de web server -> backups, y ahi encontrara 2 opciones:
+
+1. Create Backup
+2. Restore Backup
+
+
+1. Create Backup
+
+Usted podra crear un registro donde especificara en que destino se guaradar la copia, tambien specifica un cron jobs, para que el sistema pueda hacer las copias de seguridad en el momento especificado,
+dokploy internamente hara una copia de seguridad de la base de datos que se usa `dokploy-postgres` y una copia de el sistema de archivos que se utiliza por defecto `/etc/dokploy`, luego unira ambos archivos en un solo archivo comprimido y lo guardara en el destino especificado.
+
+
+2. Restore Backup
+
+Usted podra restaurar una copia de seguridad, para ello seleccione el destination donde se encuentra la copia de seguridad, luego puede buscar
+el archivo en el buscador, y puede seleccionar el archivo para restaurar, el sistema le mostrara un resumen de los archivos que seran restaurados,
+
+por defecto, el sistema hara lo siguiente:
+
+- Eliminara todo lo que exista en `/etc/dokploy` y lo reemplazara con el file system del archivo comprimido.
+- Eliminara la base de datos `dokploy-postgres` y desconectara a los usuarios conectados a la base de datos y la reemplazara con la base de datos del archivo comprimido.
+
+
+
+<Callout type="info">
+una ves que el sistema termine de restaurar, es muy probable que tenga que volver a iniciar sesion en el sistema, si es necesario puede reiniciar traefik
+
+</Callout>
+
+
+Notas: 
+
+1. Si la IP de su servidor es diferente, le sugerimos que actualize la IP en web-server ->  server -> update IP
+2. Si usted creo proveedores de git, con una IP antigua, tendria que recrearlos nuevamente en la seccion de git providers, ya que tienen referencia
+a la IP antigua, en otro caso que usted configuro sus git providers usando un dominio, puede dejarlo asi.
+3. Asegurese de apuntar los dominios a la nueva IP del servidor, si es la misma IP, no es necesario hacer nada en su servicio de DNS.
+4. Si la IP es diferente, y esta usando dominios de traefik.me es probable que tenga que recrear los dominios para que use la nueva IP.
+
