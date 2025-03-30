@@ -1,51 +1,60 @@
 ---
 title: Backups
-description: 'Learn how to create backups of your applications and services.'
+description: 'Learn how to create and restore backups of your Dokploy applications and services.'
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
+Dokploy provides a comprehensive backup and restore system that saves your entire Dokploy file system and database to ensure your data is safe and recoverable.
 
-Dokploy provides a backup and restore feature that allows to save the whole file system that dokploy uses and database.
+## Prerequisites
 
+Before using the backup feature, you need to have an S3 destination configured in your system. This is where your backups will be stored.
 
-Como requisito inciial, tiene que tener asociado un destination de S3, para que el sistema pueda hacer las copias de seguridad.
+## Creating Backups
 
-luego puede dirigirse a la seccion de web server -> backups, y ahi encontrara 2 opciones:
+To create a backup:
 
-1. Create Backup
-2. Restore Backup
+1. Navigate to Web Server → Backups
+2. Select "Create Backup"
+3. Choose your S3 destination
+4. Configure the backup schedule using cron syntax (optional)
 
+When a backup is created, Dokploy will:
+- Back up the PostgreSQL database (`dokploy-postgres`)
+- Save the Dokploy file system (`/etc/dokploy`)
+- Combine and compress both into a single backup file (.zip)
+- Upload the backup to your specified S3 destination
 
-1. Create Backup
+## Restoring Backups
 
-Usted podra crear un registro donde especificara en que destino se guaradar la copia, tambien specifica un cron jobs, para que el sistema pueda hacer las copias de seguridad en el momento especificado,
-dokploy internamente hara una copia de seguridad de la base de datos que se usa `dokploy-postgres` y una copia de el sistema de archivos que se utiliza por defecto `/etc/dokploy`, luego unira ambos archivos en un solo archivo comprimido y lo guardara en el destino especificado.
+To restore a backup:
 
+1. Navigate to Web Server → Backups
+2. Select "Restore Backup"
+3. Choose the S3 destination containing your backup
+4. Browse and select the backup file you want to restore
+5. Review the summary of files to be restored
 
-2. Restore Backup
-
-Usted podra restaurar una copia de seguridad, para ello seleccione el destination donde se encuentra la copia de seguridad, luego puede buscar
-el archivo en el buscador, y puede seleccionar el archivo para restaurar, el sistema le mostrara un resumen de los archivos que seran restaurados,
-
-por defecto, el sistema hara lo siguiente:
-
-- Eliminara todo lo que exista en `/etc/dokploy` y lo reemplazara con el file system del archivo comprimido.
-- Eliminara la base de datos `dokploy-postgres` y desconectara a los usuarios conectados a la base de datos y la reemplazara con la base de datos del archivo comprimido.
-
-
+During restoration, Dokploy will:
+- Clear the existing `/etc/dokploy` directory and replace it with the backup contents
+- Drop the existing `dokploy-postgres` database
+- Disconnect current database users
+- Restore the database from the backup
 
 <Callout type="info">
-una ves que el sistema termine de restaurar, es muy probable que tenga que volver a iniciar sesion en el sistema, si es necesario puede reiniciar traefik
-
+After restoration is complete, you may need to log in again. If necessary, you can restart Traefik to ensure all services are properly configured.
 </Callout>
 
+## Post-Restoration Steps
 
-Notas: 
+After restoring a backup, especially if you're restoring to a different server, consider the following:
 
-1. Si la IP de su servidor es diferente, le sugerimos que actualize la IP en web-server ->  server -> update IP
-2. Si usted creo proveedores de git, con una IP antigua, tendria que recrearlos nuevamente en la seccion de git providers, ya que tienen referencia
-a la IP antigua, en otro caso que usted configuro sus git providers usando un dominio, puede dejarlo asi.
-3. Asegurese de apuntar los dominios a la nueva IP del servidor, si es la misma IP, no es necesario hacer nada en su servicio de DNS.
-4. Si la IP es diferente, y esta usando dominios de traefik.me es probable que tenga que recrear los dominios para que use la nueva IP.
+1. If your server IP has changed:
+   - Update the IP address in Web Server → Server → Update IP
+   - Reconfigure Git providers if they were set up using IP addresses
+   - Update your DNS records to point to the new IP
+   - Recreate Traefik.me domains if you're using them
+
+2. If you're using domain names instead of IPs for Git providers, no additional configuration is needed.
 
