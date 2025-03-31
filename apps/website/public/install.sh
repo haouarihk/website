@@ -122,9 +122,6 @@ install_dokploy() {
     --mount type=volume,source=redis-data-volume,target=/data \
     redis:7
 
-    docker pull traefik:v3.1.2
-    docker pull dokploy/dokploy:latest
-
     # Installation
     docker service create \
       --name dokploy \
@@ -140,6 +137,7 @@ install_dokploy() {
       -e ADVERTISE_ADDR=$advertise_addr \
       dokploy/dokploy:latest
 
+    sleep 4
 
     docker run -d \
         --name dokploy-traefik \
