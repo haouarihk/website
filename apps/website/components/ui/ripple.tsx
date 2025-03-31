@@ -111,6 +111,12 @@ const Ripple = React.memo(function Ripple({
 			link: "https://synexa.ai/?ref=dokploy",
 			type: "supporting",
 		},
+		{
+			name: "HahuCloud",
+			image: "https://www.hahucloud.com/assets/images/logo.svg",
+			link: "https://www.hahucloud.com/?ref=dokploy",
+			type: "supporting",
+		},
 	];
 
 	const communitySponsors = [
