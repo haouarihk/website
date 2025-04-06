@@ -55,5 +55,8 @@ Proper domain configuration is crucial for the accessibility and security of you
 
 The "Container Port" specified in the domain settings is exclusively for routing traffic to the correct application container through Traefik, and does not expose the port directly to the internet. This is fundamentally different from the port settings in the "Advanced -> Ports" section, which are used to directly expose application ports. The container port in the domain settings ensures that Traefik can internally direct traffic to the specified port within the container based on the domain configuration.
 
+## Static Build Type
+
+When using the `Static` build type or `Nixpacks` and `Publish Directory` build type, you need to use the port `80` when creating a domain.
 
 
