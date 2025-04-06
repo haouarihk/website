@@ -113,7 +113,7 @@ const Ripple = React.memo(function Ripple({
 		},
 		{
 			name: "HahuCloud",
-			image: "https://www.hahucloud.com/assets/images/logo.svg",
+			image: "hahucloud_logo_1.png",
 			link: "https://www.hahucloud.com/?ref=dokploy",
 			type: "supporting",
 		},
