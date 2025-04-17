@@ -11,7 +11,6 @@ install_dokploy() {
         exit 1
     fi
 
-
     # check if is running inside a container
     if [ -f /.dockerenv ]; then
         echo "This script must be run on Linux" >&2
@@ -85,7 +84,18 @@ install_dokploy() {
         echo "$ip"
     }
 
-    advertise_addr="${ADVERTISE_ADDR:-$(get_ip)}"
+    get_private_ip() {
+        ip addr show | grep -E "inet (192\.168\.|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[0-1]\.)" | head -n1 | awk '{print $2}' | cut -d/ -f1
+    }
+
+    advertise_addr="${ADVERTISE_ADDR:-$(get_private_ip)}"
+
+    if [ -z "$advertise_addr" ]; then
+        echo "ERROR: We couldn't find a private IP address."
+        echo "Please set the ADVERTISE_ADDR environment variable manually."
+        echo "Example: export ADVERTISE_ADDR=192.168.1.100"
+        exit 1
+    fi
     echo "Using advertise address: $advertise_addr"
 
     docker swarm init --advertise-addr $advertise_addr
@@ -185,12 +195,12 @@ install_dokploy() {
         fi
     }
 
-    formatted_addr=$(format_ip_for_url "$advertise_addr")
+    public_ip="${ADVERTISE_ADDR:-$(get_ip)}"
+    formatted_addr=$(format_ip_for_url "$public_ip")
     echo ""
     printf "${GREEN}Congratulations, Dokploy is installed!${NC}\n"
     printf "${BLUE}Wait 15 seconds for the server to start${NC}\n"
     printf "${YELLOW}Please go to http://${formatted_addr}:3000${NC}\n\n"
-    echo ""
 }
 
 update_dokploy() {
