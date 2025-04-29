@@ -467,6 +467,7 @@
         |-- locales
             |-- en.json
             |-- fr.json
+            |-- es.json
             |-- zh-Hans.json
         |-- middleware.ts
         |-- next-env.d.ts
