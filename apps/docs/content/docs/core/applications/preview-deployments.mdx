@@ -7,6 +7,10 @@ Preview deployments are a powerful feature specifically designed for application
 
 <ImageZoom src="/assets/images/preview-deployments.png" width={800} height={630} alt='Preview deployments' className="rounded-lg" />
 
+<Callout type="info">
+We recommend not using preview deployments for public repositories, since external people can execute builds and deployments in your server.
+</Callout>
+
 ## Configuration
 
 By default, Dokploy generates dynamic domains using traefik.me domains, which are free and require no additional configuration. The default port is 3000, but you can adjust this based on your application's requirements. You can also limit the number of  preview deployments per application (default is 3).
