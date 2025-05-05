@@ -66,6 +66,13 @@ const Ripple = React.memo(function Ripple({
 			link: "https://supafort.com/?ref=dokploy",
 			type: "premium",
 		},
+		{
+			name: "AgentDock",
+			image:
+				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/agentdock.png",
+			link: "https://agentdock.ai/?ref=dokploy",
+			type: "premium",
+		},
 	];
 
 	const eliteSponsors = [];
