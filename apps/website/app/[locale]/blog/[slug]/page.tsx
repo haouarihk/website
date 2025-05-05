@@ -71,7 +71,7 @@ export async function generateMetadata(
 
 // export async function generateStaticParams() {
 // 	const posts = await getPosts();
-// 	const locales = ["en", "fr", "zh-Hans"];
+// 	const locales = ["en", "fr", "es", "zh-Hans"];
 
 // 	return posts.flatMap((post) =>
 // 		locales.map((locale) => ({
