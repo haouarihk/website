@@ -4,10 +4,10 @@ import { useId } from "react";
 import NumberTicker from "./ui/number-ticker";
 
 const statsValues = {
-	githubStars: 18100,
-	dockerDownloads: 1000000,
-	contributors: 135,
-	sponsors: 45,
+	githubStars: 20000,
+	dockerDownloads: 1500000,
+	contributors: 170,
+	sponsors: 50,
 };
 
 export function StatsSection() {
@@ -62,7 +62,7 @@ const grid = [
 	},
 	{
 		title: "DockerHub Downloads",
-		description: `Downloaded over ${(statsValues.dockerDownloads / 1000).toFixed(0)}k times, Dokploy has become a go-to solution for seamless deployments. Discover our presence on DockerHub.`,
+		description: `Downloaded over ${(statsValues.dockerDownloads / 1000000).toFixed(2).split(".")[0]}M times, Dokploy has become a go-to solution for seamless deployments. Discover our presence on DockerHub.`,
 		icon: (
 			<svg
 				stroke="currentColor"
@@ -158,10 +158,10 @@ export function GridPattern({ width, height, x, y, squares, ...props }: any) {
 			/>
 			{squares && (
 				<svg x={x} y={y} className="overflow-visible">
-					{squares.map(([x, y]: any, i: number) => (
+					{squares.map(([x, y]: any) => (
 						<rect
 							strokeWidth="0"
-							key={`${x}-${y}-${i}`}
+							key={`${x}-${y}`}
 							width={width + 1}
 							height={height + 1}
 							x={x * width}
