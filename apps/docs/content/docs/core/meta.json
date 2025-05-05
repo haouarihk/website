@@ -36,6 +36,7 @@
 		"templates",
 		"(examples)",
 		"auto-deploy",
+		"schedule-jobs",
 		"providers",
 		"watch-paths",
 		"---Advanced---",
