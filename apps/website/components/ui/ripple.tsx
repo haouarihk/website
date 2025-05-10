@@ -75,7 +75,15 @@ const Ripple = React.memo(function Ripple({
 		},
 	];
 
-	const eliteSponsors = [];
+	const eliteSponsors = [
+		{
+			name: "AmericanCloud",
+			image:
+				"https://media.licdn.com/dms/image/v2/D560BAQGQ0rVfEgLUMQ/company-logo_200_200/company-logo_200_200/0/1722459194382/americancloud_logo?e=2147483647&v=beta&t=990H-OldnorPQbgbN3jHihJijOb2aDmhwFl8DU_d680",
+			link: "https://americancloud.com/?ref=dokploy",
+			type: "elite",
+		},
+	];
 
 	const supportingSponsors = [
 		{
@@ -300,6 +308,54 @@ const Ripple = React.memo(function Ripple({
 								</div>
 							)}
 
+							{i === 2 && (
+								<div className="relative w-full h-full flex justify-center items-center">
+									{eliteSponsors.map((item, index) => {
+										const angle = (360 / eliteSponsors.length) * index;
+										const radius = mainCircleSize / 2 + 100;
+										const x = radius * Math.cos((angle * Math.PI) / 180);
+										const y = radius * Math.sin((angle * Math.PI) / 180);
+										const initials = item.name
+											.split(" ")
+											.map((n) => n[0])
+											.join("");
+										return (
+											<div
+												key={index}
+												className="absolute"
+												style={{
+													top: "50%",
+													left: "50%",
+													transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+												}}
+											>
+												<TooltipProvider delayDuration={100}>
+													<Tooltip>
+														<TooltipTrigger>
+															<Link href={item.link} target="_blank">
+																<Avatar className="border-2 border-yellow-900">
+																	<AvatarImage
+																		src={item.image}
+																		alt={item.name}
+																	/>
+																	<AvatarFallback>{initials}</AvatarFallback>
+																</Avatar>
+															</Link>
+														</TooltipTrigger>
+														<TooltipPrimitive.Portal>
+															<TooltipContent>
+																<p className="text-xs font-semibold ">
+																	{item.name}
+																</p>
+															</TooltipContent>
+														</TooltipPrimitive.Portal>
+													</Tooltip>
+												</TooltipProvider>
+											</div>
+										);
+									})}
+								</div>
+							)}
 							{i === 3 && (
 								<div className="relative w-full h-full flex justify-center items-center">
 									{supportingSponsors.map((item, index) => {
