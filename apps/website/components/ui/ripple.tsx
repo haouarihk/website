@@ -83,6 +83,12 @@ const Ripple = React.memo(function Ripple({
 			link: "https://americancloud.com/?ref=dokploy",
 			type: "elite",
 		},
+		{
+			name: "Tolgee",
+			image: "tolgee-logo.png",
+			link: "https://tolg.ee/hrszh9",
+			type: "elite",
+		},
 	];
 
 	const supportingSponsors = [
