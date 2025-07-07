@@ -118,6 +118,11 @@ serviceName: app
 port: 3000
 ```
 
+- Another reason of the domains are not working it may be because the healthchecks you've defined are not working, so this will cause the domains never work, so you have two options:
+
+1. Remove the healthcheck from the service
+2. Make sure the healthcheck is working
+
 ## Getting "Bad Gateway Error" When Accessing Your Application Domain
 
 If you're encountering a Bad Gateway Error when accessing your application through its domain, this typically indicates one of several common configuration issues:
