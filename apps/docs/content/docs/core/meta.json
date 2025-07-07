@@ -37,6 +37,7 @@
 		"(examples)",
 		"auto-deploy",
 		"schedule-jobs",
+		"volume-backups",
 		"providers",
 		"watch-paths",
 		"---Advanced---",

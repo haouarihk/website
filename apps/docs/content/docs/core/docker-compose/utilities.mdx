@@ -30,7 +30,7 @@ services:
 
 When Isolated Deployments is enabled, Dokploy will:
 
-1. Add a prefix to all your defined volumes and networks
+1. Add a prefix to all your defined networks
 2. Create a network based on your service's appName and associate it with each service in your compose file
 3. Connect the Traefik load balancer to this isolated network, maintaining service isolation while ensuring proper routing
 
