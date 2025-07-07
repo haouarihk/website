@@ -60,3 +60,18 @@ The "Container Port" specified in the domain settings is exclusively for routing
 When using the `Static` build type or `Nixpacks` and `Publish Directory` build type, you need to use the port `80` when creating a domain.
 
 
+## Adding WWW to your domain
+
+If you want to add WWW to your domain, you can do it by adding a CNAME record to your DNS provider.
+
+For example, if your domain is `example.com`, you can add a CNAME record to your DNS provider with the following configuration:
+
+- TYPE: CNAME
+- NAME: www
+- VALUE: example.com
+
+Create the domain in dokploy, using the host `www.example.com`
+
+Now in dokploy, you can go to application -> advanced -> redirects (Select the preset www to non-www) and click on save.
+
+now everytime you access `www.example.com` it will redirect to `example.com`
