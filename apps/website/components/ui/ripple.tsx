@@ -45,19 +45,6 @@ const Ripple = React.memo(function Ripple({
 			link: "https://www.lxaer.com?ref=dokploy",
 			type: "hero",
 		},
-		{
-			name: "Mandarin 3D",
-			image:
-				"https://raw.githubusercontent.com/Dokploy/dokploy/canary/.github/sponsors/mandarin.png",
-			link: "https://mandarin3d.com/?ref=dokploy",
-			type: "hero",
-		},
-		{
-			name: "LightNode",
-			image: "lightnode-logo.png",
-			link: "https://www.lightnode.com/?ref=dokploy",
-			type: "hero",
-		},
 	];
 	const premiumSponsors = [
 		{
@@ -93,38 +80,12 @@ const Ripple = React.memo(function Ripple({
 
 	const supportingSponsors = [
 		{
-			name: "Lightspeed Run",
-			image: "https://github.com/lightspeedrun.png",
-			link: "https://lightspeed.run/?ref=dokploy",
-			type: "supporting",
-		},
-		{
 			name: "Cloudblast",
 			image: "https://cloudblast.io/img/logo-icon.193cf13e.svg",
 			link: "https://cloudblast.io/?ref=dokploy",
 			type: "supporting",
 		},
-		{
-			name: "Startup Fame",
-			image:
-				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/startupfame.png",
-			link: "https://startupfa.me/?ref=dokploy",
-			type: "supporting",
-		},
-		{
-			name: "Itsdb",
-			image:
-				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/its.png",
-			link: "https://itsdb-center.com/?ref=dokploy",
-			type: "supporting",
-		},
-		{
-			name: "OpenAlternative",
-			image:
-				"https://raw.githubusercontent.com/Dokploy/dokploy/refs/heads/canary/.github/sponsors/openalternative.png",
-			link: "https://openalternative.co/?ref=dokploy",
-			type: "supporting",
-		},
+
 		{
 			name: "Synexa",
 			image:
@@ -140,26 +101,7 @@ const Ripple = React.memo(function Ripple({
 		},
 	];
 
-	const communitySponsors = [
-		{
-			name: "Steamsets",
-			image: "https://avatars.githubusercontent.com/u/111978405?s=200&v=4",
-			link: "https://steamsets.com/?ref=dokploy",
-			type: "premium",
-		},
-		{
-			name: "Rivo GG",
-			image: "https://avatars.githubusercontent.com/u/126797452?s=200&v=4",
-			link: "https://rivo.gg/?ref=dokploy",
-			type: "premium",
-		},
-		{
-			name: "Photoquest",
-			image: "https://photoquest.wedding/favicon/android-chrome-512x512.png",
-			link: "https://photoquest.wedding/?ref=dokploy",
-			type: "premium",
-		},
-	];
+	const communitySponsors = [];
 
 	return (
 		<div
