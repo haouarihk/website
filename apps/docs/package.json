@@ -19,7 +19,8 @@
 		"fumadocs-mdx": "11.1.1",
 		"lucide-react": "^0.456.0",
 		"fumadocs-openapi": "5.5.9",
-		"shiki": "1.22.2"
+		"shiki": "1.22.2",
+		"@next/third-parties": "15.4.5"
 	},
 	"devDependencies": {
 		"tsx": "^4.19.2",

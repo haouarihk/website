@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Inter, Lexend } from "next/font/google";
 import type { ReactNode } from "react";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 type Props = {
 	children: ReactNode;
 };
@@ -61,6 +63,7 @@ export default async function RootLayout({
 			)}
 		>
 			<body>
+				<GoogleAnalytics gaId="G-0RTZ5EPB26" />
 				<NextIntlClientProvider messages={messages}>
 					{children}
 				</NextIntlClientProvider>
