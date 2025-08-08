@@ -99,6 +99,12 @@ const Ripple = React.memo(function Ripple({
 			link: "https://www.hahucloud.com/?ref=dokploy",
 			type: "supporting",
 		},
+		{
+			name: "Teramont",
+			image: "terramont.ico",
+			link: "https://teramont.net/dokploy",
+			type: "supporting",
+		},
 	];
 
 	const communitySponsors = [];
