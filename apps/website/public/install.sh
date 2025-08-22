@@ -1,4 +1,20 @@
 #!/bin/bash
+
+# Function to detect if running in Proxmox LXC container
+is_proxmox_lxc() {
+    # Check for LXC in environment
+    if [ -n "$container" ] && [ "$container" = "lxc" ]; then
+        return 0  # LXC container
+    fi
+    
+    # Check for LXC in /proc/1/environ
+    if grep -q "container=lxc" /proc/1/environ 2>/dev/null; then
+        return 0  # LXC container
+    fi
+    
+    return 1  # Not LXC
+}
+
 install_dokploy() {
     if [ "$(id -u)" != "0" ]; then
         echo "This script must be run as root" >&2
@@ -38,6 +54,19 @@ install_dokploy() {
     else
       curl -sSL https://get.docker.com | sh
     fi
+
+    # Check if running in Proxmox LXC container and set endpoint mode
+    endpoint_mode=""
+    if is_proxmox_lxc; then
+        echo "⚠️ WARNING: Detected Proxmox LXC container environment!"
+        echo "Adding --endpoint-mode dnsrr to Docker service for LXC compatibility."
+        echo "This may affect service discovery but is required for LXC containers."
+        echo ""
+        endpoint_mode="--endpoint-mode dnsrr"
+        echo "Waiting for 5 seconds before continuing..."
+        sleep 5
+    fi
+
 
     docker swarm leave --force 2>/dev/null
 
@@ -145,6 +174,7 @@ install_dokploy() {
       --update-parallelism 1 \
       --update-order stop-first \
       --constraint 'node.role == manager' \
+      $endpoint_mode \
       -e ADVERTISE_ADDR=$advertise_addr \
       dokploy/dokploy:latest
 
