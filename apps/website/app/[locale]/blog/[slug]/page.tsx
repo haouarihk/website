@@ -134,13 +134,19 @@ export default async function BlogPostPage({ params }: Props) {
 			/>
 		),
 		ul: ({ node, ...props }) => (
-			<ul className="list-disc list-inside space-y-2 mb-4" {...props} />
+			<ul
+				className="list-disc pl-6 space-y-1 mb-4 text-muted-foreground"
+				{...props}
+			/>
 		),
 		ol: ({ node, ...props }) => (
-			<ol className="list-decimal list-inside space-y-2 mb-4" {...props} />
+			<ol
+				className="list-decimal pl-6 space-y-1 mb-4 text-muted-foreground"
+				{...props}
+			/>
 		),
 		li: ({ node, ...props }) => (
-			<li className="text-base leading-relaxed" {...props} />
+			<li className="text-base leading-relaxed ml-2" {...props} />
 		),
 		blockquote: ({ node, ...props }) => (
 			<blockquote
