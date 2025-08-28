@@ -94,6 +94,38 @@ export default async function BlogPostPage({ params }: Props) {
 		notFound();
 	}
 
+	// Limpiar HTML antes de convertir a Markdown
+	const cleanHtml = (html: string) => {
+		// Crear un DOM temporal para limpiar el HTML
+		if (typeof window !== "undefined") {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, "text/html");
+
+			// Remover scripts JSON-LD y otros scripts
+			const scripts = doc.querySelectorAll(
+				'script[type="application/ld+json"], script',
+			);
+			scripts.forEach((script) => script.remove());
+
+			// Remover otros elementos no deseados
+			const unwantedElements = doc.querySelectorAll("style, meta, link");
+			unwantedElements.forEach((el) => el.remove());
+
+			return doc.body.innerHTML;
+		} else {
+			// Fallback para servidor - usar regex para limpiar
+			return html
+				.replace(
+					/<script[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/gi,
+					"",
+				)
+				.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+				.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+				.replace(/<meta[^>]*>/gi, "")
+				.replace(/<link[^>]*>/gi, "");
+		}
+	};
+
 	// Convertir HTML a Markdown
 	const turndownService = new TurndownService({
 		headingStyle: "atx",
@@ -104,7 +136,8 @@ export default async function BlogPostPage({ params }: Props) {
 	const strikethrough = turndownPluginGfm.strikethrough;
 	turndownService.use([tables, strikethrough, gfm, remarkToc]);
 
-	const markdown = turndownService.turndown(post.html);
+	const cleanedHtml = cleanHtml(post.html);
+	const markdown = turndownService.turndown(cleanedHtml);
 
 	const formattedDate = new Date(post.published_at).toLocaleDateString("en", {
 		year: "numeric",
