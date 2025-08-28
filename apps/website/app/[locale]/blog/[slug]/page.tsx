@@ -175,8 +175,23 @@ export default async function BlogPostPage({ params }: Props) {
 				className="object-cover max-w-lg mx-auto rounded-lg border max-lg:w-64 border-border overflow-hidden"
 			/>
 		),
-		code: ({ className, children }) => {
-			const match = /language-(\w+)/.exec(className || "");
+		code: ({
+			className,
+			children,
+			inline,
+		}: { className: string; children: React.ReactNode; inline: boolean }) => {
+			console.log(className, children, inline);
+			// Si es código inline (no tiene className con language-*), renderizar como span
+			if (inline || !className || !/language-(\w+)/.test(className)) {
+				return (
+					<code className="px-1.5 py-0.5 bg-muted text-sm rounded font-mono text-foreground">
+						{children}
+					</code>
+				);
+			}
+
+			// Si es un bloque de código, usar CodeBlock
+			const match = /language-(\w+)/.exec(className);
 			return (
 				<CodeBlock
 					lang={match ? (match[1] as BundledLanguage) : "ts"}
@@ -328,11 +343,11 @@ export default async function BlogPostPage({ params }: Props) {
 								>
 									<div className="bg-card rounded-lg overflow-hidden h-full shadow-lg transition-all duration-300 hover:shadow-xl border border-border">
 										{relatedPost.feature_image && (
-											<div className="relative h-48 w-full">
+											<div className="relative  w-full">
 												<img
 													src={relatedPost.feature_image || "/og.png"}
 													alt={relatedPost.title}
-													className="object-cover"
+													className="object-cover "
 												/>
 											</div>
 										)}
