@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "");
 
 interface ContactFormData {
 	inquiryType: "support" | "sales" | "other";
@@ -61,7 +61,10 @@ Sent from Dokploy website contact form
 		// Send email to Dokploy team
 		await resend.emails.send({
 			from: "Dokploy Contact Form <noreply@emails.dokploy.com>",
-			to: ["sales@dokploy.com", "contact@dokploy.com"],
+			to:
+				body.inquiryType === "sales"
+					? ["sales@dokploy.com", "contact@dokploy.com"]
+					: ["contact@dokploy.com"],
 			subject: emailSubject,
 			text: emailBody,
 			replyTo: body.email,
