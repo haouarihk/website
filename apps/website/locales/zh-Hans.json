@@ -16,7 +16,8 @@
 			"blog": "博客",
 			"home": "首页",
 			"login": "登录",
-			"register": "注册"
+			"register": "注册",
+			"contact": "联系我们"
 		},
 		"hero": {
 			"cloud": "隆重介绍 Dokploy 云",
@@ -220,5 +221,52 @@
 		"postsTaggedWith": "标签为",
 		"foundPosts": "{count, plural, =0 {未找到文章} other {找到 # 篇文章}}",
 		"tagTitle": "标签为 {tag} 的文章"
+	},
+	"Contact": {
+		"title": "联系我们",
+		"description": "联系我们的团队。我们随时为您解答关于 Dokploy 的任何问题。",
+		"successTitle": "感谢您联系我们！",
+		"successMessage": "我们已收到您的消息，将尽快回复您。",
+		"errorMessage": "发送消息时出现错误，请重试。",
+		"fields": {
+			"inquiryType": {
+				"label": "我们今天可以为您提供什么帮助？",
+				"placeholder": "选择一个选项",
+				"options": {
+					"support": "技术支持",
+					"sales": "销售咨询",
+					"other": "其他"
+				}
+			},
+			"name": {
+				"label": "姓名",
+				"placeholder": "您的全名"
+			},
+			"email": {
+				"label": "邮箱",
+				"placeholder": "your.email@company.com"
+			},
+			"company": {
+				"label": "公司名称",
+				"placeholder": "您的公司名称"
+			},
+			"message": {
+				"label": "我们如何帮助您？",
+				"placeholder": "请详细描述您的咨询..."
+			}
+		},
+		"buttons": {
+			"send": "发送消息",
+			"sending": "发送中...",
+			"sendAnother": "发送另一条消息"
+		},
+		"errors": {
+			"inquiryTypeRequired": "请选择我们可以为您提供的帮助",
+			"nameRequired": "姓名为必填项",
+			"emailRequired": "邮箱为必填项",
+			"emailInvalid": "请输入有效的邮箱地址",
+			"companyRequired": "公司名称为必填项",
+			"messageRequired": "消息为必填项"
+		}
 	}
 }

@@ -128,6 +128,7 @@ function MobileNavigation() {
 							{t("navigation.docs")}
 						</MobileNavLink>
 						<MobileNavLink href="/blog">{t("navigation.blog")}</MobileNavLink>
+						<MobileNavLink href="/contact">{t("navigation.contact")}</MobileNavLink>
 						<MobileNavLink href={linkT("docs.intro")} target="_blank">
 							<Button className=" w-full" asChild>
 								<Link
@@ -183,6 +184,25 @@ export function Header() {
 								<path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
 							</svg>
 						</Link>
+
+						<Button
+							variant="outline"
+							className="rounded-full max-md:hidden"
+							asChild
+						>
+							<Link
+								href="/contact"
+								onClick={() => {
+									trackGAEvent({
+										action: "Contact Button Clicked",
+										category: "Contact",
+										label: "Header",
+									});
+								}}
+							>
+								{t("navigation.contact")}
+							</Link>
+						</Button>
 
 						{/* <Link
 							className={buttonVariants({

@@ -16,7 +16,8 @@
 			"blog": "Blog",
 			"home": "Accueil",
 			"login": "Connexion",
-			"register": "S'inscrire"
+			"register": "S'inscrire",
+			"contact": "Contact"
 		},
 		"hero": {
 			"cloud": "Présentation de Dokploy Cloud",
@@ -209,5 +210,52 @@
 		"allTags": "Tous les tags",
 		"relatedPosts": "Articles similaires",
 		"tagDescription": "Articles tagués avec"
+	},
+	"Contact": {
+		"title": "Nous contacter",
+		"description": "Contactez notre équipe. Nous sommes là pour vous aider avec toutes vos questions sur Dokploy.",
+		"successTitle": "Merci de nous avoir contactés !",
+		"successMessage": "Nous avons reçu votre message et vous répondrons dans les plus brefs délais.",
+		"errorMessage": "Il y a eu une erreur lors de l'envoi de votre message. Veuillez réessayer.",
+		"fields": {
+			"inquiryType": {
+				"label": "Comment pouvons-nous vous aider aujourd'hui ?",
+				"placeholder": "Sélectionnez une option",
+				"options": {
+					"support": "Support",
+					"sales": "Ventes",
+					"other": "Autre"
+				}
+			},
+			"name": {
+				"label": "Nom",
+				"placeholder": "Votre nom complet"
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "votre.email@entreprise.com"
+			},
+			"company": {
+				"label": "Nom de l'entreprise",
+				"placeholder": "Le nom de votre entreprise"
+			},
+			"message": {
+				"label": "Comment pouvons-nous vous aider ?",
+				"placeholder": "Parlez-nous de votre demande..."
+			}
+		},
+		"buttons": {
+			"send": "Envoyer le message",
+			"sending": "Envoi en cours...",
+			"sendAnother": "Envoyer un autre message"
+		},
+		"errors": {
+			"inquiryTypeRequired": "Veuillez sélectionner comment nous pouvons vous aider",
+			"nameRequired": "Le nom est obligatoire",
+			"emailRequired": "L'email est obligatoire",
+			"emailInvalid": "Veuillez saisir une adresse email valide",
+			"companyRequired": "Le nom de l'entreprise est obligatoire",
+			"messageRequired": "Le message est obligatoire"
+		}
 	}
 }
