@@ -238,9 +238,13 @@
 					"other": "其他"
 				}
 			},
-			"name": {
-				"label": "姓名",
-				"placeholder": "您的全名"
+			"firstName": {
+				"label": "名",
+				"placeholder": "您的名"
+			},
+			"lastName": {
+				"label": "姓",
+				"placeholder": "您的姓"
 			},
 			"email": {
 				"label": "邮箱",
@@ -262,7 +266,8 @@
 		},
 		"errors": {
 			"inquiryTypeRequired": "请选择我们可以为您提供的帮助",
-			"nameRequired": "姓名为必填项",
+			"firstNameRequired": "名为必填项",
+			"lastNameRequired": "姓为必填项",
 			"emailRequired": "邮箱为必填项",
 			"emailInvalid": "请输入有效的邮箱地址",
 			"companyRequired": "公司名称为必填项",

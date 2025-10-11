@@ -227,9 +227,13 @@
 					"other": "Autre"
 				}
 			},
-			"name": {
-				"label": "Nom",
-				"placeholder": "Votre nom complet"
+			"firstName": {
+				"label": "Prénom",
+				"placeholder": "Votre prénom"
+			},
+			"lastName": {
+				"label": "Nom de famille",
+				"placeholder": "Votre nom de famille"
 			},
 			"email": {
 				"label": "Email",
@@ -251,7 +255,8 @@
 		},
 		"errors": {
 			"inquiryTypeRequired": "Veuillez sélectionner comment nous pouvons vous aider",
-			"nameRequired": "Le nom est obligatoire",
+			"firstNameRequired": "Le prénom est obligatoire",
+			"lastNameRequired": "Le nom de famille est obligatoire",
 			"emailRequired": "L'email est obligatoire",
 			"emailInvalid": "Veuillez saisir une adresse email valide",
 			"companyRequired": "Le nom de l'entreprise est obligatoire",

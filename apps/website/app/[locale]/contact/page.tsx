@@ -18,7 +18,8 @@ import { cn } from "@/lib/utils";
 
 interface ContactFormData {
 	inquiryType: "" | "support" | "sales" | "other";
-	name: string;
+	firstName: string;
+	lastName: string;
 	email: string;
 	company: string;
 	message: string;
@@ -30,7 +31,8 @@ export default function ContactPage() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [formData, setFormData] = useState<ContactFormData>({
 		inquiryType: "",
-		name: "",
+		firstName: "",
+		lastName: "",
 		email: "",
 		company: "",
 		message: "",
@@ -43,8 +45,11 @@ export default function ContactPage() {
 		if (!formData.inquiryType) {
 			newErrors.inquiryType = t("errors.inquiryTypeRequired");
 		}
-		if (!formData.name.trim()) {
-			newErrors.name = t("errors.nameRequired");
+		if (!formData.firstName.trim()) {
+			newErrors.firstName = t("errors.firstNameRequired");
+		}
+		if (!formData.lastName.trim()) {
+			newErrors.lastName = t("errors.lastNameRequired");
 		}
 		if (!formData.email.trim()) {
 			newErrors.email = t("errors.emailRequired");
@@ -91,7 +96,8 @@ export default function ContactPage() {
 				// Reset form and show success
 				setFormData({
 					inquiryType: "",
-					name: "",
+					firstName: "",
+					lastName: "",
 					email: "",
 					company: "",
 					message: "",
@@ -211,43 +217,67 @@ export default function ContactPage() {
 						<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 							<div className="space-y-2">
 								<label
-									htmlFor="name"
+									htmlFor="firstName"
 									className="block text-sm font-medium text-foreground"
 								>
-									{t("fields.name.label")}{" "}
+									{t("fields.firstName.label")}{" "}
 									<span className="text-red-500">*</span>
 								</label>
 								<Input
-									id="name"
+									id="firstName"
 									type="text"
-									value={formData.name}
-									onChange={(e) => handleInputChange("name", e.target.value)}
-									placeholder={t("fields.name.placeholder")}
+									value={formData.firstName}
+									onChange={(e) =>
+										handleInputChange("firstName", e.target.value)
+									}
+									placeholder={t("fields.firstName.placeholder")}
 								/>
-								{errors.name && (
-									<p className="text-sm text-red-600">{errors.name}</p>
+								{errors.firstName && (
+									<p className="text-sm text-red-600">{errors.firstName}</p>
 								)}
 							</div>
 
 							<div className="space-y-2">
 								<label
-									htmlFor="email"
+									htmlFor="lastName"
 									className="block text-sm font-medium text-foreground"
 								>
-									{t("fields.email.label")}{" "}
+									{t("fields.lastName.label")}{" "}
 									<span className="text-red-500">*</span>
 								</label>
 								<Input
-									id="email"
-									type="email"
-									value={formData.email}
-									onChange={(e) => handleInputChange("email", e.target.value)}
-									placeholder={t("fields.email.placeholder")}
+									id="lastName"
+									type="text"
+									value={formData.lastName}
+									onChange={(e) =>
+										handleInputChange("lastName", e.target.value)
+									}
+									placeholder={t("fields.lastName.placeholder")}
 								/>
-								{errors.email && (
-									<p className="text-sm text-red-600">{errors.email}</p>
+								{errors.lastName && (
+									<p className="text-sm text-red-600">{errors.lastName}</p>
 								)}
 							</div>
+						</div>
+
+						<div className="space-y-2">
+							<label
+								htmlFor="email"
+								className="block text-sm font-medium text-foreground"
+							>
+								{t("fields.email.label")}{" "}
+								<span className="text-red-500">*</span>
+							</label>
+							<Input
+								id="email"
+								type="email"
+								value={formData.email}
+								onChange={(e) => handleInputChange("email", e.target.value)}
+								placeholder={t("fields.email.placeholder")}
+							/>
+							{errors.email && (
+								<p className="text-sm text-red-600">{errors.email}</p>
+							)}
 						</div>
 
 						<div className="space-y-2">

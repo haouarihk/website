@@ -233,9 +233,13 @@
 					"other": "Other"
 				}
 			},
-			"name": {
-				"label": "Name",
-				"placeholder": "Your full name"
+			"firstName": {
+				"label": "First Name",
+				"placeholder": "Your first name"
+			},
+			"lastName": {
+				"label": "Last Name",
+				"placeholder": "Your last name"
 			},
 			"email": {
 				"label": "Email",
@@ -257,7 +261,8 @@
 		},
 		"errors": {
 			"inquiryTypeRequired": "Please select what we can help you with",
-			"nameRequired": "Name is required",
+			"firstNameRequired": "First name is required",
+			"lastNameRequired": "Last name is required",
 			"emailRequired": "Email is required",
 			"emailInvalid": "Please enter a valid email address",
 			"companyRequired": "Company name is required",
