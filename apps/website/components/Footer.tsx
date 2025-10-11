@@ -94,6 +94,8 @@ export function Footer() {
 								router.replace("/", {
 									locale: locale as "en" | "zh-Hans" | "fr" | "es",
 								});
+
+								router.refresh();
 							}}
 							value={locale}
 						>
