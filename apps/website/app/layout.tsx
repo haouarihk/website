@@ -62,6 +62,15 @@ export default async function RootLayout({
 				lexend.variable,
 			)}
 		>
+			<head>
+				<script
+					type="text/javascript"
+					id="hs-script-loader"
+					async
+					defer
+					src="//js-eu1.hs-scripts.com/147033433.js"
+				/>
+			</head>
 			<body>
 				<GoogleAnalytics gaId="G-0RTZ5EPB26" />
 				<NextIntlClientProvider messages={messages}>
