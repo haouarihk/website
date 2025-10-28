@@ -165,7 +165,7 @@ get_device_id() {
     local attempt=0
     
     while [ $attempt -lt $max_attempts ]; do
-        local device_id=$(docker exec $(docker ps -q -f name=dokploy-sync) syncthing -home /var/syncthing/config -device-id 2>/dev/null)
+        local device_id=$(docker exec $(docker ps -q -f name=dokploy-sync) syncthing device-id 2>/dev/null)
         if [ -n "$device_id" ]; then
             echo "$device_id"
             return 0
