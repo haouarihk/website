@@ -23,8 +23,12 @@ generate_node_id() {
 # Generate a random Syncthing device ID
 generate_syncthing_device_id() {
     # Generate a random 52-character base32 string (Syncthing device ID format)
-    # Using openssl rand to generate random bytes and converting to base32
-    openssl rand -base32 32 | tr -d '=' | cut -c1-52
+    # Prefer GNU coreutils base32; fallback to character class from /dev/urandom
+    if command -v base32 >/dev/null 2>&1; then
+        head -c 40 /dev/urandom | base32 | tr -d '=' | tr -d '\n' | cut -c1-52
+    else
+        tr -dc 'A-Z2-7' </dev/urandom | head -c 52
+    fi
 }
 
 # Setup Syncthing configuration for decentralized sync
