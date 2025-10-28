@@ -503,6 +503,10 @@ install_dokploy() {
     # Create main dokploy directory
     mkdir -p /etc/dokploy
     chmod 755 /etc/dokploy
+    # Create per-service data directories
+    mkdir -p /etc/dokploy/postgres
+    mkdir -p /etc/dokploy/redis
+    chmod 755 /etc/dokploy/postgres /etc/dokploy/redis
 
     # Setup Syncthing configuration
     setup_syncthing_config
@@ -516,9 +520,10 @@ install_dokploy() {
     --env POSTGRES_USER=dokploy \
     --env POSTGRES_DB=dokploy \
     --env POSTGRES_PASSWORD=amukds4wi9001583845717ad2 \
+    --mode global \
     --publish published=5432,target=5432,mode=$publish_mode \
     $endpoint_mode \
-    --mount type=volume,source=dokploy-postgres-database,target=/var/lib/postgresql/data \
+    --mount type=bind,source=/etc/dokploy/postgres,target=/var/lib/postgresql/data \
     postgres:16
 
     echo "Creating Redis service..."
@@ -526,16 +531,17 @@ install_dokploy() {
     --name dokploy-redis \
     --constraint 'node.role==manager' \
     --network dokploy-network \
+    --mode global \
     --publish published=6379,target=6379,mode=$publish_mode \
     $endpoint_mode \
-    --mount type=volume,source=redis-data-volume,target=/data \
+    --mount type=bind,source=/etc/dokploy/redis,target=/data \
     redis:7
 
     echo "Creating Dokploy service..."
     # Installation
     docker service create \
       --name dokploy \
-      --replicas 1 \
+      --mode global \
       --network dokploy-network \
       --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
       --mount type=bind,source=/etc/dokploy,target=/etc/dokploy \
@@ -574,6 +580,7 @@ install_dokploy() {
     echo "Creating Traefik service..."
     docker service create \
         --name dokploy-traefik \
+        --mode global \
         --constraint 'node.role==manager' \
         --network dokploy-network \
         --mount type=bind,source=/etc/dokploy/traefik/traefik.yml,target=/etc/traefik/traefik.yml \
